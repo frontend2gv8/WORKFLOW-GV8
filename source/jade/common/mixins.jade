@@ -1,0 +1,62 @@
+mixin paginacao
+	// PAGINACAO ===============>
+	nav(class="paginacao")
+		a(href="#"): i(class="fa fa-angle-double-left")
+		span(class="active") 1
+		-for (var x=0;x<5;x++)
+			a(href="#") #{x+2}
+		//- End for
+		a(href="#"): i(class="fa fa-angle-double-right")
+
+//- ====================================================
+//- Formularios
+mixin campo(tipo,id,nome)
+	.form-group
+		label(for="#{id}") #{nome}
+		input(type="#{tipo}", id="#{id}", name="#{id}",class="form-control")
+	// /.form-group
+
+mixin textarea(rows,id,nome)
+	.form-group
+		label(for="#{id}") #{nome}
+		textarea(class="form-control",id="#{id}",name="#{id}",rows="#{rows}")
+	// /.form-group
+
+mixin select(id, nome)
+	.form-group
+		label(for="#{id}") #{nome}
+		select(class="form-control",id="#{id}",name="#{id}")
+			option(value="1") Opção 1
+			option(value="2") Opção 2
+	// .form-group
+//- ======================================================
+
+//- GOOGLE MAPS
+mixin googleMaps
+	iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207433.5100227956!2d139.71038800000002!3d35.673343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x605d1b87f02e57e7%3A0x2e01618b22571b89!2zVG9reW8sIEphcMOjbw!5e0!3m2!1spt-BR!2sbr!4v1436279043842", width="500", height="500", frameborder="0", style="border:0", allowfullscreen)
+//- ====================================================>
+
+//- FACEBOOK LIKE PAGE------------------------------------
+
+mixin fb-root
+	div(id="fb-root")
+	script setTimeout(function(){(function(d,s,id) {var js, fjs =d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));}, 700);
+
+mixin fb-page
+	div(class="fb-page", data-href="https://www.facebook.com/facebook", data-width="500", data-height="131", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="false", data-show-posts="false")
+		.fb-xfbml-parse-ignore
+			blockquote(cite="https://www.facebook.com/facebook")
+				a(href="https://www.facebook.com/facebook",target="_blank") Facebook
+
+//- Nota*: O +fb-root deve ser inserido logo após a abertura da tag body
+
+//- =========================================================
+//- GOOGLE PLUS----------------------------------------------
+
+//- Posicione esta tag no cabeçalho ou imediatamente antes da tag de fechamento do corpo.
+mixin googlePlus-root
+	script(src="https://apis.google.com/js/platform.js",async, defer) {lang: 'pt-BR'}
+
+//- Posicione esta tag onde você deseja que o botão +1 apareça.
+mixin googlePlus(link)
+	.g-plusone(data-annotation="inline", data-width="300", data-href="#{link}")

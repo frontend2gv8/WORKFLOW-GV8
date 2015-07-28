@@ -1,0 +1,7 @@
+@mixin resumo($f:14px,$l:1.2,$n:2){
+	$h:$f * $l * $n;
+	font-size: $f;
+	height:$h;
+	line-height:$l;
+	overflow:hidden;
+}

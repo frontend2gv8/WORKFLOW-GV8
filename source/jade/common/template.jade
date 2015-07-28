@@ -1,0 +1,30 @@
+doctype html
+html(lang="pt-br")
+	head
+		block title
+			title Documento
+
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+
+		link(rel="stylesheet", type="text/css", href="styles/estilos.css")
+		link(rel="shortcut icon" type="image/x-icon" href="imagens/estrutural/favicon.ico")
+
+		include mixins.jade
+		
+	body
+		noscript
+			.alert.alert-m-w.text-center
+				h1 Seu navegador está com os scripts desabilitados!
+				p Para melhor funcionamento do site, habilite-os.
+		
+		.wrapper
+
+			include header.jade
+			block conteudo
+
+		// /.wrapper
+		include footer.jade
+
+		script(src="js/starter.js")
+		script(src="js/scripts.js")
