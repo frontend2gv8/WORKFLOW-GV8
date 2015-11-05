@@ -9,16 +9,16 @@ function clonarItens(id,qnt){
     		next = $(this).siblings(':first');
   		}
   		next.children(':first-child').clone().addClass('clone').appendTo($(this));
-  
+
   		for (var i=0;i<qnt -2;i++) {
     		next=next.next();
     		if (!next.length) {
     			next = $(this).siblings(':first');
   			}
-    
+
     		next.children(':first-child').clone().addClass('clone').appendTo($(this));
   		}
-	});	
+	});
 }
 
 function verificaQuantidade(qtde1,qtde2,este){
@@ -105,7 +105,7 @@ $(window).load(function(){
 
 $(window).resize(function(){
 	'use strict';
-	
+
 	$('.clone,.clonado').remove();
 
 	startCarousel();
@@ -115,14 +115,14 @@ $(window).resize(function(){
 // IN MOBILE QUESTION
 $('.carousel').on('swiperight',function(){
 	'use strict';
-	
+
 	$(this).carousel('prev');
 });
 
 
 $('.carousel').on('swipeleft',function(){
 	'use strict';
-	
+
 	$(this).carousel('next');
 });
 
@@ -139,4 +139,10 @@ $('[data-carousel="next"]').click(function(event){
 	var alvo = $(this).attr('href')
 
 	$(alvo).carousel('next');
+});
+
+$('[data-interval]').each(function(){
+	var intervalo =  $(this).data('interval');
+
+	$(this).carousel({interval:intervalo})
 });

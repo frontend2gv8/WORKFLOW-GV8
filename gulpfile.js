@@ -151,7 +151,7 @@ gulp.task('imagens-watch', function () {
 gulp.task('sprites', function () {
 	sprity.src({
 		src: 'source/sprites/**/*.{png,jpg}',
-		style: './sprites.scss',
+		style: './_sprites.scss',
 		// ... other optional options 
 		// for example if you want to generate scss instead of css 
 		processor: 'sass', // make sure you have installed sprity-sass 
@@ -162,7 +162,7 @@ gulp.task('sprites', function () {
 gulp.task('sprites-watch', function () {
 	sprity.src({
 		src: 'source/sprites/**/*.{png,jpg}',
-		style: './sprites.scss',
+		style: './_sprites.scss',
 		// ... other optional options 
 		// for example if you want to generate scss instead of css 
 		processor: 'sass', // make sure you have installed sprity-sass 
