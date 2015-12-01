@@ -1,0 +1,181 @@
+.owl-carousel{
+	display: none;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+
+	.owl-wrapper{
+		display: none;
+		position: relative;
+		-webkit-transform: translate3d(0px, 0px, 0px);
+
+		&:after {
+			content: ".";
+			display: block;
+			clear: both;
+			visibility: hidden;
+			line-height: 0;
+			height: 0;
+		}
+	}
+
+	.owl-wrapper-outer{
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		&.autoHeight{
+			@include prefixos(transition,height 500ms ease-in-out);
+		}
+	}
+
+	.owl-item{
+		float:left;
+
+		&.loading{
+			background: url($loading-lightbox) no-repeat center center;
+		}
+	}
+
+	.owl-wrapper,
+	.owl-item{
+		@include prefixos(backface-visibility,hidden);
+		@include prefixos(transform,translate3d(0,0,0));
+	}
+}
+
+.owl-controls {
+	@include prefixos(user-select, none);
+	@include prefixos(tap-highlight-color, rgba(0,0,0,0));
+
+	.owl-page,
+	.owl-buttons div{
+		cursor: pointer;
+	}
+}
+
+.grabbing {
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAO0lEQVQ4y2NgGHbgPxTjY+PWDAP42PgM+k8IwNRQZAg+A/5TYsB/UgBFBtDM/0QZQkxawGsI3QygLwAAbjZlqS88cqkAAAAASUVORK5CYII=) 8 8, move;// 
+}
+
+// $loading-lightbox
+
+// ==========================================================================================================
+// ===================     OWL TRANSITIONS ==========================================================================
+
+.owl-origin{
+	@include prefixos(prespective,1200px);
+	@include prefixos(prespective-origem-x,50%);
+	@include prefixos(prespective-origem-y,50%);
+}
+
+/* fade */
+.owl-fade-out {
+ 	z-index: 10;
+ 	@include animation(fadeOut .7s both ease);
+}
+
+.owl-fade-in {
+ 	@include animation(fadeIn .7s both ease);
+}
+
+/* backSlide */
+.owl-backSlide-out {
+ 	@include animation(backSlideOut 1s both ease);
+}
+
+.owl-backSlide-in {
+ 	@include animation(backSlideIn 1s both ease);
+}
+
+/* goDown */
+.owl-goDown-out {
+	@include animation(scaleToFade .7s ease both);
+}
+.owl-goDown-in {
+	@include animation(goDown .6s ease both);
+}
+
+/* scaleUp */
+.owl-fadeUp-in {
+	@include animation(scaleUpFrom .5s ease both);
+}
+
+.owl-fadeUp-out {
+	@include animation(scaleUpTo .5s ease both);
+}
+
+@include keyframes(empty){
+	0%{@include opacity(1);}
+};
+
+@include keyframes(fadeIn){
+	0%{@include opacity(0);}
+	100%{@include opacity(1);}
+};
+
+@include keyframes(fadeOut){
+	0%{@include opacity(1);}
+	100%{@include opacity(0);}
+};
+
+@include keyframes(backSlideOut){
+	25%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px));
+	}
+
+	75%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px) translateX(-200%));
+	}
+
+	100%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px) translateX(-200%));
+	}
+};
+
+@include keyframes(backSlideIn){
+	25%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px));
+	}
+
+	75%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px) translateX(200%));
+	}
+
+	100%{
+		@include opacity(0.5);
+		@include prefixos(transform, translateZ(-500px) translateX(200%));
+	}
+};
+
+@include keyframes(scaleToFade){
+	to{
+		@include opacity(0);
+		@include prefixos(transform,scale(0.8));
+	}
+};
+
+@include keyframes(goDown){
+	from{
+		@include prefixos(transform,translateY(-100%));
+	}
+};
+
+@include keyframes(scaleUpFrom){
+	from{
+		@include prefixos(scale(1.5));
+		@include opacity(0);
+	}
+};
+
+@include keyframes(scaleUpTo){
+	to{
+		@include prefixos(scale(1.5));
+		@include opacity(0);
+	}
+};
