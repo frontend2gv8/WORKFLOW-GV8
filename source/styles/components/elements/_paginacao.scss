@@ -21,8 +21,9 @@
 
 	.active,
 	*:hover{
+		$color-default:#fff;
 		text-decoration:none;
-		background: #2A97A3 !default;
-		color:#FFF !default;
+		background: $brand-primary !default;
+		color: $color-default !default;
 	}
 }
