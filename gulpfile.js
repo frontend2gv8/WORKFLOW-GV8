@@ -47,7 +47,7 @@ var tipografia = [
 
 // TEMPLATE ---------------------------------|
 gulp.task('jade', function() {
- 
+
   gulp.src('source/jade/*.jade')
     .pipe(jade({
       locals: 'source/jade/*.jade'
@@ -57,7 +57,7 @@ gulp.task('jade', function() {
 });
 
 gulp.task('jade-watch', function() {
- 
+
   gulp.src('source/jade/*.jade')
     .pipe(jade({
       locals: 'source/jade/*.jade'
@@ -97,6 +97,18 @@ gulp.task('scripts-watch',function(){
 	gulp.src('source/js/**/*.js')
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest('dist/js'))
+		.pipe(connect.reload());
+});
+
+// JSON ---------------------------------------|
+gulp.task('json',function(){
+	gulp.src('source/json/*.json')
+		.pipe(gulp.dest('dist/json'));
+});
+
+gulp.task('json-wath',function(){
+	gulp.src('source/json/*.json')
+		.pipe(gulp.dest('dist/json'))
 		.pipe(connect.reload());
 });
 
@@ -152,9 +164,9 @@ gulp.task('sprites', function () {
 	sprity.src({
 		src: 'source/sprites/**/*.{png,jpg}',
 		style: './_sprites.scss',
-		// ... other optional options 
-		// for example if you want to generate scss instead of css 
-		processor: 'sass', // make sure you have installed sprity-sass 
+		// ... other optional options
+		// for example if you want to generate scss instead of css
+		processor: 'sass', // make sure you have installed sprity-sass
 	})
 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
 });
@@ -163,9 +175,9 @@ gulp.task('sprites-watch', function () {
 	sprity.src({
 		src: 'source/sprites/**/*.{png,jpg}',
 		style: './_sprites.scss',
-		// ... other optional options 
-		// for example if you want to generate scss instead of css 
-		processor: 'sass', // make sure you have installed sprity-sass 
+		// ... other optional options
+		// for example if you want to generate scss instead of css
+		processor: 'sass', // make sure you have installed sprity-sass
 	})
 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
 	.pipe(connect.reload());
@@ -179,6 +191,7 @@ gulp.task('watch',['server'],function(){
 	gulp.watch(['source/fonts/**/*'],["tipografia-watch"]);			// TIPOGRAFIA
 	gulp.watch(['source/imagens/**/*'],['imagens-watch']);			// IMAGENS
 	gulp.watch(['source/sprites/**/*'],['sprites-watch']);			// SPRITES
+	gulp.watch(['source/json/*.json'],['json-wath']);			// SPRITES
 });
 
 // SERVER ------------------------------
@@ -187,9 +200,9 @@ gulp.task('server', connect.server({
 	port: 9000,
 	livereload: true,
 	open: {
-		browser: 'chromium-browser' // Para o Google chrome no linux - google-chrome-stable 
+		browser: 'chromium-browser' // Para o Google chrome no linux - google-chrome-stable
 	}
 }));
 
 // DEFAULT ----------------------------
-gulp.task('default',['sprites', 'imagens', 'jade', 'sass', 'libs', 'scripts', 'tipografia','watch']);
+gulp.task('default',['sprites', 'imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia','watch']);

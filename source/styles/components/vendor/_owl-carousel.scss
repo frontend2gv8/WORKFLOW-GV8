@@ -168,14 +168,14 @@
 
 @include keyframes(scaleUpFrom){
 	from{
-		@include prefixos(scale(1.5));
+		@include prefixos(transform,scale(1.5));
 		@include opacity(0);
 	}
 };
 
 @include keyframes(scaleUpTo){
 	to{
-		@include prefixos(scale(1.5));
+		@include prefixos(transform,scale(1.5));
 		@include opacity(0);
 	}
 };
