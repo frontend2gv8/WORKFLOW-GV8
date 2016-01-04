@@ -1,3 +1,12 @@
+// NINJA
 @media (min-width: $screen-sm-min) and (max-width:$screen-sm-max){
-	// Teblet -   > 768; < 992
+    // Tablet -   > 768; < 992
+}
+
+// BRUNOH
+@mixin tablet(){
+    @media (min-width: $screen-sm-min) and (max-width:$screen-sm-max){
+        // Tablet -   > 768; < 992
+        @content;
+    }
 }
