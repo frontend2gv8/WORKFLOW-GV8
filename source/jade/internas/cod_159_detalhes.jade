@@ -1,0 +1,37 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Produtos || Servicos
+		// page-header
+
+		.row
+			aside.col-md-3
+				.text-center
+					button(type="button").btn.btn-danger.btn-toggle-sidebar CATEGORIAS
+				nav.sidebar
+					header.sidebar-heading CATEGORIAS
+					.aux
+					.sidebar-body
+						-for(var c=0;c<5;c++)
+							// REPETE
+							.categoria
+								.nome
+									span(data-toggle="collapse",data-target="#cat-#{c}")
+										if c == 0
+											i.fa.fa-minus
+										else
+											i.fa.fa-plus
+									a(href="#",title="Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto") Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto
+								ul.collapse(id="cat-#{c}", class={'in' : c == 0})
+									-for(var y=0;y<5;y++)
+										-var z = y - c
+										li(class={'active' : z == 0}): a(href="#") &bull; Subcategoria
+							// FIM REPETE
+			.col-md-9
+				img(src="http://dummyimage.com/970x500/4d494d/686a82.gif&text=placeholder+image", alt="nome/descricao").img-responsive.mgb-20
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, reprehenderit asperiores debitis ut blanditiis tenetur ab adipisci nobis eius error optio et neque, laborum accusantium quisquam? Ipsam ipsum voluptatum suscipit delectus aliquid aliquam quia molestiae itaque, rem quis aspernatur magni esse error, porro quos. Nisi assumenda delectus, mollitia quo, praesentium voluptate fugit architecto ducimus distinctio, impedit nostrum accusantium quisquam, laboriosam accusamus placeat culpa. Accusantium corporis alias perferendis fugit eaque molestias error quaerat itaque! Cupiditate corporis reprehenderit, quam aperiam quis a?
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, reprehenderit asperiores debitis ut blanditiis tenetur ab adipisci nobis eius error optio et neque, laborum accusantium quisquam? Ipsam ipsum voluptatum suscipit delectus aliquid aliquam quia molestiae itaque, rem quis aspernatur magni esse error, porro quos. Nisi assumenda delectus, mollitia quo, praesentium voluptate fugit architecto ducimus distinctio, impedit nostrum accusantium quisquam, laboriosam accusamus placeat culpa. Accusantium corporis alias perferendis fugit eaque molestias error quaerat itaque! Cupiditate corporis reprehenderit, quam aperiam quis a?
+		//- .row
+	//- .container
+// internas

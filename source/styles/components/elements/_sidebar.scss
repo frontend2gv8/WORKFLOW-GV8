@@ -1,0 +1,128 @@
+.sidebar{
+	.sidebar-heading{
+		font-size:20px;
+		text-align:center;
+		padding:10px 15px;
+		background: $brand-success;
+		color:#fff;
+		line-height:25px;
+		height:45px;
+	}
+
+
+	.sidebar-body{
+		border-left:1px solid #ccc;
+		border-right:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+		background:#fff;
+	}
+
+	.categoria{
+		& + .categoria{
+			border-top:1px solid #ccc;
+		}
+	}
+
+	.nome{
+		@include clearfix;
+		padding-right:30px;
+
+		> *{
+			display: block;
+		}
+
+		span{
+			width:30px;
+			float:right;
+			margin-right:-30px;
+			border-left:1px solid #ccc;
+			text-align:center;
+			padding:5px 10px;
+			cursor:pointer;
+
+			.fa{
+				@include transition(all 0.3s linear);
+
+				&.fa-minus{
+					@include transform(rotate(-180deg));
+				}
+			}
+		}
+
+		a{
+			padding:5px 10px;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+
+			&:hover{
+				background:#eee;
+			}
+		}
+	}
+
+	ul{
+		border-top:1px solid #ccc;
+		background:#eee;
+		margin-bottom:0;
+		padding:0;
+		list-style:none;
+
+		a{
+			display: block;
+			padding:5px 15px;
+		}
+
+		.active a,
+		a:hover{
+			background:#ddd;
+			text-decoration:none;
+		}
+	}
+}
+
+.btn-toggle-sidebar{
+	font-size:20px;
+	margin-bottom:30px;
+	display:none;
+}
+
+@media (max-width:$screen-sm-max){
+	.btn-toggle-sidebar{
+		display: inline-block !important;
+	}
+	.sidebar{
+		position:fixed;
+		top:0;
+		left:0;
+		width:220px;
+		z-index:2001;
+		height:100%;
+		left:-102vw;
+
+		&.open{
+			left:0;
+		}
+
+		@include transition(left 0.3s linear);
+
+		.sidebar-body{
+			height: calc(100% - 45px);
+			overflow:auto;
+		}
+
+		.aux{
+			position:absolute;
+			width:100vw;
+			height:100vh;
+			background:rgba(#000,0.8);
+			z-index:-1;
+			top:0;
+			left:0;
+		}
+
+		.categoria:last-child{
+			border-bottom:1px solid #ccc;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Contato
+		// page-header
+
+		.row
+			form.col-sm-6.mgb-40
+				+campo('text','nome-contato','Nome:')
+				+campo('email','email-contato','E-mail:')
+				+campo('tel','tel-contato','Telefone:')
+				+campo('text','assunto-contato','Assunto:')
+				+textarea(8,'msg-contato','Mensagem:')
+				.text-right.form-group
+					button.btn.btn-danger.btn-enviar Enviar
+			.col-sm-6.mgb-40
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit atque facilis incidunt, tempore, iure sit maxime quia alias. Inventore optio numquam soluta libero qui explicabo mollitia ratione ex itaque neque, dignissimos deserunt totam iusto eum voluptatibus deleniti, ullam, beatae eveniet nihil distinctio. Consequuntur alias, neque veniam dignissimos suscipit est.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit atque facilis incidunt, tempore, iure sit maxime quia alias. Inventore optio numquam soluta libero qui explicabo mollitia ratione ex itaque neque, dignissimos deserunt totam iusto eum voluptatibus deleniti, ullam, beatae eveniet nihil distinctio. Consequuntur alias, neque veniam dignissimos suscipit est.
+				.mapa-google#mapa-45
+					script.
+						window.onload = function(){
+							document.getElementById('mapa-45').innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14701.670031991538!2d-49.6248181!3d-22.897966450000002!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1451912678972" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>';
+						}
+		//- .row
+	//- .container
+// internas

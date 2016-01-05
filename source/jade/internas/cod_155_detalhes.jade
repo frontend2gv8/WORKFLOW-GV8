@@ -1,0 +1,45 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Produtos || Servicos
+		// page-header
+
+		.row
+			aside.col-md-3
+				.text-center
+					button(type="button").btn.btn-danger.btn-toggle-sidebar CATEGORIAS
+				nav.sidebar
+					header.sidebar-heading CATEGORIAS
+					.aux
+					.sidebar-body
+						-for(var c=0;c<5;c++)
+							// REPETE
+							.categoria
+								.nome
+									span(data-toggle="collapse",data-target="#cat-#{c}")
+										if c == 0
+											i.fa.fa-minus
+										else
+											i.fa.fa-plus
+									a(href="#",title="Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto") Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto
+								ul.collapse(id="cat-#{c}", class={'in' : c == 0})
+									-for(var y=0;y<5;y++)
+										-var z = y - c
+										li(class={'active' : z == 0}): a(href="#") &bull; Subcategoria
+							// FIM REPETE
+			.col-md-9
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus harum debitis repellat earum placeat ullam quae quia voluptate ipsum porro. Cumque exercitationem alias expedita aperiam sint laborum totam voluptas, incidunt consequuntur autem molestiae amet, ad et perspiciatis iusto tempore. Accusantium aperiam recusandae, consequatur esse. Voluptatem ipsa repudiandae sunt, deserunt cumque perferendis autem ullam nisi odio quia ipsam ad dolor excepturi blanditiis. Unde voluptatem tempore, aliquam animi, aperiam at, expedita dolores asperiores modi, reprehenderit omnis id dolorum impedit facilis! Itaque, voluptate.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus harum debitis repellat earum placeat ullam quae quia voluptate ipsum porro. Cumque exercitationem alias expedita aperiam sint laborum totam voluptas, incidunt consequuntur autem molestiae amet, ad et perspiciatis iusto tempore. Accusantium aperiam recusandae, consequatur esse. Voluptatem ipsa repudiandae sunt, deserunt cumque perferendis autem ullam nisi odio quia ipsam ad dolor excepturi blanditiis. Unde voluptatem tempore, aliquam animi, aperiam at, expedita dolores asperiores modi, reprehenderit omnis id dolorum impedit facilis! Itaque, voluptate.
+				.row.mgt-50
+					-for(var x=0;x<3;x++)
+						// REPETE
+						.col-sm-4
+							.produto-v
+								a(href="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image",data-lightbox="image-1",title="nome/descricao")
+									figure.foto
+										img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive
+						// FIM REPETE
+		//- .row
+	//- .container
+// internas

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
     <head>
-        <title>Documento</title>
+        <title>Documentos</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/estilos.min.css">
@@ -16,7 +16,49 @@
                 <p>Para melhor funcionamento do site, habilite-os.</p>
             </div>
         </noscript>
-        <div class="wrapper"></div>
+        <div class="wrapper">
+            <header class="navbar navbar-inverse no-roundnnes fixed">
+                <div class="contianer-flex">
+                    <div class="navbar-header"><a href="#" class="navbar-brand">Páginas Internas</a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Item 1</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                            <li><a href="#">Item 4</a></li>
+                            <li><a href="#">Item 5</a></li>
+                            <li><a href="#">Item 6</a></li>
+                            <li><a href="#">Item 7</a></li>
+                            <li><a href="#">Item 8</a></li>
+                            <li><a href="#">Item 9</a></li>
+                            <li><a href="#">Item 10</a></li>
+                            <li><a href="#">Item 11</a></li>
+                            <li><a href="#">Item 12</a></li>
+                            <li><a href="#">Item 13</a></li>
+                            <li><a href="#">Item 14</a></li>
+                        </ul>
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <label for="busca-page"></label>
+                                <input type="text" id="busca-page" name="busca-page" class="form-control">
+                            </div>
+                            <!-- /.form-group-->
+                            <button onclick="loadPage()" class="btn btn-default">Buscar</button>
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <!-- CONTEUDO-->
+            <section class="internas">
+                <div class="container">
+                    <header class="page-header">
+                        <h1>Vídeos</h1></header>
+                    <!-- page-header-->
+                    <div id="carousel-1" class="youtube-carousel"></div>
+                </div>
+            </section>
+            <!-- internas-->
+        </div>
         <!-- /.wrapper-->
         <script src="js/starter.js"></script>
         <script src="js/lightbox.min.js"></script>

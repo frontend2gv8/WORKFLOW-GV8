@@ -1,0 +1,23 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Contato
+		// page-header
+
+		.row
+			form.col-sm-6.mgb-40
+				+campo('text','nome-contato','Nome:')
+				+campo('email','email-contato','E-mail:')
+				+campo('tel','tel-contato','Telefone:')
+				+campo('text','assunto-contato','Assunto:')
+				+textarea(8,'msg-contato','Mensagem:')
+				.text-right.form-group
+					button.btn.btn-danger.btn-enviar Enviar
+			.col-sm-6.mgb-40
+				img(src="http://dummyimage.com/450x200/4d494d/686a82.gif&text=placeholder+image", alt="descricao").img-responsive.mgb-20
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit atque facilis incidunt, tempore, iure sit maxime quia alias. Inventore optio numquam soluta libero qui explicabo mollitia ratione ex itaque neque, dignissimos deserunt totam iusto eum voluptatibus deleniti, ullam, beatae eveniet nihil distinctio. Consequuntur alias, neque veniam dignissimos suscipit est.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit atque facilis incidunt, tempore, iure sit maxime quia alias. Inventore optio numquam soluta libero qui explicabo mollitia ratione ex itaque neque, dignissimos deserunt totam iusto eum voluptatibus deleniti, ullam, beatae eveniet nihil distinctio. Consequuntur alias, neque veniam dignissimos suscipit est.
+		//- .row
+	//- .container
+// internas

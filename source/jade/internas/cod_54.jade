@@ -1,0 +1,32 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Depoimentos
+		// page-header
+
+		-for(var x=0;x<4;x++)
+			article.media.mgb-30
+				.media-foto
+					figure
+						img(src="http://dummyimage.com/64x64/4d494d/FFF.png&text=64+x+64", alt="nome/descricao").img-responsive
+				.media-body
+					.balao
+						h1.media-heading Nome do depoente
+						p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut eum nulla vel minus animi, quidem, blanditiis culpa omnis sed ipsam totam quisquam accusantium dolor atque fugiat voluptatibus ducimus deserunt nam obcaecati porro in! Eveniet laborum consequatur ducimus cumque nisi excepturi vel enim nihil laboriosam, quae. Cum ab dolore in numquam."
+		form.mgt-50
+			h2 Envie seu depoimento
+
+			.row
+				.col-sm-6
+					+campo('text','nome-depoente','Nome:')
+					+campo('email','email-depoente','E-mail:')
+					+campo('tel','tel-depoente','Telefone:')
+					+campo('file','avatar-depoente','Foto:')
+				.col-sm-6
+					+textarea(8,'msg-depoente','Depoimento:')
+			//- .row
+			.form-group.text-center
+				button.btn.btn-danger.btn-enviar Enviar
+	//- .container
+// internas

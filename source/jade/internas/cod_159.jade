@@ -1,0 +1,41 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Produtos || Servicos
+		// page-header
+
+		.row
+			aside.col-md-3
+				.text-center
+					button(type="button").btn.btn-danger.btn-toggle-sidebar CATEGORIAS
+				nav.sidebar
+					header.sidebar-heading CATEGORIAS
+					.aux
+					.sidebar-body
+						-for(var c=0;c<5;c++)
+							// REPETE
+							.categoria
+								.nome
+									span(data-toggle="collapse",data-target="#cat-#{c}")
+										if c == 0
+											i.fa.fa-minus
+										else
+											i.fa.fa-plus
+									a(href="#",title="Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto") Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto
+								ul.collapse(id="cat-#{c}", class={'in' : c == 0})
+									-for(var y=0;y<5;y++)
+										-var z = y - c
+										li(class={'active' : z == 0}): a(href="#") &bull; Subcategoria
+							// FIM REPETE
+			.col-md-9
+				.row
+					-for(var x=0;x<3;x++)
+						// REPETE
+						.produto-h.prod-159
+							h1.nome Nome do Produto
+							.desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius quae temporibus quibusdam eligendi laudantium praesentium, quis, porro cupiditate cum id excepturi harum, voluptatum at quod. Temporibus voluptatum, autem animi.
+						// FIM REPETE
+		//- .row
+	//- .container
+// internas

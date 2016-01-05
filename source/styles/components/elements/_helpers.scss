@@ -1,4 +1,4 @@
-@for $i from 1 through 20 {
+@for $i from 0 through 20 {
 	$m: $i * 5;
 
 	.mgb-#{$m}{
@@ -15,4 +15,22 @@
 	.alert{
 		border-radius:0;
 	}
+}
+
+.no-roundnnes{
+	border-radius:0;
+}
+
+.internas{
+	padding-bottom:140px;
+}
+
+.btn-enviar,
+.btn-voltar{
+	font-size:20px;
+	min-width:190px;
+}
+
+a[data-lightbox]{
+	cursor: zoom-in
 }

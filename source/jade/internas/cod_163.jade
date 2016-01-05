@@ -1,0 +1,22 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Vídeos
+		// page-header
+
+
+		.mgb-40
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, quae est minima. Possimus deserunt, dicta atque veritatis provident, adipisci quibusdam excepturi voluptas fugit, perspiciatis neque asperiores harum distinctio autem dolor eveniet? Accusantium obcaecati minima iusto veniam fugit esse illo repellendus, perspiciatis laboriosam enim amet quas minus veritatis a ea, illum magni sed recusandae praesentium architecto eum impedit. Reprehenderit eos quos dicta? Vero laborum cumque voluptates nisi, ea velit quibusdam, tenetur repellendus et consequatur similique. Minus, impedit vero. Doloremque, corrupti, nesciunt?
+
+		.row
+			-for (var x=0;x<12;x++)
+				.col-sm-6.col-md-4
+					.video-container
+						if x % 2 == 0
+							<iframe src="https://www.youtube.com/embed/W-fFHeTX70Q" frameborder="0" allowfullscreen></iframe>
+						else
+							<iframe src="//player.vimeo.com/video/74447186" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+	//- .container
+// internas
