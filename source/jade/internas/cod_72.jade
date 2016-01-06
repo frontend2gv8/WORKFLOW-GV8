@@ -1,0 +1,37 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Formulário
+		// page-header
+
+		.mgb-30
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat animi quae natus sed commodi inventore iste voluptatem, tempora asperiores porro, aut dignissimos modi corporis dicta dolore ullam. Tempore sint consequatur placeat nobis culpa qui suscipit iusto perspiciatis ab, reiciendis quos debitis earum, libero aperiam impedit vitae voluptas ea! Pariatur sapiente eius illum voluptas possimus commodi, deserunt quisquam eligendi odio tempora neque suscipit magni quibusdam iure, ea rem sed! Veritatis laboriosam ut, aperiam dolorum doloremque quam omnis pariatur eos iste. Consequatur, delectus! Voluptates, iusto beatae, sed quod quaerat, perspiciatis necessitatibus, doloremque aliquam sit sint consequuntur soluta amet mollitia odit itaque obcaecati? Magni officia delectus neque ab sed dolorem inventore accusamus eveniet possimus corrupti magnam, illo velit molestias deserunt, reprehenderit ut nobis!
+
+		.row
+			.col-sm-6
+				+campo('text','campo-1','Campos Gerenciáveis pelo Cliente:')
+				+campo('text','campo-2','Campos Gerenciáveis pelo Cliente:')
+				+campo('text','campo-3','Campos Gerenciáveis pelo Cliente:')
+				+campo('text','campo-4','Campos Gerenciáveis pelo Cliente:')
+				.row
+					.col-sm-6
+						+select('campo-5','Campos Gerenciáveis pelo Cliente:')
+					.col-sm-6
+						+campo('text','campo-6','Campos Gerenciáveis pelo Cliente:')
+				.row
+					.col-sm-6
+						+campo('text','campo-7','Campos Gerenciáveis pelo Cliente:')
+					.col-sm-6
+						+campo('text','campo-8','Campos Gerenciáveis pelo Cliente:')
+				+textarea(8,'campo-9','Campos gerenciáveis pelo Cliente:')
+				.row
+					.col-sm-8
+						+select('campo-10','Campos gerenciáveis pelo Cliente:')
+				button.btn.btn-danger.btn-block.btn-enviar Enviar
+
+			.col-sm-6
+				img.img-responsive(src="http://dummyimage.com/485x300/4d494d/FFF.gif&text=placeholder+image", alt="nome/descricao").mgb-20
+		//- .row
+	//- .container
+// internas

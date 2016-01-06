@@ -1,0 +1,16 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Links Úteis
+		// page-header
+
+		.row.links-flex
+			-for(var x=0;x<8;x++)
+				.col-sm-6
+					article.link-util
+						h1 Nome do link
+						p #[strong Link:] #[a(href="#",target="_blank") dominio.com.br]
+		+paginacao
+	//- .container
+// internas

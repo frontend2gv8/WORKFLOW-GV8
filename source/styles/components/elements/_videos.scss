@@ -9,3 +9,148 @@
 		height:100%;
 	}
 }
+
+#video-g{
+	padding-bottom: (9 / 16) *100%;
+	position:relative;
+	margin-bottom:30px;
+	background: url(#{$loading-lightbox}) #666 center center no-repeat;
+
+	iframe{
+		position:absolute;
+		width:100%;
+		height:100%;
+	}
+}
+
+#carousel-1{
+	padding:0 40px;
+
+	.controls{
+		width:40px;
+		height:100%;
+		display: flex;
+		font-size:20px;
+
+		position:absolute;
+		top:0;
+
+		@include prefixos(justify-content,center);
+		@include prefixos(align-items,center);
+
+		&.left{
+			left:0;
+		}
+
+		&.right{
+			right:0;
+		}
+
+		background: $brand-success;
+		color: #fff;
+
+		&:hover{
+			background: darken($brand-success, 10%);
+			text-decoration:none;
+		}
+	}
+
+	.carousel-inner{
+		padding:5px 10px;
+		border-top:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+	}
+}
+
+@media (min-width:$screen-sm-min){
+	#carousel-1{
+		.item{
+			@include clearfix;
+			margin:0 -10px;
+		}
+
+		.thumb{
+			width:33.333%;
+			padding:0 10px;
+			float:left;
+		}
+	}
+}
+
+#carousel-2{
+	padding:40px 0;
+
+	.carousel-inner{
+		padding:5px 15px;
+		border-left:1px solid #ccc;
+		border-right:1px solid #ccc;
+		height:624px;
+	}
+
+	.thumb{
+		margin:10px 0;
+	}
+
+	.controls{
+		width:100%;
+		height:40px;
+		display: flex;
+		font-size:20px;
+
+		position:absolute;
+		left:0;
+
+		@include prefixos(justify-content,center);
+		@include prefixos(align-items,center);
+
+		&.bottom{
+			bottom:0;
+		}
+
+		&.top{
+			top:0;
+		}
+
+		background: $brand-success;
+		color: #fff;
+
+		&:hover{
+			background: darken($brand-success, 10%);
+			text-decoration:none;
+		}
+	}
+}
+
+.youtube-carousel{
+	.thumb{
+		position:relative;
+		overflow:hidden;
+		cursor:pointer;
+
+		&:before{
+			content:'';
+			font-family: FontAwesome;
+			display:flex;
+			font-size:40px;
+			width:100%;
+			height:100%;
+			color:#E22B28;
+			text-shadow: 0 0 5px #fff;
+
+			position:absolute;
+
+			width:100%;
+			height:100%;
+
+			@include prefixos(align-items,center);
+			@include prefixos(justify-content,center);
+
+			@include transition(all 0.3s linear);
+			@include transform(translateY(-100%));
+		}
+
+		&:hover{
+			&:before{@include transform(translateX(0));}
+		}
+	}
+}

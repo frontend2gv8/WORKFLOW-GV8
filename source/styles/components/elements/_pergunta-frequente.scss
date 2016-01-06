@@ -1,0 +1,16 @@
+.pergunta-frequente{
+	padding-bottom: 15px;
+	margin-bottom:15px;
+	border-bottom:1px solid #ccc;
+
+	.pergunta{
+		font-weight:bold;
+		font-size:17px;
+		display: block;
+		cursor:pointer;
+	}
+
+	.resposta{
+		margin-top:10px;
+	}
+}
