@@ -16,3 +16,7 @@ function remover($target){
 		$($target).remove();
 	})
 }
+
+$('.pergunta').click(function(){
+	$(this).toggleClass('text-success');
+})

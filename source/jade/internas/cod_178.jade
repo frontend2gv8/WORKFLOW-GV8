@@ -1,0 +1,23 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Agenda || Eventos
+		// page-header
+
+
+		-for(var x=0;x<4;x++)
+			// REPETE
+			article.card.evento
+				figure
+					.foto
+						img(src="http://dummyimage.com/220x220/4d494d/FFF.png&text=220+x+220", alt="nome/descricao", width="220", height="220").img-responsive
+				.content
+					header.title-card
+						h1 Título
+					.desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos qui reiciendis rem, molestias nesciunt ducimus blanditiis cupiditate, maiores. Reprehenderit, hic beatae exercitationem, iusto explicabo sapiente pariatur, deserunt, dolorum inventore architecto voluptatem esse ea tenetur! Nihil a magni, reprehenderit rerum sed.
+					footer.footer-card.text-right
+						a(href="#") Saiba Mais #[i.fa.fa-plus]
+			// FIM REPETE
+	//- .container
+// internas

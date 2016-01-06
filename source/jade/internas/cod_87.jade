@@ -1,0 +1,21 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Galeria de Fotos
+		// page-header
+
+
+		.row
+			-for(var x=0;x<12;x++)
+				.col-md-3.col-sm-4
+					.galeria-v
+						a(href="#")
+							figure.foto
+								img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive
+							.nome Nome da Galeria
+		//- .row
+
+		+paginacao
+	//- .container
+// internas

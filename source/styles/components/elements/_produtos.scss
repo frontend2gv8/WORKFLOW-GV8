@@ -1,0 +1,56 @@
+.produto-h{
+	margin-bottom:30px;
+
+	h1.nome{
+		margin-top:0;
+		font-size:20px;
+	}
+
+	&.prod-159{
+		max-width:400px;
+		padding-bottom:30px;
+		border-bottom:1px solid #ccc;
+	}
+}
+
+.produto-v{
+	width:220px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:30px;
+
+	.foto{
+		height:220px;
+		overflow:hidden;
+		display:flex;
+
+		@include prefixos(justify-content,center);
+		@include prefixos(align-items,center);
+	}
+
+	.nome{
+		margin-top:7px;
+		font-weight:bold;
+		text-align:center;
+		@include resumo(18px,1.3,2);
+	}
+
+	.desc{
+		margin-top:7px;
+		@include resumo(15px,1.3,4);
+	}
+}
+
+.album{
+	display:flex;
+	@include prefixos(flex-wrap,wrap);
+	margin-left:-10px;
+	margin-right:-10px;
+
+	figure{
+		max-width:81px;
+		margin-left:10px;
+		margin-right:10px;
+		margin-bottom:10px;
+	}
+}

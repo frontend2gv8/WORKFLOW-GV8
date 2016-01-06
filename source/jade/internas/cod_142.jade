@@ -1,0 +1,17 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Perguntas Frequentes
+		// page-header
+
+		-for(var x=0;x<8;x++)
+			// REPETE
+			article.pergunta-frequente
+				a.pergunta(data-target="#resposta-#{x+1}",data-toggle="collapse") Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis corporis repellendus, numquam voluptatum obcaecati, deserunt asperiores delectus ratione pariatur laboriosam?
+
+				.resposta.collapse(id="resposta-#{x+1}")
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptatem odio illo mollitia nobis inventore atque quibusdam modi totam nemo harum, dolorum sint rerum quas fugit natus ut labore ea magni nam exercitationem qui aut doloribus. Repudiandae dignissimos quis minus eveniet! Magnam accusamus reiciendis non doloribus consectetur debitis maiores, sapiente.
+			// FIM REPETE
+	//- .container
+// internas

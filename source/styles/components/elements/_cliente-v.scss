@@ -1,0 +1,25 @@
+.cliente-v{
+	margin-bottom:30px;
+	width:220px;
+	margin-left:auto;
+	margin-right:auto;
+
+	.foto{
+		height:220px;
+		border:1px solid #ccc;
+		background:#fff;
+		border-radius:7px;
+		overflow:hidden;
+		display:flex;
+		margin-bottom:7px;
+
+		@include prefixos(align-items,center);
+		@include prefixos(justify-content,center);
+	}
+
+	.nome{
+		text-align:center;
+
+		@include resumo(16px,1.3,2);
+	}
+}

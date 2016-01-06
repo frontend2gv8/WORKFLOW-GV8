@@ -1,0 +1,11 @@
+header.navbar.navbar-inverse.no-roundnnes.fixed
+	.contianer-flex
+		.navbar-header
+			a(href="#").navbar-brand Páginas Internas
+		.navbar-collapse.collapse
+			ul.nav.navbar-nav
+				-for(var x=1;x<15;x++)
+					li: a(href="#") Item #{x}
+			form(class="navbar-form navbar-right")
+				+campo('text','busca-page','')
+				button.btn.btn-default(onclick="loadPage()") Buscar

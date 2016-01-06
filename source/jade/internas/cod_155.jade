@@ -1,0 +1,46 @@
+// CONTEUDO
+section.internas
+	.container
+		header.page-header
+			h1 Produtos || Servicos
+		// page-header
+
+		.row
+			aside.col-md-3
+				.text-center
+					button(type="button").btn.btn-danger.btn-toggle-sidebar CATEGORIAS
+				nav.sidebar
+					header.sidebar-heading CATEGORIAS
+					.aux
+					.sidebar-body
+						-for(var c=0;c<5;c++)
+							// REPETE
+							.categoria
+								.nome
+									span(data-toggle="collapse",data-target="#cat-#{c}")
+										if c == 0
+											i.fa.fa-minus
+										else
+											i.fa.fa-plus
+									a(href="#",title="Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto") Nome do Produto Nome do Produto Nome do Produto Nome do Produto Nome do Produto
+								ul.collapse(id="cat-#{c}", class={'in' : c == 0})
+									-for(var y=0;y<5;y++)
+										-var z = y - c
+										li(class={'active' : z == 0}): a(href="#") &bull; Subcategoria
+							// FIM REPETE
+			.col-md-9
+				.row
+					-for(var x=0;x<12;x++)
+						// REPETE
+						.col-sm-4
+							.produto-v
+								a(href="#")
+									figure.foto
+										img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive
+									.nome Nome do Produto/Serviço
+									.desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et perferendis excepturi voluptates, non totam, optio commodi dolorem, dignissimos hic maiores eligendi nobis tenetur earum nihil quibusdam molestias. Minus sint, quod.
+						// FIM REPETE
+				+paginacao
+		//- .row
+	//- .container
+// internas
