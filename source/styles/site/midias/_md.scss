@@ -1,3 +1,12 @@
+// NINJA
 @media (min-width:$screen-md-min){
-	// Desktop - >= 990px
+    // Desktop - >= 990px
+}
+
+// BRUNOH
+@mixin desktop(){
+    @media (min-width:$screen-md-min){
+        // Desktop - >= 990px
+        @content;
+    }
 }
