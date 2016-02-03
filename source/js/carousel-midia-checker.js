@@ -1,91 +1,131 @@
-$('[data-carousel="prev"]').click(function(event){
-	var alvo = $(this).attr('href');
+/*
+	Para toranar o seu carousel responsivo você  deverá fazer asim com no exemplo abaixo.
 
-	event.preventDefault();
+		Ex 1:
+			<div class="carousel" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
+			</div>
 
-	$(alvo).carousel('prev');
-});
+			<script>
+				$('#meuCarousel').carouselResponsive();
+			</script>
 
-$('[data-carousel="next"]').click(function(event){
-	var alvo = $(this).attr('href');
+		Ex2:
+			Basta adicionar a classe ".carousel-responsive".
 
-	event.preventDefault();
+			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
+			</div>
 
-	$(alvo).carousel('next');
-});
+		Onde:
+			- "data-md" define a quantidade para desktop;
+			- "data-sm" define a quantidade para tablets;
+			- "data-xs" define a quantidade para dispositivos mobile;
 
-$('.carousel').on('swipeleft',function(){
-	$(this).carousel('next');
-});
+	Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tennha, o mesmo não funcionará.
 
-$('.carousel').on('swiperight',function(){
-	$(this).carousel('prev');
-});
+*/
 
-// PARA TORNAR O CAROUSEL RESPONSIVO, BASTA ADD A CLASS "carousel-responsive" E
-// ATRIBUIR AOS VALORES "data-xs", "data-ms", "data-md"  A QUANTIDADE DE ITENS DESEJADA PARA CADA MIDIA
-// OBS: O ATTR "data-item" E O ATRIBUTO "id", SÃO DE PREENCHIMENTO OBRIGATORIO
+(function(){
+	function verifyMidia(carouselInner,content,item,count){
+		function wrapCarousel(cont){
+			carouselInner.append(content);
 
-var carouselResponsive = (function(){
+			var elemento = '.'+item.prop('class').replace(' ','.');
 
-	$('.carousel-responsive').each(function(){
+			for( i = 0 ; i < item.length ; i += cont ){
+				carouselInner.find(elemento).slice(i , i + cont).wrapAll('<div class="item"></div>');
+			}
 
-		var id = $(this);
-		var content = $(this).find('.carousel-inner').html();
-		var item = $(this).data('item');
+			carouselInner.find('.item:first-child').addClass('active');
+		}
 
-		checkResponsiveCarousel(id,content,item);
+		function refresh(){
+			var w = $(window).width();
+			var midia = 'xs';
+
+			carouselInner.html('');
+
+			if (w > 700){
+				midia = 'sm';
+			}
+
+			if (w > 991){
+				midia = 'md';
+			}
+
+			switch (midia){
+				case 'xs':
+					wrapCarousel(count.xs);
+				break;
+				case 'sm':
+					wrapCarousel(count.sm);
+				break;
+				case 'md':
+					wrapCarousel(count.md);
+				break;
+				default:
+					wrapCarousel(1);
+				break;
+			}
+		};
+
+		refresh();
+
+		$(window).resize(function(event) {
+			refresh();
+		});
+	}
+
+	$.fn.carouselResponsive = function (options){
+		return this.each(function(){
+			var id = this.getAttribute('id');
+			var carousel = $(this);
+			var content = $('#'+id+' .carousel-inner').html();
+			var item = $('#'+id+' .carousel-inner > *');
+
+			var count = {
+				'md' : $('#'+id).data('md') || 1,
+				'sm' : $('#'+id).data('sm') || 1,
+				'xs' : $('#'+id).data('xs') || 1,
+			}
+
+			verifyMidia($('#'+id+' .carousel-inner'),content,item,count);
+		});
+	}
+
+	$('.carousel[data-interval]').carousel({
+		interval : $(this).data('interval')
+	})
+
+	$('.carousel-responsive').carouselResponsive();
+
+	$('[data-carousel="prev"]').click(function(event){
+		var alvo = $(this).attr('href');
+		event.preventDefault();
+
+		$(alvo).carousel('prev');
+	});
+
+	$('[data-carousel="next"]').click(function(event){
+		var alvo = $(this).attr('href');
+		event.preventDefault();
+
+		$(alvo).carousel('next');
+	});
+
+	$('.carousel').on('swipeleft',function(){
+		$(this).carousel('next');
+	});
+
+	$('.carousel').on('swiperight',function(){
+		$(this).carousel('prev');
 	});
 
 })(jQuery);
-
-function checkResponsiveCarousel(id,content,item){
-
-	function wrappCarousel(count){
-		id.find('.carousel-inner').append(content);
-
-		for(var i = 0; i < item.length +1; i+= count){
-			id.find(item).slice(i, i+count).wrapAll('<div class="item"></div>');
-			id.find('.item:first-child').addClass('active');
-		}
-	}
-
-	function checarTela(){
-		var midia = 'xs';
-		var w = $(window).width();
-
-		id.find('.carousel-inner').html('');
-
-		if(w > 700){
-			midia = 'sm';
-		}
-
-		if (w > 991){
-			midia = 'md';
-		}
-
-		switch (midia){
-			case 'xs':
-				var count = id.data('xs') || 1;
-				wrappCarousel(count);
-			break;
-			case 'sm':
-				var count = id.data('sm');
-				wrappCarousel(count);
-			break;
-			case 'md':
-				var count = id.data('md');
-				wrappCarousel(count);
-			break;
-			default:
-				wrappCarousel(1);
-			break;
-		}
-	}
-
-	checarTela();
-
-	$(window).resize(function(){
-		checarTela();
-	});
-}
