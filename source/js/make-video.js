@@ -41,6 +41,45 @@ function youtubeSuccess(data){
 		$('.youtube-carousel').carousel({interval: 0});
 	}
 
+	function verifyMidia(qnt){
+		var w = $(window).width();
+
+		var midia = 'xs';
+
+		if (w > 700){
+			midia = 'sm';
+		}
+
+		if(w > 991){
+			midia = 'md'
+		}
+
+		switch (midia){
+			case 'md':
+				sliceProdutos(qnt,4);
+			break;
+
+			case 'sm':
+				sliceProdutos(qnt,3);
+			break;
+
+			case 'xs' :
+				sliceProdutos(qnt,1);
+			break;
+
+			default :
+				sliceProdutos(qnt,1);
+			break;
+
+		}
+	}
+
+	function sliceProdutos(qnt,cont){
+		for( var i = 0 ; i < qnt; i += cont){
+			$('.youtube-carousel .thumb').slice(i,i+cont).wrapAll('<div class="item"></div>');
+		}
+	}
+
 	escrever();
 
 	$(window).resize(function(){
@@ -48,44 +87,6 @@ function youtubeSuccess(data){
 	});
 }
 
-function verifyMidia(qnt){
-	var w = $(window).width();
-
-	var midia = 'xs';
-
-	if (w > 700){
-		midia = 'sm';
-	}
-
-	if(w > 991){
-		midia = 'md'
-	}
-
-	switch (midia){
-		case 'md':
-			sliceProdutos(qnt,4);
-		break;
-
-		case 'sm':
-			sliceProdutos(qnt,3);
-		break;
-
-		case 'xs' :
-			sliceProdutos(qnt,1);
-		break;
-
-		default :
-			sliceProdutos(qnt,1);
-		break;
-
-	}
-}
-
-function sliceProdutos(qnt,cont){
-	for( var i = 0 ; i < qnt; i += cont){
-		$('.youtube-carousel .thumb').slice(i,i+cont).wrapAll('<div class="item"></div>');
-	}
-}
 
 function changeVideo(url){
 	var idVideo = url.replace('https://www.youtube.com/watch?v=','');
