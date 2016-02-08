@@ -8,8 +8,18 @@
         @include prefixos(justify-content, center);
         @include prefixos(align-items, center);
 
+        @media (max-width: $screen-xs-max){
+            @include prefixos(flex-direction, column);
+
+            .result-item{
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+
         .result-item{
-            margin: 0 15px;
+            margin-left: 15px;
+            margin-right: 15px;
         }
     }
 }

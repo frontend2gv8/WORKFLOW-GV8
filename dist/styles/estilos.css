@@ -9184,7 +9184,7 @@ button.close {
     -webkit-transform: none;
     transform: none; } }
 
-.fadeInDown {
+.fadeInDown, .clientes #carousel-clientes .active .cliente-default {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown; }
 
@@ -9328,7 +9328,7 @@ button.close {
     -webkit-transform: none;
     transform: none; } }
 
-.fadeInUp {
+.fadeInUp, .clientes #carousel-clientes .active .cliente-default:nth-child(4) ~ .cliente-default {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp; }
 
@@ -11488,6 +11488,40 @@ a:hover {
       text-align: center; }
       .topo .navbar-header .logo img {
         display: inline-block; }
+    @media (max-width: 767px) {
+      .topo .navbar-header {
+        margin-left: -15px;
+        margin-right: -15px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -o-justify-content: space-between;
+        justify-content: space-between; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .topo .navbar-header {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -o-justify-content: space-between;
+        justify-content: space-between; }
+        .topo .navbar-header .navbar-toggle {
+          display: inline-block !important; } }
+    .topo .navbar-header .navbar-toggle {
+      float: none;
+      padding: 0;
+      margin: 0;
+      font-size: 20px;
+      color: #2b3085; }
 
 .menu-header {
   position: relative; }
@@ -11507,7 +11541,11 @@ a:hover {
   @media (max-width: 767px) {
     .menu-header #menu {
       margin-left: -15px;
-      margin-right: -15px; } }
+      margin-right: -15px;
+      width: 100%; } }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .menu-header #menu {
+      width: 100%; } }
   .menu-header #menu li {
     position: relative; }
     .menu-header #menu li a {
@@ -11526,7 +11564,8 @@ a:hover {
 
 .rodape {
   position: relative;
-  background: url(../imagens/estrutural/bg-footer.png) center top no-repeat; }
+  background: url(../imagens/estrutural/bg-footer.png) center top no-repeat;
+  background-size: cover; }
   .rodape .image-contato {
     margin-top: 45px;
     margin-bottom: 15px;
@@ -11601,8 +11640,19 @@ a {
     -ms-align-items: center;
     -o-align-items: center;
     align-items: center; }
+    @media (max-width: 767px) {
+      .apresentacao .result-default {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column; }
+        .apresentacao .result-default .result-item {
+          margin-top: 15px;
+          margin-bottom: 15px; } }
     .apresentacao .result-default .result-item {
-      margin: 0 15px; }
+      margin-left: 15px;
+      margin-right: 15px; }
 
 .services {
   position: relative;
@@ -11619,15 +11669,6 @@ a {
     -ms-flex-wrap: wrap;
     -o-flex-wrap: wrap;
     flex-wrap: wrap; }
-    @media (max-width: 767px) {
-      .services .service-flex {
-        -webkit-flex-direction: column;
-        -moz-flex-direction: column;
-        -ms-flex-direction: column;
-        -o-flex-direction: column;
-        flex-direction: column; }
-        .services .service-flex .service-default {
-          width: 100%; } }
     .services .service-flex .service-default {
       margin: 20px 0;
       width: 50%; }
@@ -11646,6 +11687,15 @@ a {
           font-family: "open_sanslight";
           font-size: 14px;
           color: white; }
+    @media (max-width: 767px) {
+      .services .service-flex {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column; }
+        .services .service-flex .service-default {
+          width: 100%; } }
 
 .clientes {
   position: relative;
@@ -11653,12 +11703,29 @@ a {
   background-size: cover; }
   .clientes #carousel-clientes {
     margin: 40px 0; }
-    .clientes #carousel-clientes .cliente-default {
+    .clientes #carousel-clientes .active .cliente-default {
       display: inline-block;
       width: calc(100% / 4);
       margin: 40px 0;
-      text-align: center; }
-      .clientes #carousel-clientes .cliente-default img {
+      text-align: center;
+      -webkit-animation-duration: 1s;
+      -moz-animation-duration: 1s;
+      -ms-animation-duration: 1s;
+      -o-animation-duration: 1s;
+      animation-duration: 1s; }
+      .clientes #carousel-clientes .active .cliente-default img {
         display: inline-block; }
+      .clientes #carousel-clientes .active .cliente-default:nth-child(4) ~ .cliente-default {
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        -ms-animation-duration: 1s;
+        -o-animation-duration: 1s;
+        animation-duration: 1s; }
+    @media (max-width: 767px) {
+      .clientes #carousel-clientes .active .cliente-default {
+        width: 50%; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .clientes #carousel-clientes .active .cliente-default {
+        width: calc(100% / 3); } }
   .clientes .pager {
     margin: 15px 0; }

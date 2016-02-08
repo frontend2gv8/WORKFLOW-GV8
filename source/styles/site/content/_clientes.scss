@@ -6,14 +6,51 @@
     #carousel-clientes{
         margin: 40px 0;
 
-        .cliente-default{
-            display: inline-block;
-            width: calc(100% / 4);
-            margin: 40px 0;
-            text-align: center;
-
-            img{
+        .active{
+            .cliente-default{
                 display: inline-block;
+                width: calc(100% / 4);
+                margin: 40px 0;
+                text-align: center;
+                img{
+                    display: inline-block;
+                }
+
+                @extend .fadeInDown;
+                @include prefixos(animation-duration, 1s);
+
+
+                $qnt: 4; // default
+
+                @media (max-width: $screen-xs-max){
+                    $qnt: 2;
+                }
+
+                @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max){
+                    $qnt: 3;
+                }
+
+                @media (min-width: $screen-md-min){
+                    $qnt: 4;
+                }
+
+                &:nth-child(#{$qnt}) ~ .cliente-default{
+                    @extend .fadeInUp;
+                    @include prefixos(animation-duration, 1s);
+                }
+
+            }
+
+            @media (max-width: $screen-xs-max){
+                .cliente-default{
+                    width: 50%;
+                }
+            }
+
+            @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max){
+                .cliente-default{
+                    width: calc(100% / 3);
+                }
             }
         }
     }

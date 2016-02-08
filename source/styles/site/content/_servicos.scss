@@ -7,18 +7,9 @@
         @include flexbox();
         @include prefixos(flex-wrap, wrap);
 
-        @media (max-width: $screen-xs-max){
-            @include prefixos(flex-direction, column);
-
-            .service-default{
-                width: 100%;
-            }
-        }
-
         .service-default{
             margin: 20px 0;
             width: 50%;
-
 
             figure.photo{
                 text-align: center;
@@ -41,6 +32,14 @@
                     font-size: 14px;
                     color: rgba(#FFF, 1);
                 }
+            }
+        }
+
+        @media (max-width: $screen-xs-max){
+            @include prefixos(flex-direction, column);
+
+            .service-default{
+                width: 100%;
             }
         }
     }
