@@ -21,7 +21,7 @@ var minifyCss 	= require('gulp-minify-css');
 var imagemin 	= require('gulp-imagemin');
 var pngquant 	= require('imagemin-pngquant');
 var gulpif 		= require('gulp-if');
-var sprity 		= require('sprity');
+// var sprity 		= require('sprity');
 
 // JS
 var concat 		= require('gulp-concat');
@@ -160,38 +160,38 @@ gulp.task('imagens-watch', function () {
 });
 
 // SPRITES --------------------------------------------------------
-gulp.task('sprites', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
-});
+// gulp.task('sprites', function () {
+// 	sprity.src({
+// 		src: 'source/sprites/**/*.{png,jpg}',
+// 		style: './_sprites.scss',
+// 		// ... other optional options
+// 		// for example if you want to generate scss instead of css
+// 		processor: 'sass', // make sure you have installed sprity-sass
+// 	})
+// 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
+// });
 
-gulp.task('sprites-watch', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
-	.pipe(connect.reload());
-});
+// gulp.task('sprites-watch', function () {
+// 	sprity.src({
+// 		src: 'source/sprites/**/*.{png,jpg}',
+// 		style: './_sprites.scss',
+// 		// ... other optional options
+// 		// for example if you want to generate scss instead of css
+// 		processor: 'sass', // make sure you have installed sprity-sass
+// 	})
+// 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
+// 	.pipe(connect.reload());
+// });
 
 // WATCH -------------------------------
 gulp.task('watch',['server'],function(){
-	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);			// JADE
-	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);	// SASS
-	gulp.watch(['source/js/**/*.js'],['scripts-watch']);			// JS
-	gulp.watch(['source/fonts/**/*'],["tipografia-watch"]);			// TIPOGRAFIA
-	gulp.watch(['source/imagens/**/*'],['imagens-watch']);			// IMAGENS
-	gulp.watch(['source/sprites/**/*'],['sprites-watch']);			// SPRITES
-	gulp.watch(['source/json/*.json'],['json-wath']);			// SPRITES
+	gulp.watch(['source/jade/**/*.jade'], ['jade-watch']);			// JADE
+	gulp.watch(['source/styles/**/**/**/*.scss'], ['sass-watch']);	// SASS
+	gulp.watch(['source/js/**/*.js'], ['scripts-watch']);			// JS
+	gulp.watch(['source/fonts/**/*'], ["tipografia-watch"]);			// TIPOGRAFIA
+	gulp.watch(['source/imagens/**/*'], ['imagens-watch']);			// IMAGENS
+	// gulp.watch(['source/sprites/**/*'],['sprites-watch']);			// SPRITES
+	gulp.watch(['source/json/*.json'], ['json-wath']);			// SPRITES
 });
 
 // SERVER ------------------------------
@@ -200,9 +200,9 @@ gulp.task('server', connect.server({
 	port: 9000,
 	livereload: true,
 	open: {
-		browser: 'chromium-browser' // Para o Google chrome no linux - google-chrome-stable
+		browser: 'google-chrome-stable'// Para o Google chrome no linux - google-chrome-stable
 	}
 }));
 
 // DEFAULT ----------------------------
-gulp.task('default',['sprites', 'imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia','watch']);
+gulp.task('default',['json', 'jade', 'sass', 'libs', 'scripts', 'tipografia','watch', 'imagens']);

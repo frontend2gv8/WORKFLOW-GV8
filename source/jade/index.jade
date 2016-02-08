@@ -1,7 +1,119 @@
 extend common/template.jade
 
 block title
-	title Documentos
+    title Documentos
 
 block conteudo
-	// CONTEUDO
+    article#banners.banners
+        section#carousel-banner.owl-carousel(data-carousel="single-item")
+            -for(var i=0; i<5; i++)
+                figure.banner
+                    a(href="#")
+                        img(src="imagens/estrutural/banner.png", alt="", title="", class="img-responsive")
+
+                //- banner
+    //- banners
+
+    article#apresentacao.apresentacao
+        .container
+            .bg-gray.pdl-15.pdr-15.d-ib.container-center
+                header.page-header.text-center
+                    h1.c-blue QUEM SOMOS
+
+                .text.align-justify
+                    p Fábrica de Valores é especializada em Inteligência Comercial, oferecendo soluções objetivas, versáteis e criativas para sua empresa através de treinamentos, consultorias e desenvolvimentos profissionais. É composta por executivos com experiência e vivência internacionais em gestão empresarial e capacitação de pessoas..
+
+                .clearfix.mgt-20.mgb-20
+                    figure(style="float: left; margin-left: 20px; margin-right: 20px;")
+                        img(src="imagens/estrutural/grafico.png", alt="", title="", class="img-responsive")
+
+                    figure(style="float: left; margin-left: 20px; margin-right: 20px;")
+                        img(src="imagens/estrutural/image-default.png", alt="", title="", class="img-responsive img-circle")
+
+                .text.align-justify
+                    p Customização na medida certa. Como isso é possível? A idéia é simples. A Fábrica de Valores ajuda você a investir na medida certa. Para que isso ocorra, ela realiza reuniões para identificar sua necessidade, avalia as condições atuais da sua empresa e aplica a metodologia própria APIA (Analisar, Personalizar, Implementar e Acompanhar), a fim de ajudar você na maximização de seus resultados..
+                    p Hoje contamos com uma gama de mais de 200 empresas atendidas e cerca de 20.000 profissionais desenvolvidos..
+
+                .result-default.mg-40
+                    .result-item
+                        figure.result-photo
+                            img(src="imagens/estrutural/balao-necessidades.png", alt="", title="", class="img-responsive")
+
+                    //- result-item
+
+                    .result-item
+                        figure.result-photo
+                            img(src="imagens/estrutural/signal-plus.png", alt="", title="", class="img-responsive")
+
+                    //- result-item
+
+                    .result-item
+                        figure.result-photo
+                            img(src="imagens/estrutural/balao-solucao.png", alt="", title="", class="img-responsive")
+
+                    //- result-item
+
+                    .result-item
+                        figure.result-photo
+                            img(src="imagens/estrutural/menos-signal.png", alt="", title="", class="img-responsive")
+
+                    //- result-item
+
+                    .result-item
+                        figure.result-photo
+                            img(src="imagens/estrutural/balao-resultados.png", alt="", title="", class="img-responsive")
+
+                    //- result-item
+                //- result-default
+
+                footer.page-footer.text-center
+                    h2.c-blue EQUIPE ESPECIALIZADA
+
+    //- apresentacao
+
+    article#services.services
+        .container
+            header.page-header.text-center
+                h1.c-white SERVIÇOS
+
+            .text.align-justify
+                p.c-white Serviços são desempenhos no tempo e espaço que geram valor para o cliente por meio de uma transformação, uma experiência. O valor gerado é fundamental para que seus clientes percebam algo além de um serviço ou produto, sendo sua empresa prestadora de serviços ou voltada para comércio de varejo. Seu cliente precisa perceber seu valor!.
+
+            .row
+                .col-md-10.col-md-offset-1
+                    .service-flex
+                        -for(var i=0; i<4; i++)
+                            section.service-default
+                                a(href="servicos-detalhes.html")
+                                    figure.photo
+                                        img(src="http://dummyimage.com/250x250/002040/FFF.gif&text=placeholder+image", alt="placeholder+image", title="", class="img-responsive img-circle")
+
+                                    .data.text-center
+                                        h3.title TREINAMENTOS
+                                        p O treinamento visa identificar, reconhecer, validar e desenvolver os valores de uma empresa.
+
+    //- services
+
+    article#clientes.clientes
+        .container
+            header.page-header.text-center
+                h1.c-blue CLIENTES
+
+            .text.align-justify
+                p Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.
+
+
+            section#carousel-clientes.carousel-responsive(data-md="8", data-sm="6", data-xs="4")
+                .carousel-inner
+                    -for(var i=0; i<16; i ++)
+                        figure.cliente-default
+                            a(href="clientes-detalhes.html")
+                                img(src="imagens/estrutural/item-default.png", alt="" title="", class="img-responsive img-circle")
+
+                .text-center
+                    a(href="#carousel-clientes", class="pager pager-prev", data-boots-event="prev"): i.icon.ic-pager-prev
+                    a(href="#carousel-clientes", class="pager pager-next", data-boots-event="next"): i.icon.ic-pager-next
+
+            //- carousel-clientes
+
+    //- clientes

@@ -9,3 +9,22 @@ a{
 .title-internas{
 	margin-top:0;
 }
+
+.page-header,
+.page-footer{
+    padding-bottom: 0;
+    border-bottom: 0;
+
+    h1,
+    h2{
+        font-family: "open_sansregular";
+    }
+
+    h1{
+        font-size: 60px;
+    }
+
+    h2{
+        font-size: 40px;
+    }
+}

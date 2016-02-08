@@ -1,2 +1,10 @@
 $imgs: '../imagens/estrutural';
 $fonts: '../fonts';
+
+$bg-sprite: url(#{$imgs}/sprites.png) no-repeat;
+$bg-header: rgba(#FFF, .7);
+$cor-default: rgba(#2B3085, 1);
+$bg-rodape: url(#{$imgs}/bg-footer.png) center top no-repeat;
+$bg-apresentacao: url(#{$imgs}/bg-apresentacao.png) center top no-repeat;
+$bg-servicos: url(#{$imgs}/bg-servicos.png) center top no-repeat;
+$bg-clientes: url(#{$imgs}/bg-clientes.png) center top no-repeat;

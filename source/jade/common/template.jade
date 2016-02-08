@@ -6,13 +6,14 @@ html(lang="pt-br")
 
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1")
+		meta(name="theme-color", content="2B3085")
 
 		link(rel="stylesheet", type="text/css", href="styles/estilos.min.css")
 		link(rel="shortcut icon" type="image/x-icon" href="imagens/estrutural/favicon.ico")
 
 		include mixins.jade
 
-	body
+	body(data-spy="scroll", data-target=".topo", data-offset="50")
 		noscript
 			.alert.alert-warning.text-center
 				h1 Seu navegador está com os scripts desabilitados!

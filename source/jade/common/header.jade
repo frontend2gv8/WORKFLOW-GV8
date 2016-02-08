@@ -1,11 +1,31 @@
-header.navbar.navbar-inverse.no-roundnnes.fixed
-	.contianer-flex
-		.navbar-header
-			a(href="#").navbar-brand Páginas Internas
-		.navbar-collapse.collapse
-			ul.nav.navbar-nav
-				-for(var x=1;x<15;x++)
-					li: a(href="#") Item #{x}
-			form(class="navbar-form navbar-right")
-				+campo('text','busca-page','')
-				button.btn.btn-default(onclick="loadPage()") Buscar
+header.topo
+	.container
+		.row
+			.col-md-4
+				.navbar-header
+					figure.logo
+						a(href="index.html")
+							img(src="imagens/estrutural/logo.png", alt="", title="", class="img-response")
+
+					button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#menu")
+						i.fa.fa-bars
+
+				//-navbar-header
+			//- col-md-4
+
+			.col-md-6.col-md-offset-2
+				nav.menu-header.navbar-header.navbar-fixed-top
+					block active
+						-var currentUrl = "home"
+
+					ul#menu.collapse.unlistenner.nav
+						li(class={"active": currentUrl == "home"}) #[a(href="#banners") 		Home]
+						li(class={"active": currentUrl == "inst"}) #[a(href="#apresentacao") 	Quem Somos]
+						li(class={"active": currentUrl == "serv"}) #[a(href="#services") 		Serviços]
+						li(class={"active": currentUrl == "clie"}) #[a(href="#clientes") 		Clientes]
+						li(class={"active": currentUrl == "cont"}) #[a(href="#contato") 		Contato]
+
+				//- menu-header
+			//- col-md-8
+		//- row
+//- topo

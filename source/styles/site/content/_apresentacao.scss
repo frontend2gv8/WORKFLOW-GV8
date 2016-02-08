@@ -1,0 +1,15 @@
+.apresentacao{
+    position: relative;
+    background: $bg-apresentacao;
+    background-size: cover;
+
+    .result-default{
+        @include flexbox();
+        @include prefixos(justify-content, center);
+        @include prefixos(align-items, center);
+
+        .result-item{
+            margin: 0 15px;
+        }
+    }
+}

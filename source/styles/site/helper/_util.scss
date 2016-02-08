@@ -1,0 +1,68 @@
+.container{
+    max-width: $screen-md-min;
+}
+
+.unlistenner{
+    padding: 0;
+    list-style: none;
+}
+
+.c-white{
+    color: rgba(#FFF, 1);
+}
+
+.c-blue{
+    color: $cor-default;
+}
+
+.align-justify{
+    text-align: justify;
+}
+
+.clearfix{
+    @include clearfix();
+}
+
+.bg-gray{
+    background: rgba(#B9C1C5, .7);
+}
+
+.d-ib{
+    display: inline-block;
+}
+
+.pdl-15{
+    padding-left: 15px;
+}
+
+.pdr-15{
+    padding-right: 15px;
+}
+
+.container-center{
+    margin: 0 auto;
+}
+
+.mg-40{
+    margin: 40px 0;
+}
+
+a{
+    &:hover{
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.icon{
+    display: inline-block;
+    background: $bg-sprite;
+}
+
+.ic-pager-prev{
+    @include make-icon(46px, 31px, 0, 0);
+}
+
+.ic-pager-next{
+    @include make-icon(46px, 31px, 0, -50px);
+}

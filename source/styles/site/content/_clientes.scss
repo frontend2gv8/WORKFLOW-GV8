@@ -1,0 +1,24 @@
+.clientes{
+    position: relative;
+    background: $bg-clientes;
+    background-size: cover;
+
+    #carousel-clientes{
+        margin: 40px 0;
+
+        .cliente-default{
+            display: inline-block;
+            width: calc(100% / 4);
+            margin: 40px 0;
+            text-align: center;
+
+            img{
+                display: inline-block;
+            }
+        }
+    }
+
+    .pager{
+        margin: 15px 0;
+    }
+}

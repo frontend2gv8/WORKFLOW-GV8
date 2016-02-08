@@ -38,7 +38,7 @@ function youtubeSuccess(data){
 
 		$('.youtube-carousel .item:first-child').addClass('active');
 
-		$('.youtube-carousel').carousel({interval: 0});
+		// $('.youtube-carousel').carousel({interval: 0});
 	}
 
 	escrever();

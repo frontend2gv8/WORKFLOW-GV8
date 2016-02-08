@@ -19,4 +19,4 @@ function remover($target){
 
 $('.pergunta').click(function(){
 	$(this).toggleClass('text-success');
-})
+});

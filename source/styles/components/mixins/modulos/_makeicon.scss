@@ -1,0 +1,5 @@
+@mixin make-icon($w, $h, $x, $y){
+    width: $w;
+    height: $h;
+    background-position: $x $y;
+}

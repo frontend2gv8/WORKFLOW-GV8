@@ -5,110 +5,251 @@
         <title>Documentos</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="2B3085">
         <link rel="stylesheet" type="text/css" href="styles/estilos.min.css">
         <link rel="shortcut icon" type="image/x-icon" href="imagens/estrutural/favicon.ico">
     </head>
 
-    <body>
-        <noscript>
-            <div class="alert alert-warning text-center">
-                <h1>Seu navegador está com os scripts desabilitados!</h1>
-                <p>Para melhor funcionamento do site, habilite-os.</p>
-            </div>
-        </noscript>
+    <body data-spy="scroll" data-target=".topo" data-offset="50"><noscript><div class="alert alert-warning text-center"><h1>Seu navegador está com os scripts desabilitados!</h1><p>Para melhor funcionamento do site, habilite-os.</p></div></noscript>
         <div class="wrapper">
-            <header class="navbar navbar-inverse no-roundnnes fixed">
-                <div class="contianer-flex">
-                    <div class="navbar-header"><a href="#" class="navbar-brand">Páginas Internas</a></div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">Item 1</a></li>
-                            <li><a href="#">Item 2</a></li>
-                            <li><a href="#">Item 3</a></li>
-                            <li><a href="#">Item 4</a></li>
-                            <li><a href="#">Item 5</a></li>
-                            <li><a href="#">Item 6</a></li>
-                            <li><a href="#">Item 7</a></li>
-                            <li><a href="#">Item 8</a></li>
-                            <li><a href="#">Item 9</a></li>
-                            <li><a href="#">Item 10</a></li>
-                            <li><a href="#">Item 11</a></li>
-                            <li><a href="#">Item 12</a></li>
-                            <li><a href="#">Item 13</a></li>
-                            <li><a href="#">Item 14</a></li>
-                        </ul>
-                        <form class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <label for="busca-page"></label>
-                                <input type="text" id="busca-page" name="busca-page" class="form-control">
-                            </div>
-                            <!-- /.form-group-->
-                            <button onclick="loadPage()" class="btn btn-default">Buscar</button>
-                        </form>
+            <header class="topo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="navbar-header">
+                                <figure class="logo">
+                                    <a href="index.html"><img src="imagens/estrutural/logo.png" alt="" title="" class="img-response"></a>
+                                </figure><button data-toggle="collapse" data-target="#menu" class="navbar-toggle collapsed"><i class="fa fa-bars"></i></button></div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-2">
+                            <nav class="menu-header navbar-header navbar-fixed-top">
+                                <ul id="menu" class="collapse unlistenner nav">
+                                    <li class="active"><a href="#banners">		Home</a></li>
+                                    <li><a href="#apresentacao">	Quem Somos</a></li>
+                                    <li><a href="#services">		Serviços</a></li>
+                                    <li><a href="#clientes">		Clientes</a></li>
+                                    <li><a href="#contato">		Contato</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </header>
-            <!-- CONTEUDO-->
-            <section class="internas">
+            <article id="banners" class="banners">
+                <section id="carousel-banner" data-carousel="single-item" class="owl-carousel">
+                    <figure class="banner">
+                        <a href="#"><img src="imagens/estrutural/banner.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                    <figure class="banner">
+                        <a href="#"><img src="imagens/estrutural/banner.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                    <figure class="banner">
+                        <a href="#"><img src="imagens/estrutural/banner.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                    <figure class="banner">
+                        <a href="#"><img src="imagens/estrutural/banner.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                    <figure class="banner">
+                        <a href="#"><img src="imagens/estrutural/banner.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                </section>
+            </article>
+            <article id="apresentacao" class="apresentacao">
                 <div class="container">
-                    <header class="page-header">
-                        <h1>Links Úteis</h1></header>
-                    <!-- page-header-->
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <article class="link-util">
-                        <h1>Nome do link</h1>
-                        <h2>Descrição:</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique natus officiis, molestiae expedita, blanditiis vero eos. Fugit dolorem laborum iure optio aut nisi accusamus fuga saepe ipsam sit a mollitia itaque, iusto nobis,
-                            sed unde vel, ex quaerat adipisci autem earum. Aut nobis, amet libero nulla quam iusto delectus, incidunt.</p>
-                    </article>
-                    <!-- PAGINACAO ===============>-->
-                    <nav class="paginacao"><a href="#"><i class="fa fa-angle-double-left"></i></a><span class="active">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#"><i class="fa fa-angle-double-right"></i></a></nav>
+                    <div class="bg-gray pdl-15 pdr-15 d-ib container-center">
+                        <header class="page-header text-center">
+                            <h1 class="c-blue">QUEM SOMOS</h1></header>
+                        <div class="text align-justify">
+                            <p>Fábrica de Valores é especializada em Inteligência Comercial, oferecendo soluções objetivas, versáteis e criativas para sua empresa através de treinamentos, consultorias e desenvolvimentos profissionais. É composta por executivos
+                                com experiência e vivência internacionais em gestão empresarial e capacitação de pessoas..</p>
+                        </div>
+                        <div class="clearfix mgt-20 mgb-20">
+                            <figure style="float: left; margin-left: 20px; margin-right: 20px;"><img src="imagens/estrutural/grafico.png" alt="" title="" class="img-responsive"></figure>
+                            <figure style="float: left; margin-left: 20px; margin-right: 20px;"><img src="imagens/estrutural/image-default.png" alt="" title="" class="img-responsive img-circle"></figure>
+                        </div>
+                        <div class="text align-justify">
+                            <p>Customização na medida certa. Como isso é possível? A idéia é simples. A Fábrica de Valores ajuda você a investir na medida certa. Para que isso ocorra, ela realiza reuniões para identificar sua necessidade, avalia as condições
+                                atuais da sua empresa e aplica a metodologia própria APIA (Analisar, Personalizar, Implementar e Acompanhar), a fim de ajudar você na maximização de seus resultados..</p>
+                            <p>Hoje contamos com uma gama de mais de 200 empresas atendidas e cerca de 20.000 profissionais desenvolvidos..</p>
+                        </div>
+                        <div class="result-default mg-40">
+                            <div class="result-item">
+                                <figure class="result-photo"><img src="imagens/estrutural/balao-necessidades.png" alt="" title="" class="img-responsive"></figure>
+                            </div>
+                            <div class="result-item">
+                                <figure class="result-photo"><img src="imagens/estrutural/signal-plus.png" alt="" title="" class="img-responsive"></figure>
+                            </div>
+                            <div class="result-item">
+                                <figure class="result-photo"><img src="imagens/estrutural/balao-solucao.png" alt="" title="" class="img-responsive"></figure>
+                            </div>
+                            <div class="result-item">
+                                <figure class="result-photo"><img src="imagens/estrutural/menos-signal.png" alt="" title="" class="img-responsive"></figure>
+                            </div>
+                            <div class="result-item">
+                                <figure class="result-photo"><img src="imagens/estrutural/balao-resultados.png" alt="" title="" class="img-responsive"></figure>
+                            </div>
+                        </div>
+                        <footer class="page-footer text-center">
+                            <h2 class="c-blue">EQUIPE ESPECIALIZADA</h2></footer>
+                    </div>
                 </div>
-            </section>
-            <!-- internas-->
+            </article>
+            <article id="services" class="services">
+                <div class="container">
+                    <header class="page-header text-center">
+                        <h1 class="c-white">SERVIÇOS</h1></header>
+                    <div class="text align-justify">
+                        <p class="c-white">Serviços são desempenhos no tempo e espaço que geram valor para o cliente por meio de uma transformação, uma experiência. O valor gerado é fundamental para que seus clientes percebam algo além de um serviço ou produto, sendo sua
+                            empresa prestadora de serviços ou voltada para comércio de varejo. Seu cliente precisa perceber seu valor!.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="service-flex">
+                                <section class="service-default">
+                                    <a href="servicos-detalhes.html">
+                                        <figure class="photo"><img src="http://dummyimage.com/250x250/002040/FFF.gif&amp;text=placeholder+image" alt="placeholder+image" title="" class="img-responsive img-circle"></figure>
+                                        <div class="data text-center">
+                                            <h3 class="title">TREINAMENTOS</h3>
+                                            <p>O treinamento visa identificar, reconhecer, validar e desenvolver os valores de uma empresa.</p>
+                                        </div>
+                                    </a>
+                                </section>
+                                <section class="service-default">
+                                    <a href="servicos-detalhes.html">
+                                        <figure class="photo"><img src="http://dummyimage.com/250x250/002040/FFF.gif&amp;text=placeholder+image" alt="placeholder+image" title="" class="img-responsive img-circle"></figure>
+                                        <div class="data text-center">
+                                            <h3 class="title">TREINAMENTOS</h3>
+                                            <p>O treinamento visa identificar, reconhecer, validar e desenvolver os valores de uma empresa.</p>
+                                        </div>
+                                    </a>
+                                </section>
+                                <section class="service-default">
+                                    <a href="servicos-detalhes.html">
+                                        <figure class="photo"><img src="http://dummyimage.com/250x250/002040/FFF.gif&amp;text=placeholder+image" alt="placeholder+image" title="" class="img-responsive img-circle"></figure>
+                                        <div class="data text-center">
+                                            <h3 class="title">TREINAMENTOS</h3>
+                                            <p>O treinamento visa identificar, reconhecer, validar e desenvolver os valores de uma empresa.</p>
+                                        </div>
+                                    </a>
+                                </section>
+                                <section class="service-default">
+                                    <a href="servicos-detalhes.html">
+                                        <figure class="photo"><img src="http://dummyimage.com/250x250/002040/FFF.gif&amp;text=placeholder+image" alt="placeholder+image" title="" class="img-responsive img-circle"></figure>
+                                        <div class="data text-center">
+                                            <h3 class="title">TREINAMENTOS</h3>
+                                            <p>O treinamento visa identificar, reconhecer, validar e desenvolver os valores de uma empresa.</p>
+                                        </div>
+                                    </a>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article id="clientes" class="clientes">
+                <div class="container">
+                    <header class="page-header text-center">
+                        <h1 class="c-blue">CLIENTES</h1></header>
+                    <div class="text align-justify">
+                        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro
+                            de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.</p>
+                    </div>
+                    <section id="carousel-clientes" data-md="8" data-sm="6" data-xs="4" class="carousel-responsive">
+                        <div class="carousel-inner">
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                            <figure class="cliente-default">
+                                <a href="clientes-detalhes.html"><img src="imagens/estrutural/item-default.png" alt="" title="" class="img-responsive img-circle"></a>
+                            </figure>
+                        </div>
+                        <div class="text-center"><a href="#carousel-clientes" data-boots-event="prev" class="pager pager-prev"><i class="icon ic-pager-prev"></i></a><a href="#carousel-clientes" data-boots-event="next" class="pager pager-next"><i class="icon ic-pager-next"></i></a></div>
+                    </section>
+                </div>
+            </article>
         </div>
         <!-- /.wrapper-->
+        <footer id="contato" class="rodape">
+            <div class="container">
+                <header class="page-header text-center">
+                    <h1 class="c-white">CONTATO</h1></header>
+                <div class="text align-justify">
+                    <p class="c-white">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de
+                        modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <figure class="image-contato"><img src="imagens/estrutural/phone-contato.png" alt="" title="" class="img-responsive"></figure>
+                        <div class="text-center">
+                            <p class="c-white">Lorem Ipsum é simplesmente uma simulação de texto da indústria.</p>
+                            <p class="c-white"><strong>(19) 2139.7107</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <figure class="image-contato"><img src="imagens/estrutural/marker-contato.png" alt="" title="" class="img-responsive"></figure>
+                        <div class="text-center">
+                            <p class="c-white">Lorem Ipsum é simplesmente uma simulação de texto da indústria.</p>
+                            <p class="c-white"><strong>Avenida José de Souza Campos, nº 1073. Sala 1504. Cambuí - Campinas/SP CEP 13025-320</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <figure class="image-contato"><img src="imagens/estrutural/message-contato.png" alt="" title="" class="img-responsive"></figure>
+                        <div class="text-center">
+                            <p class="c-white">Lorem Ipsum é simplesmente uma simulação de texto da indústria.</p>
+                            <p class="c-white"><strong>contato@fabricadevalores.com.br</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="creditos clearfix">
+                    <div class="pull-left"><span class="c-white">Fábrica de Valores © Todos os direitos reservados</span><span class="c-white">Criação de Sites: GV8 Sites & Sistemas</span></div>
+                    <figure class="pull-right">
+                        <a href="#" target="_blank"><img src="imagens/estrutural/logo-gv8.png" alt="" title="" class="img-responsive"></a>
+                    </figure>
+                </div>
+            </div>
+        </footer>
         <script src="js/starter.js"></script>
         <script src="js/lightbox.min.js"></script>
         <script src="js/scripts.js"></script>
