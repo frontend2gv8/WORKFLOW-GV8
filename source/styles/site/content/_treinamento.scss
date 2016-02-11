@@ -1,0 +1,34 @@
+.treinamentos-h{
+    position: relative;
+    margin-left: 45px;
+    margin-right: 45px;
+
+    .treinamento-v{
+        width:220px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:30px;
+
+        .foto{
+            height:220px;
+            overflow:hidden;
+            @include flexbox();
+
+            @include prefixos(justify-content, center);
+            @include prefixos(align-items, center);
+        }
+
+        .desc{
+            padding: 5px 0;
+            .nome{
+                display: block;
+
+                font-weight:bold;
+                text-align:center;
+                padding: 0 15px;
+                @include resumo(18px,1.3,3);
+                color: rgba(#FFF, 1);
+            }
+        }
+    }
+}

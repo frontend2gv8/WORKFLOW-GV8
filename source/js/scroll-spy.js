@@ -1,6 +1,6 @@
 (function(){
     // $('body').scrollspy({target:'.navbar-header'});
-    $('body').scrollspy({target: '.topo' })
+    // $('body').scrollspy({target: '#wrapper' });
 
     $('#menu a').on('click', function(e){
         e.preventDefault();

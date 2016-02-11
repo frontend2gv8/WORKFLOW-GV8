@@ -141,7 +141,7 @@ gulp.task('imagens', function () {
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
-            optimizationLevel:7,
+            // optimizationLevel:7,
             use: [pngquant()]
         }))
         .pipe(gulp.dest('dist/imagens'));
@@ -152,7 +152,7 @@ gulp.task('imagens-watch', function () {
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
-            optimizationLevel:7,
+            // optimizationLevel:7,
             use: [pngquant()]
         }))
         .pipe(gulp.dest('dist/imagens'))

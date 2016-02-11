@@ -1,20 +1,23 @@
 // CONTEUDO
 section.internas
 	.container
-		header.page-header
-			h1 Produtos || Serviços
+		header.page-header.text-center
+			h1.c-white CONSULTORIA
 		// page-header
 
 
-		.row
+		.row.mg-40
 			-for(var x=0;x<12;x++)
 				.col-md-3.col-sm-4
 					.produto-v
-						a(href="#")
+						a(href="consultoria-detalhes.html")
 							figure.foto
 								img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive
-							.nome Nome do Produto/Serviço
-							.desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et perferendis excepturi voluptates, non totam, optio commodi dolorem, dignissimos hic maiores eligendi nobis tenetur earum nihil quibusdam molestias. Minus sint, quod.
+							.nome PEC – Planejamento e Estruturação Comercial
+
 		//- .row
+
+		.text-right
+			a(href="#", class="btn btn-white") #[i.fa.fa-angle-double-left] Voltar
 	//- .container
 // internas

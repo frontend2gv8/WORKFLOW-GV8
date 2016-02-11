@@ -1,0 +1,34 @@
+extends ./common/template.jade
+
+block active
+    -var currentUrl = "serv"
+
+block internas
+    -var internas = true
+
+block custom
+    -var bg = "url(../imagens/estrutural/bg-treinamentos.png) center top no-repeat"
+
+block conteudo
+    section.internas
+        .container
+            header.page-header.text-center
+                h1.c-blue TREINAMENTOS
+
+            .mg-40.treinamentos-h
+                .flex-box.flex-wrap.space-around
+                    -for(var i=0; i<5; i++)
+                        .treinamento-v
+                            a(href="treinamentos-detalhes.html")
+                                ficture.foto
+                                    .picture
+                                        img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive
+
+                                .bg-blue.desc
+                                    .nome PEC – Planejamento e Estruturação Comercial
+
+                            //- treinamento-v
+
+
+block footer
+    include ./common/footer-internas.jade

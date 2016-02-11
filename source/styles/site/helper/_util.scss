@@ -15,6 +15,10 @@
     color: $cor-default;
 }
 
+.c-blue-dark{
+    color: rgba(#001F3F, 1);
+}
+
 .align-justify{
     text-align: justify;
 }
@@ -44,7 +48,8 @@
 }
 
 .mg-40{
-    margin: 40px 0;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 a{
@@ -65,4 +70,54 @@ a{
 
 .ic-pager-next{
     @include make-icon(46px, 31px, 0, -50px);
+}
+
+.wrapper-internas{
+    padding-top: 60px;
+}
+
+.btn-blue{
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-family: "open_sansregular";
+    font-size: 20px;
+    color: $cor-default;
+    border: 1px solid $cor-default;
+
+    &:hover{
+        color: $cor-default;
+    }
+}
+.btn-white{
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-family: "open_sansregular";
+    font-size: 20px;
+    color: rgba(#FFF, 1);
+    border: 1px solid rgba(#FFF, 1);
+
+    &:hover{
+        color: rgba(#FFF, 1);
+    }
+}
+
+.border-white{
+    border: 1px solid rgba(#FFF, 1);
+}
+
+
+.flex-box{
+    @include flexbox();
+
+    &.flex-wrap{
+        @include prefixos(flex-wrap, wrap);
+    }
+
+    &.space-around{
+        @include prefixos(justify-content, space-between);
+    }
+}
+
+.bg-blue{
+    background: $cor-default;
 }

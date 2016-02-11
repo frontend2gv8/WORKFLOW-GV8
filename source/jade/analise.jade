@@ -1,0 +1,16 @@
+extends ./common/template.jade
+
+block active
+    -var currentUrl = "serv"
+
+block internas
+    -var internas = true
+
+block custom
+    -var bg = "url(../imagens/estrutural/bg-analise.png) center top no-repeat"
+
+block conteudo
+    include ./internas/cod_07.jade
+
+block footer
+    include ./common/footer-internas.jade

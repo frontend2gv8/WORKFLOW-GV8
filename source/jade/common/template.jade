@@ -13,19 +13,25 @@ html(lang="pt-br")
 
 		include mixins.jade
 
+	block internas
+		-var internas = false
+
+	block custom
+		-var bg = ""
+
 	body(data-spy="scroll", data-target=".topo", data-offset="150")
 		noscript
 			.alert.alert-warning.text-center
 				h1 Seu navegador está com os scripts desabilitados!
 				p Para melhor funcionamento do site, habilite-os.
 
-		.wrapper
-
+		#wrapper.wrapper(class={"wrapper-internas": internas}, style="background: #{bg}; background-size: cover;")
 			include header.jade
 			block conteudo
 
 		// /.wrapper
-		include footer.jade
+		block footer
+			include footer.jade
 
 		script(src="js/starter.js")
 		script(src="js/lightbox.min.js")

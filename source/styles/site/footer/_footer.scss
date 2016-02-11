@@ -1,19 +1,31 @@
 .rodape{
-    position: relative;
-    background: $bg-rodape;
-    background-size: cover;
+    background: $cor-default;
 
-    .image-contato{
-        margin-top: 45px;
-        margin-bottom: 15px;
+    .creditos{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-        text-align: center;
-        img{display: inline-block;}
+    &:not(.rodape-internas){
+        position: relative;
+        background: $bg-rodape;
+        background-size: cover;
+
+        .image-contato{
+            margin-top: 45px;
+            margin-bottom: 15px;
+
+            text-align: center;
+            img{display: inline-block;}
+        }
+
+        .creditos{
+            margin-top: 125px;
+            margin-bottom: 45px;
+        }
     }
 
     .creditos{
-        margin-top: 125px;
-        margin-bottom: 45px;
         span{
             display: block;
             line-height: 120%;
