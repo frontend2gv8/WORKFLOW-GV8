@@ -6,12 +6,13 @@
 
 // Gulp e outros
 var gulp 		= require('gulp');
-var rename 		= require("gulp-rename");
+var rename 	= require("gulp-rename");
 var connect 	= require('gulp-connect-multi')();
+var autoprefixer 	= require('gulp-autoprefixer');
 
 // templates
 var jade 		= require('gulp-jade');
-var prettify 	= require('gulp-prettify');
+var prettify 		= require('gulp-prettify');
 
 // styles
 var sass 		= require('gulp-sass');
@@ -25,6 +26,7 @@ var sprity 		= require('sprity');
 
 // JS
 var concat 		= require('gulp-concat');
+var uglify 		= require('gulp-uglify');
 
 //======================================
 
@@ -71,6 +73,10 @@ gulp.task('jade-watch', function() {
 gulp.task('sass', function () {
   	gulp.src('source/styles/**/**/**/*.scss')
     	.pipe(sass())
+	.pipe(autoprefixer({
+		browsers: ['last 2 versions'],
+		cascade: false
+	}))
     	.pipe(gulp.dest('dist/styles'))
     	.pipe(minifyCss())
     	.pipe(rename('estilos.min.css'))
@@ -90,12 +96,18 @@ gulp.task('libs',function(){
 gulp.task('scripts',function(){
 	gulp.src('source/js/**/*.js')
 		.pipe(concat('scripts.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(uglify())
+		.pipe(rename('scripts.min.js'))
 		.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scripts-watch',function(){
 	gulp.src('source/js/**/*.js')
 		.pipe(concat('scripts.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(uglify())
+		.pipe(rename('scripts.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(connect.reload());
 });
@@ -186,12 +198,12 @@ gulp.task('sprites-watch', function () {
 // WATCH -------------------------------
 gulp.task('watch',['server'],function(){
 	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);			// JADE
-	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);	// SASS
+	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);		// SASS
 	gulp.watch(['source/js/**/*.js'],['scripts-watch']);			// JS
 	gulp.watch(['source/fonts/**/*'],["tipografia-watch"]);			// TIPOGRAFIA
-	gulp.watch(['source/imagens/**/*'],['imagens-watch']);			// IMAGENS
+	gulp.watch(['source/imagens/**/*'],['imagens-watch']);		// IMAGENS
 	gulp.watch(['source/sprites/**/*'],['sprites-watch']);			// SPRITES
-	gulp.watch(['source/json/*.json'],['json-wath']);			// SPRITES
+	gulp.watch(['source/json/*.json'],['json-wath']);				// SPRITES
 });
 
 // SERVER ------------------------------
