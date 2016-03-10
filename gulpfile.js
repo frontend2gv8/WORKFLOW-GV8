@@ -147,29 +147,6 @@ gulp.task('tipografia-watch',function(){
 		.pipe(connect.reload());
 });
 
-// IMGS -----------------------------------
-gulp.task('imagens', function () {
-    gulp.src('source/imagens/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            optimizationLevel:7,
-            use: [pngquant()]
-        }))
-        .pipe(gulp.dest('dist/imagens'));
-});
-
-gulp.task('imagens-watch', function () {
-    gulp.src('source/imagens/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            optimizationLevel:7,
-            use: [pngquant()]
-        }))
-        .pipe(gulp.dest('dist/imagens'))
-        .pipe(connect.reload());
-});
 
 // SPRITES --------------------------------------------------------
 gulp.task('sprites', function () {
@@ -195,15 +172,58 @@ gulp.task('sprites-watch', function () {
 	.pipe(connect.reload());
 });
 
+// IMGS -----------------------------------
+gulp.task('imagens', ['sprites'], function () {
+    gulp.src('source/imagens/**/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            optimizationLevel:7,
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('dist/imagens'));
+});
+
 // WATCH -------------------------------
-gulp.task('watch',['server'],function(){
-	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);			// JADE
-	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);		// SASS
-	gulp.watch(['source/js/**/*.js'],['scripts-watch']);			// JS
-	gulp.watch(['source/fonts/**/*'],["tipografia-watch"]);			// TIPOGRAFIA
-	gulp.watch(['source/imagens/**/*'],['imagens-watch']);		// IMAGENS
-	gulp.watch(['source/sprites/**/*'],['sprites-watch']);			// SPRITES
-	gulp.watch(['source/json/*.json'],['json-wath']);				// SPRITES
+gulp.task('watch',['dev','server'],function(){
+	// JADE =================================
+	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);
+
+	// SASS =================================
+	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);
+
+	// JAVASCRIPTS ============================
+	gulp.watch(['source/js/**/*.js'],['scripts-watch']);
+
+	// TIPOGRAFIA =============================
+	gulp.watch(['source/fonts/**/*'],["tipografia-watch"]);
+
+	// IMAGENS ===============================
+	gulp.watch(['source/imagens/**/*']).on('change',function(file){
+		var urlRelativa = file.path.split('imagens/')[1];
+		var pasta = urlRelativa.split('/')[0];
+
+		gulp.src(file.path)
+		.pipe(imagemin({
+	            	progressive: true,
+	            	svgoPlugins: [{removeViewBox: false}],
+	            	optimizationLevel:7,
+	            	use: [pngquant()]
+	        	}))
+	        	.pipe(gulp.dest('dist/imagens/'+pasta))
+	        	.pipe(connect.reload());
+	});
+
+	// SPRITES ================================
+	gulp.watch(['source/sprites/**/*'],['sprites-watch']);
+
+	// JSON ==================================
+	gulp.watch(['source/json/*.json']).on('change',function(file){
+
+		gulp.src(file.path)
+		.pipe(gulp.dest('dist/json'))
+		.pipe(connect.reload());
+	});
 });
 
 // SERVER ------------------------------
@@ -217,4 +237,6 @@ gulp.task('server', connect.server({
 }));
 
 // DEFAULT ----------------------------
-gulp.task('default',['sprites', 'imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia','watch']);
+gulp.task('dev',['imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia']);
+
+gulp.task('default',['watch']);
