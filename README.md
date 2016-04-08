@@ -54,7 +54,6 @@ Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] ca
 
 	<ol className="carousel-indicators"></ol>
 </div>
-```
 
 Onde:
 - "data-md" define a quantidade para desktop;
