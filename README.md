@@ -55,6 +55,19 @@ Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] ca
 	<ol className="carousel-indicators"></ol>
 </div>
 
+Ex3:
+Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
+
+```
+<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
+	<div class="carousel-inner">
+		<div class="elemento-teste"></div>
+		<div class="elemento-teste"></div>
+	</div>
+
+	<ol className="carousel-indicators"></ol>
+</div>
+
 Onde:
 - "data-md" define a quantidade para desktop;
 - "data-sm" define a quantidade para tablets;
