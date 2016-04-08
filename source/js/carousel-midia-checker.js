@@ -23,12 +23,24 @@
 				</div>
 			</div>
 
+		Ex3:
+			Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
+
+			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
+
+				<ol className="carousel-indicators"></ol>
+			</div>
+
 		Onde:
 			- "data-md" define a quantidade para desktop;
 			- "data-sm" define a quantidade para tablets;
 			- "data-xs" define a quantidade para dispositivos mobile;
 
-	Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tennha, o mesmo não funcionará.
+	Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tenha, o mesmo não funcionará.
 
 */
 
@@ -44,6 +56,25 @@
 			}
 
 			carouselInner.find('.item:first-child').addClass('active');
+
+			var indicators = carouselInner.parents('.carousel').data('indicators');
+
+			if(indicators != 'false' && indicators != undefined){
+
+				carouselInner.parents('.carousel').find('.carousel-indicators').html(' ');
+
+				carouselInner.find('.item').each(function(index, el) {
+					var pai = $(this).parents('.carousel');
+					var ol = pai.find('.carousel-indicators');
+					if(index == 0){
+						var primeiro = 'active';
+					}else{
+						var primeiro = ' ';
+					}
+
+					ol.append('<li onclick="$(\'#'+pai.attr('id')+'\').carousel('+index+')" class="'+primeiro+'"></li>');
+				});
+			}
 		}
 
 		function refresh(){
@@ -94,7 +125,7 @@
 				'md' : $('#'+id).data('md') || 1,
 				'sm' : $('#'+id).data('sm') || 1,
 				'xs' : $('#'+id).data('xs') || 1,
-			}
+			};
 
 			verifyMidia($('#'+id+' .carousel-inner'),content,item,count);
 		});
@@ -102,7 +133,7 @@
 
 	$('.carousel[data-interval]').carousel({
 		interval : $(this).data('interval')
-	})
+	});
 
 	$('.carousel-responsive').carouselResponsive();
 
