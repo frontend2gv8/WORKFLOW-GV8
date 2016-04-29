@@ -22,7 +22,7 @@ var minifyCss 	= require('gulp-minify-css');
 var imagemin 	= require('gulp-imagemin');
 var pngquant 	= require('imagemin-pngquant');
 var gulpif 		= require('gulp-if');
-var sprity 		= require('sprity');
+// var sprity 		= require('sprity');
 
 // JS
 var concat 		= require('gulp-concat');
@@ -149,31 +149,31 @@ gulp.task('tipografia-watch',function(){
 
 
 // SPRITES --------------------------------------------------------
-gulp.task('sprites', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
-});
+// gulp.task('sprites', function () {
+// 	sprity.src({
+// 		src: 'source/sprites/**/*.{png,jpg}',
+// 		style: './_sprites.scss',
+// 		// ... other optional options
+// 		// for example if you want to generate scss instead of css
+// 		processor: 'sass', // make sure you have installed sprity-sass
+// 	})
+// 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
+// });
 
-gulp.task('sprites-watch', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
-	.pipe(connect.reload());
-});
+// gulp.task('sprites-watch', function () {
+// 	sprity.src({
+// 		src: 'source/sprites/**/*.{png,jpg}',
+// 		style: './_sprites.scss',
+// 		// ... other optional options
+// 		// for example if you want to generate scss instead of css
+// 		processor: 'sass', // make sure you have installed sprity-sass
+// 	})
+// 	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
+// 	.pipe(connect.reload());
+// });
 
 // IMGS -----------------------------------
-gulp.task('imagens', ['sprites'], function () {
+gulp.task('imagens', function () {
     gulp.src('source/imagens/**/*')
         .pipe(imagemin({
             progressive: true,
