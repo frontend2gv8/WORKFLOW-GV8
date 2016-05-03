@@ -32,8 +32,8 @@ var uglify 		= require('gulp-uglify');
 
 var libsJs 		= [
 	'bower_components/jquery/dist/jquery.min.js',
-	'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-	'source/libs/*.js'
+    'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+	'bower_components/owl-carousel2/dist/owl.carousel.min.js'
 ];
 
 var lightbox 	= [
@@ -64,6 +64,7 @@ gulp.task('jade-watch', function() {
     .pipe(jade({
       locals: 'source/jade/*.jade'
     }))
+    .pipe(sass().on('error', sass.logError))
     .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
     .pipe(connect.reload());

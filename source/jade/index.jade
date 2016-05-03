@@ -1,7 +1,12 @@
 extend common/template.jade
 
 block title
-	title Documentos
+    title Documentos
 
 block conteudo
-	// CONTEUDO
+    .container
+        section#carousel-teste.owl-carousel(data-carousel="mult-items", data-md-qnt="5")
+            -for (var i = 0; i < 15; i++)
+                figure.item
+                    img(src="http://dummyimage.com/800x600/4d494d/686a82.gif&text=TESTE", alt="placeholder+image", class="img-responsive")
+//= conteudo

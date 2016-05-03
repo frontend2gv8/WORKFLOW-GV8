@@ -1,25 +1,216 @@
-$('[data-carousel="prev"]').click(function(event){
-	var alvo = $(this).attr('href');
+/*
+	Para toranar o seu carousel responsivo você  deverá fazer asim com no exemplo abaixo.
 
-	event.preventDefault();
+		Ex 1:
+			<div class="carousel" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
+			</div>
 
-	$(alvo).carousel('prev');
-});
+			<script>
+				$('#meuCarousel').carouselResponsive();
+			</script>
 
-$('[data-carousel="next"]').click(function(event){
-	var alvo = $(this).attr('href');
+		Ex2:
+			Basta adicionar a classe ".carousel-responsive".
 
-	event.preventDefault();
+			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
+			</div>
 
-	$(alvo).carousel('next');
-});
+		Ex3:
+			Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
 
-$('.carousel').on('swipeleft',function(){
-	$(this).carousel('next');
-});
+			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
+				<div class="carousel-inner">
+					<div class="elemento-teste"></div>
+					<div class="elemento-teste"></div>
+				</div>
 
-$('.carousel').on('swiperight',function(){
-	$(this).carousel('prev');
+				<ol className="carousel-indicators"></ol>
+			</div>
+
+		Onde:
+			- "data-md" define a quantidade para desktop;
+			- "data-sm" define a quantidade para tablets;
+			- "data-xs" define a quantidade para dispositivos mobile;
+
+	Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tenha, o mesmo não funcionará.
+
+*/
+
+(function(){
+	function verifyMidia(carouselInner,content,item,count){
+		function wrapCarousel(cont){
+			carouselInner.append(content);
+
+			var elemento = '.'+item.prop('class').replace(' ','.');
+
+			for( i = 0 ; i < item.length ; i += cont ){
+				carouselInner.find(elemento).slice(i , i + cont).wrapAll('<div class="item"></div>');
+			}
+
+			carouselInner.find('.item:first-child').addClass('active');
+
+			var indicators = carouselInner.parents('.carousel').data('indicators');
+
+			if(indicators != 'false' && indicators != undefined){
+
+				carouselInner.parents('.carousel').find('.carousel-indicators').html(' ');
+
+				carouselInner.find('.item').each(function(index, el) {
+					var pai = $(this).parents('.carousel');
+					var ol = pai.find('.carousel-indicators');
+					if(index == 0){
+						var primeiro = 'active';
+					}else{
+						var primeiro = ' ';
+					}
+
+					ol.append('<li onclick="$(\'#'+pai.attr('id')+'\').carousel('+index+')" class="'+primeiro+'"></li>');
+				});
+			}
+		}
+
+		function refresh(){
+			var w = $(window).width();
+			var midia = 'xs';
+
+			carouselInner.html('');
+
+			if (w > 700){
+				midia = 'sm';
+			}
+
+			if (w > 991){
+				midia = 'md';
+			}
+
+			switch (midia){
+				case 'xs':
+					wrapCarousel(count.xs);
+				break;
+				case 'sm':
+					wrapCarousel(count.sm);
+				break;
+				case 'md':
+					wrapCarousel(count.md);
+				break;
+				default:
+					wrapCarousel(1);
+				break;
+			}
+		};
+
+		refresh();
+
+		$(window).resize(function(event) {
+			refresh();
+		});
+	}
+
+	$.fn.carouselResponsive = function (options){
+		return this.each(function(){
+			var id = this.getAttribute('id');
+			var carousel = $(this);
+			var content = $('#'+id+' .carousel-inner').html();
+			var item = $('#'+id+' .carousel-inner > *');
+
+			var count = {
+				'md' : $('#'+id).data('md') || 1,
+				'sm' : $('#'+id).data('sm') || 1,
+				'xs' : $('#'+id).data('xs') || 1,
+			};
+
+			verifyMidia($('#'+id+' .carousel-inner'),content,item,count);
+		});
+	}
+
+	$('.carousel[data-interval]').carousel({
+		interval : $(this).data('interval')
+	});
+
+	$('.carousel-responsive').carouselResponsive();
+
+	$('[data-carousel="prev"]').click(function(event){
+		var alvo = $(this).attr('href');
+		event.preventDefault();
+
+		$(alvo).carousel('prev');
+	});
+
+	$('[data-carousel="next"]').click(function(event){
+		var alvo = $(this).attr('href');
+		event.preventDefault();
+
+		$(alvo).carousel('next');
+	});
+
+	$('.carousel').on('swipeleft',function(){
+		$(this).carousel('next');
+	});
+
+	$('.carousel').on('swiperight',function(){
+		$(this).carousel('prev');
+	});
+
+})(jQuery);
+$(document).ready(function(){
+    $('[data-carousel="single-item"]').each(function(){
+        $(this).owlCarousel({
+            slideSpeed : 500,
+            paginationSpeed : 500,
+            singleItem : true,
+
+            autoPlay: true,
+            stopOnHover: true,
+
+            transitionStyle : "fadeUp"
+        });
+    });
+
+    $('[data-carousel="mult-items"]').each(function(index, el) {
+        var qntDesktop = $(this).data('md-qnt');
+        var qntTablet = $(this).data('sm-qnt');
+        var qntMobile = $(this).data('xs-qnt');
+
+        $(this).owlCarousel({
+            items: qntDesktop,
+            itemsCustom : false,
+            itemsDesktop : [1199,qntDesktop],
+            itemsDesktopSmall : false,
+            itemsTablet: [768,qntTablet],
+            itemsTabletSmall: false,
+            itemsMobile : [479,qntMobile],
+            singleItem : false,
+
+            slideSpeed : 200,
+            paginationSpeed : 800,
+            rewindSpeed : 1000,
+
+            autoPlay : true,
+            stopOnHover : true
+        });
+    });
+
+    $('[data-event="prev"]').on('click', function(event){
+        event.preventDefault();
+
+        var target = $(this).attr('href');
+        $(target).trigger("owl.prev");
+    });
+
+    $('[data-event="next"]').on('click', function(event){
+        event.preventDefault();
+
+        var target = $(this).attr('href');
+        $(target).trigger("owl.next");
+    });
 });
 jQuery.getJSON('../json/videos-youtube.json', function(data, textStatus) {
 	youtubeSuccess(data)
@@ -64,6 +255,45 @@ function youtubeSuccess(data){
 		$('.youtube-carousel').carousel({interval: 0});
 	}
 
+	function verifyMidia(qnt){
+		var w = $(window).width();
+
+		var midia = 'xs';
+
+		if (w > 700){
+			midia = 'sm';
+		}
+
+		if(w > 991){
+			midia = 'md'
+		}
+
+		switch (midia){
+			case 'md':
+				sliceProdutos(qnt,4);
+			break;
+
+			case 'sm':
+				sliceProdutos(qnt,3);
+			break;
+
+			case 'xs' :
+				sliceProdutos(qnt,1);
+			break;
+
+			default :
+				sliceProdutos(qnt,1);
+			break;
+
+		}
+	}
+
+	function sliceProdutos(qnt,cont){
+		for( var i = 0 ; i < qnt; i += cont){
+			$('.youtube-carousel .thumb').slice(i,i+cont).wrapAll('<div class="item"></div>');
+		}
+	}
+
 	escrever();
 
 	$(window).resize(function(){
@@ -71,44 +301,6 @@ function youtubeSuccess(data){
 	});
 }
 
-function verifyMidia(qnt){
-	var w = $(window).width();
-
-	var midia = 'xs';
-
-	if (w > 700){
-		midia = 'sm';
-	}
-
-	if(w > 991){
-		midia = 'md'
-	}
-
-	switch (midia){
-		case 'md':
-			sliceProdutos(qnt,4);
-		break;
-
-		case 'sm':
-			sliceProdutos(qnt,3);
-		break;
-
-		case 'xs' :
-			sliceProdutos(qnt,1);
-		break;
-
-		default :
-			sliceProdutos(qnt,1);
-		break;
-
-	}
-}
-
-function sliceProdutos(qnt,cont){
-	for( var i = 0 ; i < qnt; i += cont){
-		$('.youtube-carousel .thumb').slice(i,i+cont).wrapAll('<div class="item"></div>');
-	}
-}
 
 function changeVideo(url){
 	var idVideo = url.replace('https://www.youtube.com/watch?v=','');

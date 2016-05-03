@@ -16,6 +16,7 @@
     "jquery": "1.11",
     "bootstrap-sass": "~3.3.5",
     "fontawesome": "~4.3.0",
-    "lightbox": "~2.8.1"
+    "lightbox": "~2.8.1",
+    "owl-carousel2": "~2.1.1"
   }
 }
