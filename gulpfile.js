@@ -6,9 +6,11 @@
 
 // Gulp e outros
 var gulp 		= require('gulp');
-var rename 	= require("gulp-rename");
-var connect 	= require('gulp-connect-multi')();
+var rename 		= require("gulp-rename");
+var connect 		= require('gulp-connect-multi')();
 var autoprefixer 	= require('gulp-autoprefixer');
+var postcss     		= require('gulp-postcss');
+var sourcemaps   	= require('gulp-sourcemaps');
 
 // templates
 var jade 		= require('gulp-jade');
@@ -16,11 +18,11 @@ var prettify 		= require('gulp-prettify');
 
 // styles
 var sass 		= require('gulp-sass');
-var minifyCss 	= require('gulp-minify-css');
+var minifyCss 		= require('gulp-minify-css');
 
 // IMAGENS
-var imagemin 	= require('gulp-imagemin');
-var pngquant 	= require('imagemin-pngquant');
+var imagemin 		= require('gulp-imagemin');
+var pngquant 		= require('imagemin-pngquant');
 var gulpif 		= require('gulp-if');
 var sprity 		= require('sprity');
 
@@ -74,7 +76,7 @@ gulp.task('sass', function () {
   	gulp.src('source/styles/**/**/**/*.scss')
     	.pipe(sass())
 	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
+		browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
 		cascade: false
 	}))
     	.pipe(gulp.dest('dist/styles'))
@@ -128,6 +130,10 @@ gulp.task('json-wath',function(){
 gulp.task('sass-watch', function () {
   	gulp.src('source/styles/**/**/**/*.scss')
     	.pipe(sass())
+	.pipe(autoprefixer({
+		browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
+		cascade: false
+	}))
     	.pipe(gulp.dest('dist/styles'))
     	.pipe(minifyCss())
     	.pipe(rename('estilos.min.css'))
