@@ -1,38 +1,31 @@
 $(document).ready(function(){
-    $('[data-carousel="single-item"]').each(function(){
-        $(this).owlCarousel({
-            slideSpeed : 500,
-            paginationSpeed : 500,
-            singleItem : true,
-
-            autoPlay: true,
-            stopOnHover: true,
-
-            transitionStyle : "fadeUp"
-        });
-    });
-
-    $('[data-carousel="mult-items"]').each(function(index, el) {
-        var qntDesktop = $(this).data('md-qnt');
-        var qntTablet = $(this).data('sm-qnt');
-        var qntMobile = $(this).data('xs-qnt');
+    $('.owl-carousel').each(function(){
+        var itemsDesk = $(this).data('md-qnt') || 1,
+            itemsTabl = $(this).data('sm-qnt') || 1,
+            itemsMobi = $(this).data('xs-qnt') || 1;
 
         $(this).owlCarousel({
-            items: qntDesktop,
-            itemsCustom : false,
-            itemsDesktop : [1199,qntDesktop],
-            itemsDesktopSmall : false,
-            itemsTablet: [768,qntTablet],
-            itemsTabletSmall: false,
-            itemsMobile : [479,qntMobile],
-            singleItem : false,
-
-            slideSpeed : 200,
-            paginationSpeed : 800,
-            rewindSpeed : 1000,
-
-            autoPlay : true,
-            stopOnHover : true
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            video: true,
+            lazyLoad:true,
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+            responsive:{
+                0:{
+                    items: itemsMobi,
+                    nav: false
+                },
+                768:{
+                    items: itemsTabl,
+                    nav: false
+                },
+                992:{
+                    items: itemsDesk,
+                    nav: false
+                }
+            }
         });
     });
 
@@ -40,13 +33,15 @@ $(document).ready(function(){
         event.preventDefault();
 
         var target = $(this).attr('href');
-        $(target).trigger("owl.prev");
+        // $(target).trigger("owl.prev");
+        $(target).trigger("prev.owl");
     });
 
     $('[data-event="next"]').on('click', function(event){
         event.preventDefault();
 
         var target = $(this).attr('href');
-        $(target).trigger("owl.next");
+        // $(target).trigger("owl.next");
+        $(target).trigger("next.owl");
     });
 });

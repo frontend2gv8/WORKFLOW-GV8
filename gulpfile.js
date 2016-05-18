@@ -64,7 +64,6 @@ gulp.task('jade-watch', function() {
     .pipe(jade({
       locals: 'source/jade/*.jade'
     }))
-    .pipe(sass().on('error', sass.logError))
     .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
     .pipe(connect.reload());
