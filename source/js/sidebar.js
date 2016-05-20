@@ -8,16 +8,16 @@ $('.sidebar span[data-toggle="collapse"]').click(function(){
 		fa.removeClass('fa-plus').addClass('fa-minus')
 	}
 
-	console.log(status)
+	// console.log(status)
 });
 
 $('.sidebar .aux').click(function(){
 	$('.sidebar').removeClass('open');
-})
+});
 
 $('.btn-toggle-sidebar').click(function(){
 	$('.sidebar').addClass('open');
-})
+});
 
 $('html').on('swipeleft',function(){
 	$('.sidebar').removeClass('open');
