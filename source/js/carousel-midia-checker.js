@@ -1,157 +1,90 @@
 /*
-	Para toranar o seu carousel responsivo você  deverá fazer asim com no exemplo abaixo.
+	RESPONSIVE BS CAROUSEL v 2.0
+	Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs
+	'data-md', 'data-sm' e 'data-xs' , a quantidade de itens que vc queira mostrar para tal midia:
 
-		Ex 1:
-			<div class="carousel" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
-				<div class="carousel-inner">
-					<div class="elemento-teste"></div>
-					<div class="elemento-teste"></div>
-				</div>
+	Exemplo:
+		Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
+
+		<div class="carousel carousel-responsive">
+			<div class="carousel-inner">
+
+				<div class="col-md-3 col-sm-4"> ... </div>
+				<div class="col-md-3 col-sm-4"> ... </div>
+				<div class="col-md-3 col-sm-4"> ... </div>
+				<div class="col-md-3 col-sm-4"> ... </div>
+
 			</div>
-
-			<script>
-				$('#meuCarousel').carouselResponsive();
-			</script>
-
-		Ex2:
-			Basta adicionar a classe ".carousel-responsive".
-
-			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
-				<div class="carousel-inner">
-					<div class="elemento-teste"></div>
-					<div class="elemento-teste"></div>
-				</div>
-			</div>
-
-		Ex3:
-			Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
-
-			<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
-				<div class="carousel-inner">
-					<div class="elemento-teste"></div>
-					<div class="elemento-teste"></div>
-				</div>
-
-				<ol className="carousel-indicators"></ol>
-			</div>
-
-		Onde:
-			- "data-md" define a quantidade para desktop;
-			- "data-sm" define a quantidade para tablets;
-			- "data-xs" define a quantidade para dispositivos mobile;
-
-	Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tenha, o mesmo não funcionará.
-
+		</div>
+	OBS:
+		- Os attrs 'data-md', 'data-sm' e 'data-xs' carregam consigo como valor default 1.
+		- É OBRIGATÓRIO a atribuição de um 'id' para o carousel, caso o constrário, o mesmo não funcionará.
 */
+$('.carousel-responsive').each(function(index, el) {
+	var alvo = $('#'+$(this).attr('id'));
+	var items = alvo.find('.carousel-inner > *');
+	var responsive = {
+		'xs': $(this).data('xs') || 1,
+		'sm': $(this).data('sm') || 1,
+		'md': $(this).data('md') || 1
+	};
+	var midia = 'xs';
 
-(function(){
-	function verifyMidia(carouselInner,content,item,count){
-		function wrapCarousel(cont){
-			carouselInner.append(content);
+	if($(window).width() > 700){
+		midia = 'sm';
+	}
 
-			var elemento = '.'+item.prop('class').replace(' ','.');
+	if($(window).width() > 991){
+		midia = 'md';
+	}
 
-			for( i = 0 ; i < item.length ; i += cont ){
-				carouselInner.find(elemento).slice(i , i + cont).wrapAll('<div class="item"></div>');
-			}
+	function wrapCarousel(count){
+		alvo.find('.carousel-inner .item > *').unwrap('<div class="item"></div>');
 
-			carouselInner.find('.item:first-child').addClass('active');
-
-			var indicators = carouselInner.parents('.carousel').data('indicators');
-
-			if(indicators != 'false' && indicators != undefined){
-
-				carouselInner.parents('.carousel').find('.carousel-indicators').html(' ');
-
-				carouselInner.find('.item').each(function(index, el) {
-					var pai = $(this).parents('.carousel');
-					var ol = pai.find('.carousel-indicators');
-					if(index == 0){
-						var primeiro = 'active';
-					}else{
-						var primeiro = ' ';
-					}
-
-					ol.append('<li onclick="$(\'#'+pai.attr('id')+'\').carousel('+index+')" class="'+primeiro+'"></li>');
-				});
-			}
+		for(i=0;i<items.length;i++){
+			alvo.find('.carousel-inner > *').slice(i, i+count).wrapAll('<div class="item"></div>');
 		}
 
-		function refresh(){
-			var w = $(window).width();
-			var midia = 'xs';
-
-			carouselInner.html('');
-
-			if (w > 700){
-				midia = 'sm';
-			}
-
-			if (w > 991){
-				midia = 'md';
-			}
-
-			switch (midia){
-				case 'xs':
-					wrapCarousel(count.xs);
-				break;
-				case 'sm':
-					wrapCarousel(count.sm);
-				break;
-				case 'md':
-					wrapCarousel(count.md);
-				break;
-				default:
-					wrapCarousel(1);
-				break;
-			}
-		};
-
-		refresh();
-
-		$(window).resize(function(event) {
-			refresh();
-		});
+		alvo.find('.item:first-child').addClass('active');
 	}
 
-	$.fn.carouselResponsive = function (options){
-		return this.each(function(){
-			var id = this.getAttribute('id');
-			var carousel = $(this);
-			var content = $('#'+id+' .carousel-inner').html();
-			var item = $('#'+id+' .carousel-inner > *');
-
-			var count = {
-				'md' : $('#'+id).data('md') || 1,
-				'sm' : $('#'+id).data('sm') || 1,
-				'xs' : $('#'+id).data('xs') || 1,
-			};
-
-			verifyMidia($('#'+id+' .carousel-inner'),content,item,count);
-		});
+	function refreshCarousel (){
+		switch(midia){
+			case 'xs':
+				wrapCarousel(responsive[midia]);
+			break;
+			case 'sm':
+				wrapCarousel(responsive[midia]);
+			break;
+			case 'md':
+				wrapCarousel(responsive[midia]);
+			break;
+		}
 	}
 
+	refreshCarousel ();
 
-})(jQuery);
-
-$('.carousel[data-interval]').carousel({
-	interval : $(this).data('interval')
+	$(window).resize(function(event) {
+		refreshCarousel ();
+	});
 });
 
-$('.carousel-responsive').carouselResponsive();
-
-$('[data-carousel="prev"]').click(function(event){
-	var alvo = $(this).attr('href');
-	event.preventDefault();
-
-	$(alvo).carousel('prev');
+$('.carousel[data-interval]').each(function(index, el) {
+	$(this).carousel({
+		interval: $(this).data('interval')
+	});
 });
 
-$('[data-carousel="next"]').click(function(event){
-	var alvo = $(this).attr('href');
+$('a[data-carousel="prev"]').click(function(event) {
 	event.preventDefault();
 
-	$(alvo).carousel('next');
+	$($(this).attr('href')).carousel('prev');
+});
+
+$('a[data-carousel="next"]').click(function(event) {
+	event.preventDefault();
+
+	$($(this).attr('href')).carousel('next');
 });
 
 $('.carousel').on('swipeleft',function(){

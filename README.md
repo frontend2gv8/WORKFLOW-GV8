@@ -16,61 +16,26 @@
 - Clientes/ Parceiros
 - Páginas com Formulário
 
-Para toranar o seu carousel responsivo você  deverá fazer asim com no exemplo abaixo.
 
-Ex 1:
+## RESPONSIVE BS CAROUSEL v 2.0
+
+Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs **'data-md'**, **'data-sm'** e **'data-xs'** , a quantidade de itens que você queira mostrar para tal midia:
+
+### Exemplo:
+
+Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
+
 ```
-<div class="carousel" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
+<div class="carousel carousel-responsive">
 	<div class="carousel-inner">
-		<div class="elemento-teste"></div>
-		<div class="elemento-teste"></div>
+		<div class="col-md-3 col-sm-4"> ... </div>
+		<div class="col-md-3 col-sm-4"> ... </div>
+		<div class="col-md-3 col-sm-4"> ... </div>
+		<div class="col-md-3 col-sm-4"> ... </div>
 	</div>
 </div>
-
-<script>
-	$('#meuCarousel').carouselResponsive();
-</script>
 ```
-Ex2:
-Basta adicionar a classe ".carousel-responsive".
 
-```
-<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde">
-	<div class="carousel-inner">
-		<div class="elemento-teste"></div>
-		<div class="elemento-teste"></div>
-	</div>
-</div>
-
-Ex3:
-Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
-
-```
-<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
-	<div class="carousel-inner">
-		<div class="elemento-teste"></div>
-		<div class="elemento-teste"></div>
-	</div>
-
-	<ol className="carousel-indicators"></ol>
-</div>
-
-Ex3:
-Com indicadores (pagers), basta adicionar o atributo [data-indicators="true"] caso nao o tenha ele sará tratado como false
-
-```
-<div class="carousel carousel-responsive" id="meuCarousel" data-md="$qtde" data-sm="$qtde" data-xs="$qtde" data-indicators="true">
-	<div class="carousel-inner">
-		<div class="elemento-teste"></div>
-		<div class="elemento-teste"></div>
-	</div>
-
-	<ol className="carousel-indicators"></ol>
-</div>
-
-Onde:
-- "data-md" define a quantidade para desktop;
-- "data-sm" define a quantidade para tablets;
-- "data-xs" define a quantidade para dispositivos mobile;
-
-Obs:  É obrigatória a atribuição de um id para o carousel, caso não o tenha, o mesmo não funcionará.
+**OBS:**
+- Os attrs **'data-md'**, **'data-sm'** e **'data-xs'** carregam consigo como valor default 1.
+- É **OBRIGATÓRIO** a atribuição de um **'id'** para o carousel, caso o constrário, o mesmo **não** funcionará.
