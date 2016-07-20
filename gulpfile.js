@@ -10,6 +10,7 @@ var rename 	= require("gulp-rename");
 var connect 	= require('gulp-connect-multi')();
 var autoprefixer 	= require('gulp-autoprefixer');
 
+var autoprefixer 	= require('gulp-autoprefixer');
 // templates
 var jade 		= require('gulp-jade');
 var prettify 		= require('gulp-prettify');
@@ -73,6 +74,10 @@ gulp.task('jade-watch', function() {
 gulp.task('sass', function () {
   	gulp.src('source/styles/**/**/**/*.scss')
     	.pipe(sass())
+	.pipe(autoprefixer({
+		browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
+		cascade: false
+	}))
 	.pipe(autoprefixer({
 		browsers: ['last 2 versions'],
 		cascade: false
