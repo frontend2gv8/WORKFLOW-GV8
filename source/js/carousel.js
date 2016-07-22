@@ -12,6 +12,9 @@ $(document).ready(function(){
             lazyLoad:true,
             animateIn: 'fadeIn',
             animateOut: 'fadeOut',
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true,
             responsive:{
                 0:{
                     items: itemsMobi,
