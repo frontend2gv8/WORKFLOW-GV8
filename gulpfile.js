@@ -5,30 +5,30 @@
 // SHABLAU
 
 // Gulp e outros
-var gulp 		= require('gulp');
-var rename 		= require("gulp-rename");
+var gulp 			= require('gulp');
+var rename 			= require("gulp-rename");
 var connect 		= require('gulp-connect-multi')();
 var autoprefixer 	= require('gulp-autoprefixer');
-var postcss     		= require('gulp-postcss');
+var postcss     	= require('gulp-postcss');
 var sourcemaps   	= require('gulp-sourcemaps');
 
 // templates
-var jade 		= require('gulp-jade');
+var jade 			= require('gulp-jade');
 var prettify 		= require('gulp-prettify');
 
 // styles
-var sass 		= require('gulp-sass');
+var sass 			= require('gulp-sass');
 var minifyCss 		= require('gulp-minify-css');
 
 // IMAGENS
 var imagemin 		= require('gulp-imagemin');
 var pngquant 		= require('imagemin-pngquant');
-var gulpif 		= require('gulp-if');
-var sprity 		= require('sprity');
+var gulpif 			= require('gulp-if');
+var nsg 			= require('node-sprite-generator');
 
 // JS
-var concat 		= require('gulp-concat');
-var uglify 		= require('gulp-uglify');
+var concat 			= require('gulp-concat');
+var uglify 			= require('gulp-uglify');
 
 //======================================
 
@@ -156,26 +156,26 @@ gulp.task('tipografia-watch',function(){
 
 // SPRITES --------------------------------------------------------
 gulp.task('sprites', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')));
+	nsg({
+	    src: [
+	        'source/sprites/*.png'
+	    ],
+	    spritePath: 'source/imagens/estrutural/sprite.png',
+	    stylesheet: 'source/sprites/sprite.tlp',
+	    stylesheetPath: 'source/styles/components/elements/_sprites.scss'
+	});
 });
 
 gulp.task('sprites-watch', function () {
-	sprity.src({
-		src: 'source/sprites/**/*.{png,jpg}',
-		style: './_sprites.scss',
-		// ... other optional options
-		// for example if you want to generate scss instead of css
-		processor: 'sass', // make sure you have installed sprity-sass
-	})
-	.pipe(gulpif('*.png', gulp.dest('source/imagens/estrutural/'), gulp.dest('source/styles/components/elements/')))
-	.pipe(connect.reload());
+	nsg({
+	    src: [
+	        'source/sprites/*.png'
+	    ],
+	    spritePath: 'source/imagens/estrutural/sprite.png',
+	    stylesheet: 'source/sprites/sprite.tlp',
+	    stylesheetPath: 'source/styles/components/elements/_sprites.scss'
+	});
+	connect.reload();
 });
 
 // IMGS -----------------------------------

@@ -1,10 +1,5 @@
-$icons: (
-    'br': 0 0 18px 14px,
-    'download': 0 -14px 58px 48px,
-    'en': 0 -62px 18px 10px,
-    'es': 0 -72px 18px 14px,
-    'gv8': 0 -86px 66px 21px,
-    'logo': 0 -107px 308px 170px,
+$icons: (<% layout.images.forEach(function (image) { %>
+    '<%= image.className %>': <%= getCSSValue(-image.x) %> <%= getCSSValue(-image.y) %> <%= getCSSValue(image.width) %> <%= getCSSValue(image.height) %>,<% }); %>
 );
 
 .icon{
