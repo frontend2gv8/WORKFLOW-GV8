@@ -60,3 +60,11 @@ mixin googlePlus-root
 //- Posicione esta tag onde você deseja que o botão +1 apareça.
 mixin googlePlus(link)
 	.g-plusone(data-annotation="inline", data-width="300", data-href="#{link}")
+//- mixin googlePlus(link)
+
+mixin svgSprite($id,$width,$height,$file)
+	-var file = $file || 'imagens/estrutural/sprites.svg'
+	-var id = $id || ' '
+	svg(width=$width,height=$height,xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink")
+		use(xlink:href="#{file}#{$id}")
+//- mixin svgSprite($id,$width,$height,$file)

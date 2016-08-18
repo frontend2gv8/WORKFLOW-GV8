@@ -25,6 +25,9 @@ var imagemin 		= require('gulp-imagemin');
 var pngquant 		= require('imagemin-pngquant');
 var gulpif 			= require('gulp-if');
 var nsg 			= require('node-sprite-generator');
+var svgstore 		= require('gulp-svgstore');
+var svgmin 			= require('gulp-svgmin');
+var path 			= require('path');
 
 // JS
 var concat 			= require('gulp-concat');
@@ -178,6 +181,44 @@ gulp.task('sprites-watch', function () {
 	connect.reload();
 });
 
+gulp.task('svgstore', function () {
+    return gulp
+        .src('source/sprites/*.svg')
+        .pipe(svgmin(function (file) {
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+            return {
+                plugins: [{
+                    cleanupIDs: {
+                        prefix: prefix + '-',
+                        minify: true
+                    }
+                }]
+            }
+        }))
+        .pipe(svgstore())
+        .pipe(gulp.dest('dist/imagens/estrutural'));
+});
+
+gulp.task('svgstore-watch', function () {
+    return gulp
+        .src('source/sprites/*.svg')
+        .pipe(svgmin(function (file) {
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+            return {
+                plugins: [{
+                    cleanupIDs: {
+                        prefix: prefix + '-',
+                        minify: true
+                    }
+                }]
+            }
+        }))
+        .pipe(svgstore())
+        .pipe(gulp.dest('dist/imagens/estrutural'));
+        connect.reload();
+});
+
+
 // IMGS -----------------------------------
 gulp.task('imagens', ['sprites'], function () {
     gulp.src('source/imagens/**/*')
@@ -221,7 +262,8 @@ gulp.task('watch',['dev','server'],function(){
 	});
 
 	// SPRITES ================================
-	gulp.watch(['source/sprites/**/*'],['sprites-watch']);
+	gulp.watch(['source/sprites/*.png'],['sprites-watch']);
+	gulp.watch(['source/sprites/*.svg'],['svgstore-watch']);
 
 	// JSON ==================================
 	gulp.watch(['source/json/*.json']).on('change',function(file){
@@ -238,11 +280,11 @@ gulp.task('server', connect.server({
 	port: 9000,
 	livereload: true,
 	open: {
-		browser: 'chromium-browser' // Para o Google chrome no linux - google-chrome-stable
+		browser: 'google-chrome-stable' // Para o Google chrome no linux - google-chrome-stable
 	}
 }));
 
 // DEFAULT ----------------------------
-gulp.task('dev',['imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia']);
+gulp.task('dev',['imagens','svgstore','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia']);
 
 gulp.task('default',['watch']);

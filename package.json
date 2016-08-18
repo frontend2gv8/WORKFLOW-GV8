@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "bower": "^1.4.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -24,9 +24,10 @@
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
-    "imagemin-pngquant": "^4.1.2"
-  },
-  "dependencies": {
-    "node-sprite-generator": "^0.10.2"
+    "imagemin-pngquant": "^4.1.2",
+    "node-sprite-generator" : "^0.10.2",
+    "gulp-svgmin": "^1.2.2",
+    "path": "^0.12.7",
+    "gulp-svgstore": "^6.0.0"
   }
 }
