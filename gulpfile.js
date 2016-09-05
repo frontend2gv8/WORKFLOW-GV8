@@ -13,7 +13,7 @@ var postcss     	= require('gulp-postcss');
 var sourcemaps   	= require('gulp-sourcemaps');
 
 // templates
-var jade 			= require('gulp-jade');
+var pug 			= require('gulp-pug');
 var prettify 		= require('gulp-prettify');
 
 // styles
@@ -53,21 +53,21 @@ var tipografia = [
 ];
 
 // TEMPLATE ---------------------------------|
-gulp.task('jade', function() {
+gulp.task('pug', function() {
 
-  gulp.src('source/jade/*.jade')
-    .pipe(jade({
-      locals: 'source/jade/*.jade'
+  gulp.src('source/pug/*.pug')
+    .pipe(pug({
+      locals: 'source/pug/*.pug'
     }))
     .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('jade-watch', function() {
+gulp.task('pug-watch', function() {
 
-  gulp.src('source/jade/*.jade')
-    .pipe(jade({
-      locals: 'source/jade/*.jade'
+  gulp.src('source/pug/*.pug')
+    .pipe(pug({
+      locals: 'source/pug/*.pug'
     }))
     .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
@@ -233,8 +233,8 @@ gulp.task('imagens', ['sprites'], function () {
 
 // WATCH -------------------------------
 gulp.task('watch',['dev','server'],function(){
-	// JADE =================================
-	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);
+	// pug =================================
+	gulp.watch(['source/pug/**/*.pug'],['pug-watch']);
 
 	// SASS =================================
 	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);
@@ -285,6 +285,6 @@ gulp.task('server', connect.server({
 }));
 
 // DEFAULT ----------------------------
-gulp.task('dev',['imagens','svgstore','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia']);
+gulp.task('dev',['imagens','svgstore','json', 'pug', 'sass', 'libs', 'scripts', 'tipografia']);
 
 gulp.task('default',['watch']);
