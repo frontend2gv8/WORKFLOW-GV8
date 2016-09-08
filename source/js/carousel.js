@@ -2,11 +2,12 @@ $(document).ready(function(){
     $('.owl-carousel').each(function(){
         var itemsDesk = $(this).data('md-qnt') || 1,
             itemsTabl = $(this).data('sm-qnt') || 1,
-            itemsMobi = $(this).data('xs-qnt') || 1;
+            itemsMobi = $(this).data('xs-qnt') || 1,
+            margin    = $(this).data('margin') || 10;
 
         $(this).owlCarousel({
             loop: true,
-            margin: 10,
+            margin: margin,
             responsiveClass: true,
             video: true,
             lazyLoad:true,

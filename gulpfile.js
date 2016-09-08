@@ -12,7 +12,8 @@ var autoprefixer 	= require('gulp-autoprefixer');
 
 var autoprefixer 	= require('gulp-autoprefixer');
 // templates
-var jade 		= require('gulp-jade');
+
+var pug 			= require('gulp-pug');
 var prettify 		= require('gulp-prettify');
 
 // styles
@@ -34,7 +35,8 @@ var uglify 		= require('gulp-uglify');
 var libsJs 		= [
 	'bower_components/jquery/dist/jquery.min.js',
     'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-	'bower_components/owl-carousel2/dist/owl.carousel.min.js'
+	'bower_components/owl-carousel2/dist/owl.carousel.min.js',
+	'source/libs/smoothscroll.js'
 ];
 
 var lightbox 	= [
@@ -49,25 +51,24 @@ var tipografia = [
 ];
 
 // TEMPLATE ---------------------------------|
-gulp.task('jade', function() {
 
-  gulp.src('source/jade/*.jade')
-    .pipe(jade({
-      locals: 'source/jade/*.jade'
-    }))
-    .pipe(prettify({indent_size: 4}))
-    .pipe(gulp.dest('./dist/'))
+gulp.task('pug', function() {
+  return gulp.src('./source/pug/*.pug')
+  .pipe(pug({
+      locals: 'source/**/*.pug'
+  }))
+  .pipe(prettify({indent_size: 4}))
+  .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('jade-watch', function() {
-
-  gulp.src('source/jade/*.jade')
-    .pipe(jade({
-      locals: 'source/jade/*.jade'
-    }))
-    .pipe(prettify({indent_size: 4}))
-    .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload());
+gulp.task('pug-watch', function() {
+  return gulp.src('./source/pug/*.pug')
+  .pipe(pug({
+      locals: 'source/**/*.jade'
+  }))
+  .pipe(prettify({indent_size: 4}))
+  .pipe(gulp.dest('./dist/'))
+  .pipe(connect.reload());
 });
 
 //SASS --------------------------------------|
@@ -192,7 +193,7 @@ gulp.task('imagens', function () {
 // WATCH -------------------------------
 gulp.task('watch',['dev','server'],function(){
 	// JADE =================================
-	gulp.watch(['source/jade/**/*.jade'],['jade-watch']);
+	gulp.watch(['source/pug/**/*.pug'],['pug-watch']);
 
 	// SASS =================================
 	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);
@@ -242,6 +243,6 @@ gulp.task('server', connect.server({
 }));
 
 // DEFAULT ----------------------------
-gulp.task('dev',['imagens','json', 'jade', 'sass', 'libs', 'scripts', 'tipografia']);
+gulp.task('dev',['imagens','json', 'pug', 'sass', 'libs', 'scripts', 'tipografia']);
 
 gulp.task('default',['watch']);
