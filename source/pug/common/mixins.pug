@@ -12,23 +12,60 @@ mixin paginacao
 //- Formularios
 mixin campo(tipo,id,nome)
 	.form-group
-		label(for="#{id}") #{nome}
-		input(type="#{tipo}", id="#{id}", name="#{id}",class="form-control")
+		label(for=id)=nome
+		input(type=tipo, id=id, name=id,class="form-control")
 	// /.form-group
 
 mixin textarea(rows,id,nome)
 	.form-group
-		label(for="#{id}") #{nome}
-		textarea(class="form-control",id="#{id}",name="#{id}",rows="#{rows}")
+		label(for=id)=nome
+		textarea(class="form-control",id=id,name=id,rows=rows)
 	// /.form-group
 
 mixin select(id, nome)
 	.form-group
-		label(for="#{id}") #{nome}
-		select(class="form-control",id="#{id}",name="#{id}")
+		label(for=id)=nome
+		select(class="form-control",id=id,name=id)
 			option(value="1") Opção 1
 			option(value="2") Opção 2
 	// .form-group
+//- ======================================================
+mixin uf(id)
+	-var id = id || 'uf-cadastro'
+	select(name=id,id=id).form-control
+		option Selecione seu estado
+		optgroup(label="Norte")
+			option(value="Acre") Acre
+			option(value="Amapá") Amapá
+			option(value="Amazonas") Amazonas
+			option(value="Pará") Pará
+			option(value="Roraima") Roraima
+			option(value="Rondônia") Rondônia
+			option(value="Tocantins") Tocantins
+		optgroup(label="Nordeste")
+			option(value="Alagoas") Alagoas
+			option(value="Bahia") Bahia
+			option(value="Ceará") Ceará
+			option(value="Maranhao") Maranhao
+			option(value="Paraíba") Paraíba
+			option(value="Pernambuco") Pernambuco
+			option(value="Piauí") Piauí
+			option(value="Rio Grande do Norte") Rio Grande do Norte
+			option(value="Sergipe") Sergipe
+		optgroup(label="Centro")
+			option(value="Distrito Federal") Distrito Federal
+			option(value="Goiás") Goiás
+			option(value="Mato Grosso") Mato Grosso
+			option(value="Mato grosso do Sul") Mato grosso do Sul
+		optgroup(label="Sudeste")
+			option(value="Espirito Santo") Espirito Santo
+			option(value="Minas Gerais") Minas Gerais
+			option(value="Rio de Janeiro") Rio de Janeiro
+			option(value="São Paulo") São Paulo
+		optgroup(label="Sul")
+			option(value="Paraná") Paraná
+			option(value="Rio Grande do Sul") Rio Grande do Sul
+			option(value="Santa Catarina") Santa Catarina
 //- ======================================================
 
 //- GOOGLE MAPS
@@ -66,5 +103,5 @@ mixin svgSprite($id,$width,$height,$file)
 	-var file = $file || 'imagens/estrutural/sprites.svg'
 	-var id = $id || ' '
 	svg(width=$width,height=$height,xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink")
-		use(xlink:href="#{file}#{$id}")
+		use(xlink:href=file+$id)
 //- mixin svgSprite($id,$width,$height,$file)

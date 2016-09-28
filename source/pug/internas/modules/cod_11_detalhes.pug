@@ -1,30 +1,32 @@
-// CONTEUDO
-section.internas
-	.container
-		header.page-header
-			h1 Produtos || Serviços
-		// page-header
+mixin code11_detalhes(titulo)
+	-var title = titulo || 'Produtos || Serviços'
+	// CONTEUDO
+	main.internas
+		.container
+			header.page-header
+				h1 #{title}
+			// page-header
 
 
-		.row
-			article.col-sm-5.mgb-30
-				figure.mgb-15
-					a(href="http://dummyimage.com/1000x1000/33B3B1/fff.gif&text=placeholder+image",data-lightbox="image-1",title="nome/descricao")
-						img(src="http://dummyimage.com/500x500/33B3B1/fff.gif&text=placeholder+image", alt="noe/descricao").img-responsive
-				.album
-					-for(var x=0;x<4;x++)
-						figure
-							a(href="http://dummyimage.com/1000x1000/33B3B1/fff.gif&text=placeholder+image",data-lightbox="image-1",title="nome/descricao")
-								img(src="http://dummyimage.com/100x100/33B3B1/fff.gif&text=placeholder+image", alt="noe/descricao").img-responsive
-			article.col-sm-7.mgb-30
-				h1.title-internas Nome do Produto / Serviço
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
-				p #[strong Valor:] R$ 000,00
-		//- .row
+			.row
+				article.col-sm-5.mgb-30
+					figure.mgb-15
+						a(href="http://dummyimage.com/1000x1000/33B3B1/fff.gif&text=placeholder+image",data-lightbox="image-1",title="nome/descricao")
+							img(src="http://dummyimage.com/500x500/33B3B1/fff.gif&text=placeholder+image", alt="noe/descricao").img-responsive
+					.album
+						-for(var x=0;x<4;x++)
+							figure
+								a(href="http://dummyimage.com/1000x1000/33B3B1/fff.gif&text=placeholder+image",data-lightbox="image-1",title="nome/descricao")
+									img(src="http://dummyimage.com/100x100/33B3B1/fff.gif&text=placeholder+image", alt="noe/descricao").img-responsive
+				article.col-sm-7.mgb-30
+					h1.title-internas Nome do Produto / Serviço
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi tempore ipsum laudantium excepturi. Quod voluptatem, minus ducimus veritatis soluta nostrum eaque maiores ipsum sed deleniti perferendis quam aspernatur a, dicta commodi. Numquam et magnam dignissimos ipsum rem sunt dicta excepturi fuga perspiciatis vero eveniet qui, modi laudantium illo sed harum unde quos quod, doloribus iure non. Sequi recusandae facilis asperiores, nulla suscipit iste eaque repudiandae reiciendis ipsa, laudantium delectus officia quisquam assumenda, molestiae aperiam quam reprehenderit? Amet maxime, incidunt adipisci.
+					p #[strong Valor:] R$ 000,00
+			//- .row
 
-		.text-right
-			a(href="#").btn.btn-danger.btn-voltar Voltar
-	//- .container
-// internas
+			.text-right
+				a(href="#").btn.btn-danger.btn-voltar Voltar
+		//- .container
+	// internas

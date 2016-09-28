@@ -1,18 +1,22 @@
-// CONTEUDO
-section.internas
-	.container
-		header.page-header
-			h1 Galeria de Fotos
-		// page-header
+mixin code29(titulo,linkInternas)
+	-var title = titulo || 'Galeria de Fotos'
+	-var link = linkInternas
+	// CONTEUDO
+	main.internas
+		.container
+			header.page-header
+				h1=title
+			// page-header
 
 
-		-for(var x=0;x<4;x++)
-			article.row.galeria-h
-				.col-sm-3.col-md-2
-					img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive.mgb-10
-				.col-sm-9.col-md-10hmmm
-					h1.nome Nome da Galeria.
-					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem id officia, reiciendis vitae officiis a commodi consequuntur amet magni. Eveniet dolorum modi suscipit ipsam, fugit odit atque sapiente? Dolores architecto, modi odit repudiandae, corporis omnis officiis harum animi praesentium laudantium molestiae debitis aut, quos et distinctio, suscipit atque doloribus reiciendis veniam earum tenetur excepturi aperiam. Veniam molestias suscipit distinctio nihil eum odio eveniet sapiente repudiandae exercitationem, vitae nam, voluptatum voluptates nisi cum hic rem incidunt tempore. Architecto alias, quod incidunt!
-		+paginacao
-	//- .container
-// internas
+			-for(var x=0;x<4;x++)
+				article.row.galeria-h
+					a(hrf=link)
+						.col-sm-3.col-md-2
+							img(src="http://dummyimage.com/220x220/33B3B1/fff.gif&text=placeholder+image", alt="descricao").img-responsive.mgb-10
+						.col-sm-9.col-md-10hmmm
+							h1.nome Nome da Galeria.
+							p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem id officia, reiciendis vitae officiis a commodi consequuntur amet magni. Eveniet dolorum modi suscipit ipsam, fugit odit atque sapiente? Dolores architecto, modi odit repudiandae, corporis omnis officiis harum animi praesentium laudantium molestiae debitis aut, quos et distinctio, suscipit atque doloribus reiciendis veniam earum tenetur excepturi aperiam. Veniam molestias suscipit distinctio nihil eum odio eveniet sapiente repudiandae exercitationem, vitae nam, voluptatum voluptates nisi cum hic rem incidunt tempore. Architecto alias, quod incidunt!
+			+paginacao
+		//- .container
+	// internas
