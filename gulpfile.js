@@ -5,48 +5,51 @@
 // SHABLAU
 
 // Gulp e outros
-var gulp 			= require('gulp');
-var rename 			= require("gulp-rename");
-var connect 		= require('gulp-connect-multi')();
-var autoprefixer 	= require('gulp-autoprefixer');
-var postcss     	= require('gulp-postcss');
-var sourcemaps   	= require('gulp-sourcemaps');
+const gulp 					= require('gulp');
+const rename 				= require("gulp-rename");
+const connect 				= require('gulp-connect-multi')();
+const autoprefixer 			= require('gulp-autoprefixer');
+const postcss     			= require('gulp-postcss');
+const sourcemaps   			= require('gulp-sourcemaps');
 
 // templates
-var pug 			= require('gulp-pug');
-var prettify 		= require('gulp-prettify');
+const pug 					= require('gulp-pug');
+const prettify 				= require('gulp-prettify');
 
 // styles
-var sass 			= require('gulp-sass');
-var minifyCss 		= require('gulp-minify-css');
+const sass 					= require('gulp-sass');
+const minifyCss 			= require('gulp-minify-css');
 
 // IMAGENS
-var imagemin 		= require('gulp-imagemin');
-var pngquant 		= require('imagemin-pngquant');
-var gulpif 			= require('gulp-if');
-var nsg 			= require('node-sprite-generator');
-var svgstore 		= require('gulp-svgstore');
-var svgmin 			= require('gulp-svgmin');
-var path 			= require('path');
+const imagemin 				= require('imagemin');
+const imageminWebp 			= require('imagemin-webp');
+const imageminJpegoptim 	= require('imagemin-jpegoptim');
+const imageminPngquant 		= require('imagemin-pngquant');
+const imageminSvgo 			= require('imagemin-svgo');
+const gulpif 				= require('gulp-if');
+const nsg 					= require('node-sprite-generator');
+const svgstore 				= require('gulp-svgstore');
+const svgmin 				= require('gulp-svgmin');
+const path 					= require('path');
 
 // JS
-var concat 			= require('gulp-concat');
-var uglify 			= require('gulp-uglify');
+const concat 				= require('gulp-concat');
+const uglify 				= require('gulp-uglify');
 
 //======================================
 
-var libsJs 		= [
+const libsJs 		= [
 	'bower_components/jquery/dist/jquery.min.js',
 	'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
 	'source/libs/*.js'
 ];
 
-var lightbox 	= [
+const lightbox 	= [
 	'bower_components/lightbox/dist/js/lightbox.min.map',
 	'bower_components/lightbox/dist/js/lightbox.min.js'
 ];
 
-var tipografia = [
+const tipografia = [
 	'bower_components/fontawesome/fonts/*',
 	'bower_components/bootstrap-sass/assets/fonts/**/*',
 	'source/fonts/**/*'
@@ -220,15 +223,50 @@ gulp.task('svgstore-watch', function () {
 
 
 // IMGS -----------------------------------
+function runIMages(dirIn,dirOut,conf){
+	return imagemin([dirIn], dirOut,conf);
+};
+
+const imgsCfg = {
+	use: [
+		imageminPngquant({
+			quality: '65-80'
+		}),
+		imageminJpegoptim({
+			max: 80,
+			progressive: true
+		})
+	]
+};
+
+const svgConf = {
+	use: [
+		imageminSvgo({
+            plugins: [
+                {removeViewBox: false}
+            ]
+        })
+	]
+};
+
+const webpConf = {
+	use: [
+		imageminWebp({quality:80})
+	]
+};
+
 gulp.task('imagens', ['sprites'], function () {
-    gulp.src('source/imagens/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            optimizationLevel:7,
-            use: [pngquant()]
-        }))
-        .pipe(gulp.dest('dist/imagens'));
+	runIMages('source/imagens/estrutural/*.{jpg,png,ico}','dist/imagens/estrutural',imgsCfg);
+	runIMages('source/imagens/conteudo/*.{jpg,png,ico}','dist/imagens/conteudo',imgsCfg);
+	runIMages('source/imagens/banners/*.{jpg,png,ico}','dist/imagens/banners',imgsCfg);
+	
+	runIMages('source/imagens/estrutural/*.svg','dist/imagens/estrutural',svgConf);
+	runIMages('source/imagens/conteudo/*.svg','dist/imagens/conteudo',svgConf);
+	runIMages('source/imagens/banners/*.svg','dist/imagens/banners',svgConf);
+
+	runIMages('source/imagens/estrutural/*.{jpg,png}','dist/imagens/estrutural',webpConf);
+	runIMages('source/imagens/conteudo/*.{jpg,png}','dist/imagens/conteudo',webpConf);
+	runIMages('source/imagens/banners/*.{jpg,png}','dist/imagens/banners',webpConf);
 });
 
 // WATCH -------------------------------
@@ -247,18 +285,20 @@ gulp.task('watch',['dev','server'],function(){
 
 	// IMAGENS ===============================
 	gulp.watch(['source/imagens/**/*']).on('change',function(file){
-		var urlRelativa = file.path.split('imagens/')[1];
-		var pasta = urlRelativa.split('/')[0];
+		let urlRelativa = file.path.split('imagens/')[1];
+		let pasta = urlRelativa.split('/')[0];
+		let fileExtension = urlRelativa.split('.')[1];
 
-		gulp.src(file.path)
-		.pipe(imagemin({
-	            	progressive: true,
-	            	svgoPlugins: [{removeViewBox: false}],
-	            	optimizationLevel:7,
-	            	use: [pngquant()]
-	        	}))
-	        	.pipe(gulp.dest('dist/imagens/'+pasta))
-	        	.pipe(connect.reload());
+		if(fileExtension == 'svg'){
+			runIMages(file.path,'dist/imagens/'+pasta,svgConf);
+			console.log('O arquivo '+urlRelativa+' foi compilado com sucesso!')
+		}else{
+			runIMages(file.path,'dist/imagens/'+pasta,imgsCfg);
+			runIMages(file.path,'dist/imagens/'+pasta,webpConf);
+			console.log('O arquivo '+urlRelativa+' foi compilado com sucesso!')
+		}
+
+		// conect.reload();
 	});
 
 	// SPRITES ================================
