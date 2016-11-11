@@ -80,15 +80,19 @@ gulp.task('pug-watch', function() {
 //SASS --------------------------------------|
 gulp.task('sass', function () {
   	gulp.src('source/styles/**/**/**/*.scss')
-    	.pipe(sass())
+    .pipe(sass())
 	.pipe(autoprefixer({
 		browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
 		cascade: false
 	}))
-    	.pipe(gulp.dest('dist/styles'))
-    	.pipe(minifyCss())
-    	.pipe(rename('estilos.min.css'))
-    	.pipe(gulp.dest('dist/styles'));
+	.pipe(sourcemaps.init())
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest('dist/styles'))
+	.pipe(minifyCss())
+	.pipe(rename('estilos.min.css'))
+	.pipe(sourcemaps.init())
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest('dist/styles'));
 });
 
 // JS ---------------------------------------|
@@ -103,10 +107,16 @@ gulp.task('libs',function(){
 
 gulp.task('scripts',function(){
 	gulp.src('source/js/**/*.js')
+		.pipe(sourcemaps.init())
 		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest('dist/js'))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/js'));
+
+	gulp.src('source/js/**/*.js')
+		.pipe(sourcemaps.init())
+		.pipe(concat('scripts.min.js'))
 		.pipe(uglify())
-		.pipe(rename('scripts.min.js'))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/js'));
 });
 

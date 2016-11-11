@@ -1,14 +1,16 @@
 {
   "name": "workflow",
-  "version": "1.0.2",
-  "description": "workflow",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "teste"
+  "version": "1.0.3",
+  "description": "workflow web front-end",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/frontend2gv8/WORKFLOW-GV8.git",
+    "type": "git"
   },
-  "author": "Danilo B. Souza",
-  "license": "ISC",
+  "author": "frontend2 <frontend2gv8@gmail.com>",
+  "license": "MIT",
   "dependencies": {
+    "gulp": "^3.9.1",
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -27,9 +29,7 @@
     "gulp-uglify": "^2.0.0",
     "imagemin-pngquant": "^5.0.0",
     "node-sprite-generator": "^0.10.2",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
+    "path": "^0.12.7",
     "gulp-clean": "^0.3.2",
     "imagemin": "^5.2.2",
     "imagemin-jpegoptim": "^5.0.0",

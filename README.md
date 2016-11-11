@@ -39,3 +39,9 @@ Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
 **OBS:**
 - Os attrs **'data-md'**, **'data-sm'** e **'data-xs'** carregam consigo como valor default 1.
 - É **OBRIGATÓRIO** a atribuição de um **'id'** para o carousel, caso o constrário, o mesmo **não** funcionará.
+
+# YARN
+
+Foi-se migrado do npm para yarn, que é outro gerenciador de dependências like a npm, no entanto é mais rápido e também funciona offiline.
+
+Para mais informações sobre o yarn, acesse https://yarnpkg.com/
