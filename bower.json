@@ -12,10 +12,10 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "jquery": "~1.11",
-    "bootstrap-sass": "^3.3.5",
-    "fontawesome": "^4.3.0",
-    "lightbox": "~2.8.1"
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "lightbox2": "lightbox#^2.9.0"
   }
 }

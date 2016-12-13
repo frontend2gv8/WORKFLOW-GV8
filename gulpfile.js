@@ -330,7 +330,7 @@ gulp.task('server', connect.server({
 	port: 9000,
 	livereload: true,
 	open: {
-		browser: 'google-chrome-stable' // Para o Google chrome no linux - google-chrome-stable
+		browser: 'safari' // Para o Google chrome no linux - google-chrome-stable
 	}
 }));
 

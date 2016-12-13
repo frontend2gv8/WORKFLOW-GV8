@@ -5,7 +5,7 @@ $icons: (<% layout.images.forEach(function (image) { %>
 .icon{
     display:inline-block;
     background-image: url(#{$imgs}/sprite.png);
-    background-respeat:no-repeat;
+    background-repeat:no-repeat;
 }
 
 @mixin sprites($icons) {
