@@ -45,12 +45,12 @@ const libsJs 		= [
 ];
 
 const lightbox 	= [
-	'bower_components/lightbox/dist/js/lightbox.min.map',
-	'bower_components/lightbox/dist/js/lightbox.min.js'
+	'bower_components/lightbox2/dist/js/lightbox.min.map',
+	'bower_components/lightbox2/dist/js/lightbox.min.js'
 ];
 
 const tipografia = [
-	'bower_components/fontawesome/fonts/*',
+	'bower_components/font-awesome/fonts/*',
 	'bower_components/bootstrap-sass/assets/fonts/**/*',
 	'source/fonts/**/*'
 ];
