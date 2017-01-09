@@ -14,6 +14,8 @@ html(lang="pt-br")
 		include mixins.pug
 
 	body
+		-var imgConteudo = 'imagens/conteudo/'
+		-var imgEstrutural = 'imagens/estrutural/'
 		noscript
 			.alert.alert-warning.text-center
 				h1 Seu navegador está com os scripts desabilitados!
@@ -27,13 +29,28 @@ html(lang="pt-br")
 		// /.wrapper
 		include footer.pug
 
-		script(src="js/starter.js")
-		script(src="js/lightbox.min.js")
-		script(src="js/scripts.js")
+		script(src="js/starter.js", async)
+		script.
+			window.addEventListener('load', function(){
+				var jsFiles = [
+					// lightbox
+					'js/lightbox.min.js',
+					// scripts
+					'js/scripts.min.js'
+				]
+
+				for (s=0;s<jsFiles.length;s++){
+					var js = document.createElement('script');
+
+					js.src = jsFiles[s];
+					js.async = true;
+					document.querySelector('body').appendChild(js);
+				}
+			});
 		//
 			[if lt IE 9]>
 				<script>
-					(function message_IE(){
+					(function (){
 						var msg = '<div id="msg-ie" class="msg-ie">'+
 							'<div class="alert-danger alert text-center">'+
 								'<button onclick="remover(\'#msg-ie\')" class="close"><i class="fa fa-times"></i></button>'+
