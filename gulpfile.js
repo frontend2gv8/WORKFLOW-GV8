@@ -239,9 +239,7 @@ function runIMages(dirIn,dirOut,conf){
 
 const imgsCfg = {
 	use: [
-		imageminPngquant({
-			quality: '65-80'
-		}),
+		imageminPngquant(),
 		imageminJpegoptim({
 			max: 80,
 			progressive: true
