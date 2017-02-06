@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Documentos</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="msapplication-TileColor" content="#2F3BA2">
+        <meta name="theme-color" content="#2F3BA2">
+        <link rel="stylesheet" type="text/css" href="styles/estilos.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="imagens/estrutural/favicon.ico">
+    </head>
+    <body>
+        <noscript>
+            <div class="alert alert-warning text-center">
+                <h1>Seu navegador está com os scripts desabilitados!</h1>
+                <p>Para melhor funcionamento do site, habilite-os.</p>
+            </div>
+        </noscript>
+        <div class="wrapper">
+            <!-- CONTEUDO-->
+        </div>
+        <!-- /.wrapper-->
+        <script src="js/starter.js" async></script>
+        <lazy-script src="js/lightbox.min.js"></lazy-script>
+        <lazy-script src="js/scripts.min.js"></lazy-script>
+        <script>
+            window.addEventListener('load', function()
+            {
+                var lazyScript = document.querySelectorAll('lazy-script');
+                if (lazyScript)
+                {
+                    for (var i = 0; i < lazyScript.length; i++)
+                    {
+                        var lazy = lazyScript[i];
+                        var js = document.createElement('script');
+                        js.src = lazy.getAttribute('src');
+                        js.assync = true;
+                        document.body.appendChild(js);
+                        lazy.remove();
+                    }
+                }
+            });
+        </script>
+        <!--[if lt IE 9]>
+	<script>
+		(function (){
+			var msg = '<div id="msg-ie" class="msg-ie">'+
+				'<div class="alert-danger alert text-center">'+
+					'<button onclick="remover(\'#msg-ie\')" class="close"><i class="fa fa-times"></i></button>'+
+					'<h1>ATEN&Ccedil;&Atilde;O!!</h1>'+
+					'<p>O seu navegador est&aacute; desatualizado, para melhor funcionamento do site clique <a href="#" class="alert-link">aqui</a> para atulizar! Ou instale o <a href="#" class="alert-link">Google Chrome</a></p>'+
+				'</div>'+
+			'</div>';
+
+			$('noscript').after(msg);
+			$('body').addClass('ie');
+		}());
+	</script>
+<![endif]-->
+    </body>
+</html>

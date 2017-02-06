@@ -18,7 +18,7 @@ const prettify 				= require('gulp-prettify');
 
 // styles
 const sass 					= require('gulp-sass');
-const minifyCss 			= require('gulp-minify-css');
+const minifyCss 			= require('gulp-clean-css');
 
 // IMAGENS
 const imagemin 				= require('imagemin');
@@ -100,6 +100,15 @@ gulp.task('libs',function(){
 	gulp.src(libsJs)
 		.pipe(concat('starter.js'))
 		.pipe(gulp.dest('dist/js'));
+
+	gulp.src(lightbox)
+		.pipe(gulp.dest('dist/js'));
+});
+gulp.task('libs-watch',function(){
+	gulp.src(libsJs)
+		.pipe(concat('starter.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(connect.reload());
 
 	gulp.src(lightbox)
 		.pipe(gulp.dest('dist/js'));
@@ -305,8 +314,7 @@ gulp.task('watch',['dev','server'],function(){
 			runIMages(file.path,'dist/imagens/'+pasta,webpConf);
 			console.log('O arquivo '+urlRelativa+' foi compilado com sucesso!')
 		}
-
-		// conect.reload();
+		
 	});
 
 	// SPRITES ================================
@@ -320,6 +328,8 @@ gulp.task('watch',['dev','server'],function(){
 		.pipe(gulp.dest('dist/json'))
 		.pipe(connect.reload());
 	});
+
+	gulp.watch(libsJs, ['libs-watch']);
 });
 
 // SERVER ------------------------------

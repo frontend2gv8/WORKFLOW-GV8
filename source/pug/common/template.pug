@@ -8,6 +8,10 @@ html(lang="pt-br")
 		meta(name="viewport", content="width=device-width, initial-scale=1")
 		meta(http-equiv="x-ua-compatible", content="ie=edge")
 
+		block theme
+			meta(name="msapplication-TileColor", content="#2F3BA2")
+			meta(name="theme-color", content="#2F3BA2")
+
 		link(rel="stylesheet", type="text/css", href="styles/estilos.min.css")
 		link(rel="shortcut icon" type="image/x-icon" href="imagens/estrutural/favicon.ico")
 
@@ -30,21 +34,23 @@ html(lang="pt-br")
 		include footer.pug
 
 		script(src="js/starter.js", async)
+		lazy-script(src="js/lightbox.min.js")
+		lazy-script(src="js/scripts.min.js")
 		script.
 			window.addEventListener('load', function(){
-				var jsFiles = [
-					// lightbox
-					'js/lightbox.min.js',
-					// scripts
-					'js/scripts.min.js'
-				]
+				var lazyScript = document.querySelectorAll('lazy-script');
 
-				for (s=0;s<jsFiles.length;s++){
-					var js = document.createElement('script');
+				if(lazyScript){
+					for (var i=0;i<lazyScript.length;i++){
+						var lazy = lazyScript[i];
+						var js = document.createElement('script');
 
-					js.src = jsFiles[s];
-					js.async = true;
-					document.querySelector('body').appendChild(js);
+						js.src = lazy.getAttribute('src');
+						js.assync = true;
+
+						document.body.appendChild(js);
+						lazy.remove();
+					}
 				}
 			});
 		//

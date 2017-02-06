@@ -1,6 +1,6 @@
-jQuery.getJSON('../json/videos-youtube.json', function(data, textStatus) {
+/*jQuery.getJSON('../json/videos-youtube.json', function(data, textStatus) {
 	youtubeSuccess(data)
-});
+});*/
 
 $('[data-load-video]').click(function(){
 	var alvo = $(this).data('target');
