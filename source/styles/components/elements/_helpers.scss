@@ -9,6 +9,30 @@
 		margin-top: #{$m}px;
 	}
 
+	.mgl-#{$m}{
+		margin-left: #{$m}px;
+	}
+
+	.mgr-#{$m}{
+		margin-right: #{$m}px;
+	}
+
+	.pdb-#{$m}{
+		padding-bottom: #{$m}px;
+	}
+
+	.pdt-#{$m}{
+		padding-top: #{$m}px;
+	}
+
+	.pdl-#{$m}{
+		padding-left: #{$m}px;
+	}
+
+	.pdr-#{$m}{
+		padding-right: #{$m}px;
+	}
+
 }
 
 #msg-ie{
@@ -32,5 +56,5 @@
 }
 
 a[data-lightbox]{
-	cursor: zoom-in
+	cursor: zoom-in;
 }
