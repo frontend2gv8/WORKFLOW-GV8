@@ -53,8 +53,14 @@ Para poder utilizar é muito simples! Veja no exemplo abaixo:
 
 ```
 <style>
-	.box-red{
+	.box-red-lighten-3{
 		background: materialColor("red", "lighten-3"); /* #EF9A9A */
+	}
+
+	/* Caso queira a cor "central" */
+
+	.box-red{
+		background: materialColor("red", "red"); /* #F44336 */
 	}
 </style>
 ```
