@@ -45,3 +45,22 @@ Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
 Foi-se migrado do npm para yarn, que é outro gerenciador de dependências like a npm, no entanto é mais rápido e também funciona offiline.
 
 Para mais informações sobre o yarn, acesse https://yarnpkg.com/
+
+# MATERIAL DESIGN Colors
+
+Foi adicionado a palheta de cores utilizados pelo Google Material Design!
+Para poder utilizar é muito simples! Veja no exemplo abaixo:
+
+```
+<style>
+	.box-red{
+		background: materialColor("red", "lighten-3"); /* #EF9A9A */
+	}
+</style>
+```
+
+Viu só ;D
+
+Basta usar os codnomes listados na imagem abaixo que é show!
+
+![Palheta de cores](palheta-de-cores.png)

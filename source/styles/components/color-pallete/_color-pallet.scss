@@ -1,0 +1,19 @@
+@import "_material-design-color-pallet.scss";
+
+@function materialColor($cor: red,$intensidade: 50){
+  $color:'';
+  
+  @each $nome, $valor in $materialDesignColors{
+    @if type-of($valor) == 'map'{
+      @if $nome == $cor{
+        @each $intensidade1, $valor2 in $valor{
+          @if $intensidade1 == $intensidade{
+            $color: $valor2;
+          }
+        }
+      }
+    }
+  }
+  
+  @return $color;
+}

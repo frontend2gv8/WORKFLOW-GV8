@@ -1,11 +1,14 @@
 @import "mixins/_mixins.scss";
 
+// VENDOR
 @import "vendor/_lightbox.scss";
 @import "vendor/_external-imports.scss";
 @import "vendor/_owl-carousel.scss";
 
+// ANIMATIONS
 @import "animations/_animation.scss";
 
+// CORE
 @import "elements/_paginacao.scss";
 @import "elements/_sprites.scss";
 @import "elements/_helpers.scss";
@@ -21,3 +24,6 @@
 @import "elements/_videos.scss";
 @import "elements/_pergunta-frequente.scss";
 @import "elements/_links-uteis.scss";
+
+// COLOR PALLET (MATERIAL DESIGN)
+@import "color-pallete/_color-pallet.scss";
