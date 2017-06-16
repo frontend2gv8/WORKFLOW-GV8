@@ -1,0 +1,62 @@
+@mixin md-icon-variant($bg: #CCC,$color: #000){
+	$textShadow: 1px 1px darken($bg, 10%);
+
+	@for $i from 1 through 100{
+		$textShadow: #{$textShadow} , #{$i}px #{$i}px darken($bg, 10%);
+	}
+
+	&:before{
+		color:$color;
+		background: $bg;
+		text-shadow: $textShadow;
+	}
+}
+
+@include keyframes(explodeMidia){
+	0%{
+		opacity:0.6;
+		transform:scale(0);
+	}
+	100%{
+		opacity: 0;
+		transform: scale(4);
+	}
+}
+
+.md-icon{
+	display: inline-block;
+	position:relative;
+
+	&:before{
+		width:2em;
+		height:2em;
+		line-height:2em;
+		border-radius:100%;
+		overflow:hidden;
+		text-align:center;
+		position:relative;
+		z-index:1;
+		display: inline-block;
+	}
+
+	&:after{
+		content:'';
+		width:50%;
+		height:50%;
+		left:25%;
+		top:25%;
+		border-radius:100%;
+		background: rgba(#FFF,0.6);
+		opacity:0;
+		z-index:0;
+		display: inline-block;
+		position:absolute;
+	}
+
+	&:hover{
+		&:after{
+			z-index:2;
+			animation: explodeMidia 0.6s linear;
+		}
+	}
+}
