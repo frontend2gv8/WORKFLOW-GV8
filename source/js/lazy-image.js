@@ -1,43 +1,42 @@
-var LazyImage = (function(){
-	'use restrict';
-	var isRectImage = function(){
-		var lazys = document.querySelectorAll('lazyimage');
+$.fn.isLazyImage = function(){
+	return this.each(function(el,index){
+		if(this.getBoundingClientRect().top < window.innerHeight + 200){
+			if(!this.getAttribute('loaded')){
+				var src = this.getAttribute('src') || this.getAttribute('data-src');
+				var alt = this.getAttribute('alt') || this.getAttribute('data-alt');
+				var classe = (this.getAttribute('data-classe') +' img-responsive') || 'img-responsive';
 
-		if(lazys){
-			for(i=0;i<lazys.length;i++){
-				var lazy = lazys[i];
+				var img = document.createElement('img');
 
-				if(lazy.getBoundingClientRect().top < window.innerHeight + 200){
-					if(!lazy.getAttribute('loaded')){
+				img.setAttribute('src',src);
+				img.setAttribute('alt',alt);
+				img.setAttribute('class',classe);
 
-						var src = lazy.getAttribute('src') || lazy.getAttribute('data-src');
-						var alt = lazy.getAttribute('alt') || lazy.getAttribute('data-alt') || 'placeholder';
-						var classe = lazy.getAttribute('data-class') || 'img-responsive';
 
-						var img = new Image();
-
-						img.src = src;
-						img.setAttribute('alt',alt);
-						img.setAttribute('class',classe);
-
-						lazy.appendChild(img);
-						lazy.setAttribute('loaded','true');
-					}
-				}
+				this.appendChild(img);
+				this.setAttribute('loaded','true');
 			}
 		}
-	};
-	var isLazedImage = false;
-
-	isRectImage();
-
-	window.addEventListener('scroll',function(){
-		if(isLazedImage) return;
-
-		setTimeout(function(){
-			isLazedImage = false;
-		},100);
-
-		isRectImage();
 	});
-})();
+};
+
+$.fn.lazyImage = function(){
+	var jaLazyImage = false;
+	return this.each(function(){
+		var lazy = this;
+
+		$(lazy).isLazyImage();
+
+		$(window).scroll(function(){
+			if(jaLazyImage) return;
+
+			setTimeout(function(){
+				jaLazyImage = false;
+			},100);
+
+			$(lazy).isLazyImage();
+		});
+	});
+};
+
+$('lazyimage').lazyImage();
