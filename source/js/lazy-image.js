@@ -1,5 +1,5 @@
 $.fn.isLazyImage = function(){
-	return this.each(function(el,index){
+	return this.each(function(){
 		if(this.getBoundingClientRect().top < window.innerHeight + 200){
 			if(!this.getAttribute('loaded')){
 				var src = this.getAttribute('src') || this.getAttribute('data-src');
