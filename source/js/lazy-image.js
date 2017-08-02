@@ -4,9 +4,14 @@ $.fn.isLazyImage = function(){
 			if(!this.getAttribute('loaded')){
 				var src = this.getAttribute('src') || this.getAttribute('data-src');
 				var alt = this.getAttribute('alt') || this.getAttribute('data-alt');
-				var classe = (this.getAttribute('data-classe') +' img-responsive') || 'img-responsive';
 
 				var img = document.createElement('img');
+
+				if(this.getAttribute('data-classe')){
+					var classe = this.getAttribute('data-classe') + ' img-responsive';
+				}else{
+					var classe = 'img-responsive';
+				}
 
 				img.setAttribute('src',src);
 				img.setAttribute('alt',alt);
