@@ -1,4 +1,37 @@
 const DOMINIO = window.location.protocol + '//' + window.location.host;
+
+String.prototype.toCamelCase = function() {
+    return this.replace(/-/g,' ').replace(/^([A-Z])|\s(\w)/g, function(match, p1, p2, offset) {
+        if (p2) return p2.toUpperCase();
+        return p1.toLowerCase();        
+    });
+};
+
+var COMPONENTES = (function(){
+	function COMPONENTES(){
+		this._COMPONENTES = {};
+	}
+
+	COMPONENTES.prototype.define = function(elemento,Classe){
+		if(document.querySelector(elemento)){
+			this._COMPONENTES[elemento.toCamelCase()] = [];
+
+			var elementoList = document.querySelectorAll(elemento);
+
+			for(var i=0 ; i<elementoList.length ; i++){
+				this._COMPONENTES[elemento.toCamelCase()].push(new Classe(elementoList[i]));
+			}
+		}
+	}
+
+	COMPONENTES.prototype.log = function() {
+		return this;
+	};
+
+	return COMPONENTES;
+})();
+
+var elementosCustom = new COMPONENTES();
 /*
 	RESPONSIVE BS CAROUSEL v 2.0
 	Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs
@@ -21,54 +54,59 @@ const DOMINIO = window.location.protocol + '//' + window.location.host;
 		- Os attrs 'data-md', 'data-sm' e 'data-xs' carregam consigo como valor default 1.
 		- É OBRIGATÓRIO a atribuição de um 'id' para o carousel, caso o constrário, o mesmo não funcionará.
 */
-$('.carousel-responsive').each(function(index, el) {
-	var alvo = $('#'+$(this).attr('id'));
-	var items = alvo.find('.carousel-inner > *');
-	var responsive = {
-		'xs': $(this).data('xs') || 1,
-		'sm': $(this).data('sm') || 1,
-		'md': $(this).data('md') || 1
-	};
-	var midia = 'xs';
+$.fn.carouselResponsive = function() {
+	return this.each(function(index, el) {
+		var alvo = $('#'+$(this).attr('id'));
+		var items = alvo.find('.carousel-inner > *');
+		var responsive = {
+			'xs': $(this).data('xs') || 1,
+			'sm': $(this).data('sm') || 1,
+			'md': $(this).data('md') || 1
+		};
+		var midia = 'xs';
 
-	if($(window).width() > 700){
-		midia = 'sm';
-	}
-
-	if($(window).width() > 991){
-		midia = 'md';
-	}
-
-	function wrapCarousel(count){
-		alvo.find('.carousel-inner .item > *').unwrap('<div class="item"></div>');
-
-		for(i=0;i<items.length;i++){
-			alvo.find('.carousel-inner > *').slice(i, i+count).wrapAll('<div class="item"></div>');
+		if($(window).width() > 700){
+			midia = 'sm';
 		}
 
-		alvo.find('.item:first-child').addClass('active');
-	}
-
-	function refreshCarousel (){
-		switch(midia){
-			case 'xs':
-				wrapCarousel(responsive[midia]);
-			break;
-			case 'sm':
-				wrapCarousel(responsive[midia]);
-			break;
-			case 'md':
-				wrapCarousel(responsive[midia]);
-			break;
+		if($(window).width() > 991){
+			midia = 'md';
 		}
-	}
 
-	refreshCarousel ();
+		function wrapCarousel(count){
+			alvo.find('.carousel-inner .item > *').unwrap('<div class="item"></div>');
 
-	$(window).resize(function(event) {
+			for(i=0;i<items.length;i++){
+				alvo.find('.carousel-inner > *').slice(i, i+count).wrapAll('<div class="item"></div>');
+			}
+
+			alvo.find('.item:first-child').addClass('active');
+		}
+
+		function refreshCarousel (){
+			switch(midia){
+				case 'xs':
+					wrapCarousel(responsive[midia]);
+				break;
+				case 'sm':
+					wrapCarousel(responsive[midia]);
+				break;
+				case 'md':
+					wrapCarousel(responsive[midia]);
+				break;
+			}
+		}
+
 		refreshCarousel ();
+
+		$(window).resize(function(event) {
+			refreshCarousel ();
+		});
 	});
-});
+};
+
+
+$('.carousel-responsive').carouselResponsive();
 
 $('.carousel[data-interval]').each(function(index, el) {
 	$(this).carousel({
@@ -142,91 +180,91 @@ var LazyBg = (function(){
 		isLazedBg();
 	});
 })();
-var LazyIframes = (function(){
-	/*
-		Ex:
-			<lazyiframe>
-				<template>
-					<iframe src="https://www.youtube.com/embed/Egvg4w7VaU4" width="560" height="315 frameborder="0" allowfullscreen>
-				</template>
-			</lazyiframe>
-	*/
-	var isRectFrame = function(){
-		var lazys = document.querySelectorAll('lazyiframe');
+$.fn.isLazyIframe = function(){
+	return this.each(function(){
+		if(this.getBoundingClientRect().top < window.innerHeight + 200){
+			if(!this.getAttribute('loaded')){
+				var template = $(this).find('template');
+				var video = template.html();
 
-		if(lazys){
-			for(i=0;i<lazys.length;i++){
-				var lazy = lazys[i];
-
-				if(lazy.getBoundingClientRect().top < window.innerHeight + 200){
-					if(!lazy.getAttribute('loaded')){
-						var template  = lazy.querySelector('template').content;
-
-						lazy.appendChild(document.importNode(template, true));
-						lazy.setAttribute('loaded','true');
-					}
+				if(template){
+					$(this).append(video);
+					template.remove();
+					$(this).attr('loaded', 'true');
 				}
 			}
 		}
-	};
-	var isLazedFrame = false;
-
-	isRectFrame();
-
-	window.addEventListener('scroll',function(){
-		if(isLazedFrame) return;
-
-		setTimeout(function(){
-			isLazedFrame = false;
-		},100);
-
-		isRectFrame();
 	});
-})();
-var LazyImage = (function(){
-	'use restrict';
-	var isRectImage = function(){
-		var lazys = document.querySelectorAll('lazyimage');
+};
 
-		if(lazys){
-			for(i=0;i<lazys.length;i++){
-				var lazy = lazys[i];
+$.fn.lazyIframe = function(){
+	var jaLazyIframe = false;
 
-				if(lazy.getBoundingClientRect().top < window.innerHeight + 200){
-					if(!lazy.getAttribute('loaded')){
+	return this.each(function(){
+		var frame = this;
 
-						var src = lazy.getAttribute('src') || lazy.getAttribute('data-src');
-						var alt = lazy.getAttribute('alt') || lazy.getAttribute('data-alt') || 'placeholder';
-						var classe = lazy.getAttribute('data-class') || 'img-responsive';
+		$(frame).isLazyIframe();
 
-						var img = new Image();
+		$(window).scroll(function(){
+			if (jaLazyIframe) return;
 
-						img.src = src;
-						img.setAttribute('alt',alt);
-						img.setAttribute('class',classe);
+			setTimeout(function(){
+				jaLazyIframe = false;
+			},100);
 
-						lazy.appendChild(img);
-						lazy.setAttribute('loaded','true');
-					}
+			$(frame).isLazyIframe();
+		});
+	});
+};
+
+$('lazyiframe').lazyIframe();
+$.fn.isLazyImage = function(){
+	return this.each(function(){
+		if(this.getBoundingClientRect().top < window.innerHeight + 200){
+			if(!this.getAttribute('loaded')){
+				var src = this.getAttribute('src') || this.getAttribute('data-src');
+				var alt = this.getAttribute('alt') || this.getAttribute('data-alt');
+
+				var img = document.createElement('img');
+
+				if(this.getAttribute('data-classe')){
+					var classe = this.getAttribute('data-classe') + ' img-responsive';
+				}else{
+					var classe = 'img-responsive';
 				}
+
+				img.setAttribute('src',src);
+				img.setAttribute('alt',alt);
+				img.setAttribute('class',classe);
+
+
+				this.appendChild(img);
+				this.setAttribute('loaded','true');
 			}
 		}
-	};
-	var isLazedImage = false;
-
-	isRectImage();
-
-	window.addEventListener('scroll',function(){
-		if(isLazedImage) return;
-
-		setTimeout(function(){
-			isLazedImage = false;
-		},100);
-
-		isRectImage();
 	});
-})();
+};
 
+$.fn.lazyImage = function(){
+	var jaLazyImage = false;
+	return this.each(function(){
+		var lazy = this;
+
+		$(lazy).isLazyImage();
+
+		$(window).scroll(function(){
+			if(jaLazyImage) return;
+
+			setTimeout(function(){
+				jaLazyImage = false;
+			},100);
+
+			$(lazy).isLazyImage();
+		});
+	});
+};
+
+$('lazyimage').lazyImage();
 /*jQuery.getJSON('../json/videos-youtube.json', function(data, textStatus) {
 	youtubeSuccess(data)
 });*/

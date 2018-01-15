@@ -1,4 +1,19 @@
 $imgs: '../imagens/estrutural';
 $fonts: '../fonts';
 
-$bg-sprite: url(#{imgs}/sprite.png) no-repeat;
+// MEDIA BREAKPOINTS
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// TAMANHOS DO CONTAINER
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 970px,
+  xl: 1170px
+) !default;

@@ -40,7 +40,7 @@ const uglify 				= require('gulp-uglify');
 
 const libsJs 		= [
 	'bower_components/jquery/dist/jquery.min.js',
-	'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+	'bower_components/bootstrap/dist/js/bootstrap.bundle.min.js',
 	'source/libs/*.js'
 ];
 
@@ -51,7 +51,7 @@ const lightbox 	= [
 
 const tipografia = [
 	'bower_components/font-awesome/fonts/*',
-	'bower_components/bootstrap-sass/assets/fonts/**/*',
+	// 'bower_components/bootstrap-sass/assets/fonts/**/*',
 	'source/fonts/**/*'
 ];
 
