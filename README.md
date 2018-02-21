@@ -1,5 +1,8 @@
 # WORKFLOW
 
+**Obs.:**
+Fora removido o bower como gerenciador de dependências, e estamos usando apenas o yarn/npm. Ou seja, agora só de rodar o comando "yarn install" ou "npm install", você já terá todas as dependências do projeto.
+
 ## Páginas internas
 ### Categorias
 - Contato
@@ -17,9 +20,9 @@
 - Páginas com Formulário
 
 
-## RESPONSIVE BS CAROUSEL v 2.0
+## RESPONSIVE BS CAROUSEL v 2.1
 
-Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs **'data-md'**, **'data-sm'** e **'data-xs'** , a quantidade de itens que você queira mostrar para tal midia:
+Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs **'data-xl'**, **'data-lg'**, **'data-md'**, **'data-sm'** e **'data-xs'** , a quantidade de itens que você queira mostrar para tal midia:
 
 ### Exemplo:
 
@@ -37,7 +40,7 @@ Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
 ```
 
 **OBS:**
-- Os attrs **'data-md'**, **'data-sm'** e **'data-xs'** carregam consigo como valor default 1.
+- O attr **'data-xs'** carregam consigo como valor default 1, e os demais, caso não sejam definidos por seus respectivos attributos, herdaram o valor da midia anterior.(Ex: "sm" herdará de "xs", "md" de "sm", etc.)
 - É **OBRIGATÓRIO** a atribuição de um **'id'** para o carousel, caso o constrário, o mesmo **não** funcionará.
 
 # Bootstrap

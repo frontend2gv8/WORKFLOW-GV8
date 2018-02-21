@@ -1,83 +1,85 @@
-/*
-	RESPONSIVE BS CAROUSEL v 2.0
-	Agora para ter o seu bootstrap carousel responsivo basta add a classe 'carousel-responsive' e add nos attrs
-	'data-md', 'data-sm' e 'data-xs' , a quantidade de itens que vc queira mostrar para tal midia:
+$.fn.carouselResponsive = function(){
+	window.carouselMidia = 'xs';
 
-	Exemplo:
-		Um carousel com  4 itens no desktop, 3 no tablet e 1 no mobile
-
-		<div class="carousel carousel-responsive">
-			<div class="carousel-inner">
-
-				<div class="col-md-3 col-sm-4"> ... </div>
-				<div class="col-md-3 col-sm-4"> ... </div>
-				<div class="col-md-3 col-sm-4"> ... </div>
-				<div class="col-md-3 col-sm-4"> ... </div>
-
-			</div>
-		</div>
-	OBS:
-		- Os attrs 'data-md', 'data-sm' e 'data-xs' carregam consigo como valor default 1.
-		- É OBRIGATÓRIO a atribuição de um 'id' para o carousel, caso o constrário, o mesmo não funcionará.
-*/
-$.fn.carouselResponsive = function() {
-	return this.each(function(index, el) {
-		var alvo = $('#'+$(this).attr('id'));
-		var items = alvo.find('.carousel-inner > *');
-		var responsive = {
-			'xs': $(this).data('xs') || 1,
-			'sm': $(this).data('sm') || 1,
-			'md': $(this).data('md') || 1
-		};
-		var midia = 'xs';
-
-		if($(window).width() > 700){
-			midia = 'sm';
+	var Responsive = (function(){
+		function Responsive(el){
+			this.xs = $(el).data('xs') || 1;
+			this.sm = $(el).data('sm') || this.xs;
+			this.md = $(el).data('md') || this.sm;
+			this.lg = $(el).data('lg') || this.md;
+			this.xl = $(el).data('xl') || this.lg;
 		}
 
-		if($(window).width() > 991){
-			midia = 'md';
+		return Responsive;
+	})();
+	var jaResize = false;
+	var verifyMidia = function(){
+		var w = $(window).width();
+
+		if(w < 576){
+			window.carouselMidia = 'xs';
 		}
 
-		function wrapCarousel(count){
-			alvo.find('.carousel-inner .item > *').unwrap('<div class="item"></div>');
-
-			for(i=0;i<items.length;i++){
-				alvo.find('.carousel-inner > *').slice(i, i+count).wrapAll('<div class="item"></div>');
-			}
-
-			alvo.find('.item:first-child').addClass('active');
+		if(w >= 576){
+			window.carouselMidia  = 'sm';
 		}
 
-		function refreshCarousel (){
-			switch(midia){
-				case 'xs':
-					wrapCarousel(responsive[midia]);
-				break;
-				case 'sm':
-					wrapCarousel(responsive[midia]);
-				break;
-				case 'md':
-					wrapCarousel(responsive[midia]);
-				break;
-			}
+		if(w >= 768){
+			window.carouselMidia = 'md';
 		}
 
-		refreshCarousel ();
+		if(w >= 992){
+			window.carouselMidia = 'lg';
+		}
 
-		$(window).resize(function(event) {
-			refreshCarousel ();
-		});
+		if(w >= 1200){
+			window.carouselMidia = 'xl';
+		}
+	}
+
+	verifyMidia();
+
+	$(window).resize(function(){
+		if (jaResize) return;
+
+		setTimeout(function(){
+			jaResize = false;
+		}, 100)
+
+		verifyMidia();
 	});
-};
 
+	return this.each(function(){
+		var responsive 	= new Responsive(this);
+		var carousel 	= $(this);
+		var inner 		= carousel.find('.carousel-inner');
+		var items 		= carousel.find('.carousel-inner > *');
+
+		function wrapCarosuel(){
+			inner.find('.carousel-item > *').unwrap('<div class="carousel-item"></div>');
+
+			for(var i=0; i < items.length; i++){
+				carousel.find('.carousel-inner > *').slice(i, (i + responsive[window.carouselMidia]) ).wrapAll('<div class="carousel-item"></div>');
+			}
+
+			carousel.find('.carousel-item:first-child').addClass('active');
+		}
+
+		wrapCarosuel();
+
+		$(window).resize(function(){
+			wrapCarosuel();
+		});
+		
+	});
+}
 
 $('.carousel-responsive').carouselResponsive();
 
-$('.carousel[data-interval]').each(function(index, el) {
+$('.carousel[data-interval]').each(function(index, el){
 	$(this).carousel({
-		interval: $(this).data('interval')
-	});
+		interval: $(this).data('carousel')
+	})
 });
 
 $('a[data-carousel="prev"]').click(function(event) {

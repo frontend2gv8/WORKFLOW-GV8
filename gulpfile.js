@@ -9,7 +9,6 @@ const gulp 					= require('gulp');
 const rename 				= require("gulp-rename");
 const connect 				= require('gulp-connect-multi')();
 const autoprefixer 			= require('gulp-autoprefixer');
-const postcss     			= require('gulp-postcss');
 const sourcemaps   			= require('gulp-sourcemaps');
 
 // templates
@@ -39,18 +38,18 @@ const uglify 				= require('gulp-uglify');
 //======================================
 
 const libsJs 		= [
-	'bower_components/jquery/dist/jquery.min.js',
-	'bower_components/bootstrap/dist/js/bootstrap.bundle.min.js',
+	'node_modules/jquery/dist/jquery.min.js',
+	'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
 	'source/libs/*.js'
 ];
 
 const lightbox 	= [
-	'bower_components/lightbox2/dist/js/lightbox.min.map',
-	'bower_components/lightbox2/dist/js/lightbox.min.js'
+	'node_modules/lightbox2/dist/js/lightbox.min.map',
+	'node_modules/lightbox2/dist/js/lightbox.min.js'
 ];
 
 const tipografia = [
-	'bower_components/font-awesome/fonts/*',
+	'node_modules/font-awesome/fonts/*',
 	// 'bower_components/bootstrap-sass/assets/fonts/**/*',
 	'source/fonts/**/*'
 ];

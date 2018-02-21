@@ -41,4 +41,4 @@ $screen-sm-max:              ($screen-md-min - 1) !default;
 $screen-md-max:              ($screen-lg-min - 1) !default;
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
-@import "../../../../bower_components/font-awesome/scss/font-awesome.scss";
+@import "../../../../node_modules/font-awesome/scss/font-awesome.scss";
