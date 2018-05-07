@@ -78,7 +78,7 @@ $('.carousel-responsive').carouselResponsive();
 
 $('.carousel[data-interval]').each(function(index, el){
 	$(this).carousel({
-		interval: $(this).data('carousel')
+		interval: parseInt($(this).data('interval'))
 	})
 });
 

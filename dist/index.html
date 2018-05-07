@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Documentos</title>
+        <title>Lorem Ipsum</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,6 +19,11 @@
         </noscript>
         <div class="wrapper">
             <!-- CONTEUDO-->
+            <i class="icon br"></i>
+            <i class="icon en"></i>
+            <i class="icon es"></i>
+            <br>
+            <i class="icon shield"></i>
         </div>
         <!-- /.wrapper-->
         <script src="js/starter.js" async></script>
@@ -37,7 +42,7 @@
                         js.src = lazy.getAttribute('src');
                         js.assync = true;
                         document.body.appendChild(js);
-                        lazy.remove();
+                        document.body.removeChild(lazy);
                     }
                 }
             });
