@@ -14,7 +14,7 @@ $.fn.carouselResponsive = function(){
 	})();
 	var jaResize = false;
 	var verifyMidia = function(){
-		var w = $(window).width();
+		var w = window.innerWidth;
 
 		if(w < 576){
 			window.carouselMidia = 'xs';
@@ -59,7 +59,10 @@ $.fn.carouselResponsive = function(){
 			inner.find('.carousel-item > *').unwrap('<div class="carousel-item"></div>');
 
 			for(var i=0; i < items.length; i++){
-				carousel.find('.carousel-inner > *').slice(i, (i + responsive[window.carouselMidia]) ).wrapAll('<div class="carousel-item"></div>');
+				carousel.find('.carousel-inner > *')
+				.slice(i, (i + responsive[window.carouselMidia]) )
+				.wrapAll('<div class="carousel-item"></div>')
+				.wrapAll('<div class="row"></div>');
 			}
 
 			carousel.find('.carousel-item:first-child').addClass('active');
@@ -77,9 +80,16 @@ $.fn.carouselResponsive = function(){
 $('.carousel-responsive').carouselResponsive();
 
 $('.carousel[data-interval]').each(function(index, el){
-	$(this).carousel({
-		interval: parseInt($(this).data('interval'))
-	})
+	let interval 	= parseInt($(this).data('interval'));
+	let slider 		= $(this);
+
+	slider.carousel({
+		interval: interval
+	});
+
+	setTimeout(function(){
+		slider.carousel('next');
+	}, interval);
 });
 
 $('a[data-carousel="prev"]').click(function(event) {

@@ -24,8 +24,8 @@
 		overflow:hidden;
 		display:flex;
 
-		@include prefixos(justify-content,center);
-		@include prefixos(align-items,center);
+		justify-content: center;
+		align-items: center;
 	}
 
 	.nome{
@@ -43,7 +43,7 @@
 
 .album{
 	display:flex;
-	@include prefixos(flex-wrap,wrap);
+	flex-wrap: wrap;
 	margin-left:-10px;
 	margin-right:-10px;
 

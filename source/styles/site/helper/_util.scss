@@ -1,33 +1,17 @@
-.carousel-fade {
-    .carousel-inner {
-        .item {
-            transition-property: opacity;
-        }
-        
-        .item,
-        .active.left,
-        .active.right {
-            opacity: 0;
-        }
+.lb-cancel{
+    background: url(#{$imgs}/loading.gif) no-repeat;
+}
 
-        .active,
-        .next.left,
-        .prev.right {
-            opacity: 1;
-        }
+.lb-nav a.lb-prev{
+    background: url(#{$imgs}/prev.png) left 48% no-repeat;
+}
 
-        .next,
-        .prev,
-        .active.left,
-        .active.right {
-            left: 0;
-            transform: translate3d(0, 0, 0);
-        }
-    }
+.lb-nav a.lb-next{
+    background: url(#{$imgs}/next.png) right 48% no-repeat;
+}
 
-    .carousel-control {
-        z-index: 2;
-    }
+.lb-data .lb-close{
+    background: url(#{$imgs}/close.png) top right no-repeat;
 }
 
 
@@ -37,4 +21,5 @@
 
 .img-responsive{
     display: inline-block;
+    @extend .img-fluid;
 }

@@ -41,10 +41,10 @@
 			cursor:pointer;
 
 			.fa{
-				@include transition(all 0.3s linear);
+				transition : all 0.3s linear;
 
 				&.fa-minus{
-					@include transform(rotate(-180deg));
+					transform : rotate(-180deg);
 				}
 			}
 		}
@@ -104,7 +104,7 @@
 			left:0;
 		}
 
-		@include transition(left 0.3s linear);
+		transition: left 0.3s linear;
 
 		.sidebar-body{
 			height: calc(100% - 45px);

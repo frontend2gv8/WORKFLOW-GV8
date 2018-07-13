@@ -1,28 +1,28 @@
-$icons: (
-    'br': 0 0 48px 33px,
-    'en': 0 -33px 48px 33px,
-    'es': 0 -66px 49px 33px,
-    'shield': 0 -99px 32px 32px,
-);
-
 .icon{
-    display:inline-block;
-    background-image: url(#{$imgs}/sprite.png);
-    background-repeat:no-repeat;
-
-    &.block{
-        display:block;
-    }
+	background-image: url('#{$imgs}/sprite.png');
+	background-repeat:no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	
+	&.br{
+		width: 48px;
+		height: 33px;
+		background-position: -59px 0px;
+	}
+	&.en{
+		width: 48px;
+		height: 33px;
+		background-position: 0px -43px;
+	}
+	&.es{
+		width: 49px;
+		height: 33px;
+		background-position: 0px 0px;
+	}
+	&.shield{
+		width: 32px;
+		height: 32px;
+		background-position: -58px -43px;
+	}
 }
 
-@mixin sprites($icons) {
-    @each $icon,$data in $icons{
-        .#{$icon}{
-            width: nth($data,3);
-            height: nth($data,4);
-            background-position: #{nth($data,1)} #{nth($data,2)};
-        }
-    }
-}
-
-@include sprites($icons);
