@@ -7,17 +7,16 @@
 // Gulp e outros
 const gulp 					= require('gulp');
 const rename 				= require("gulp-rename");
-const connect 				= require('gulp-connect-multi')();
 const autoprefixer 			= require('gulp-autoprefixer');
 const sourcemaps   			= require('gulp-sourcemaps');
+const browserSync			= require('browser-sync');
+const reload	 			= browserSync.reload;
 
 // templates
 const pug 					= require('gulp-pug');
-const prettify 				= require('gulp-prettify');
 
 // styles
 const sass 					= require('gulp-sass');
-const minifyCss 			= require('gulp-clean-css');
 
 // IMAGENS
 const imagemin 				= require('gulp-imagemin');
@@ -57,9 +56,9 @@ gulp.task('pug', function() {
 
   gulp.src('source/pug/*.pug')
     .pipe(pug({
-      locals: 'source/pug/*.pug'
+      locals: 'source/pug/*.pug',
+      pretty: '    '
     }))
-    .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
 });
 
@@ -67,11 +66,10 @@ gulp.task('pug-watch', function() {
 
   gulp.src('source/pug/*.pug')
     .pipe(pug({
-      locals: 'source/pug/*.pug'
+      locals: 'source/pug/*.pug',
+      pretty: '    '
     }))
-    .pipe(prettify({indent_size: 4}))
     .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload());
 });
 
 gulp.task('lightboxcss', () => {
@@ -80,7 +78,7 @@ gulp.task('lightboxcss', () => {
 		.pipe(gulp.dest('source/styles/components/vendor/'));
 
 	gulp.src('node_modules/lightbox2/dist/images/*')
-		.pipe(gulp.dest('source/imagens/estrutural/'));
+		.pipe(gulp.dest('source/images/'));
 });
 
 //SASS --------------------------------------|
@@ -95,7 +93,6 @@ gulp.task('sass', function () {
 		cascade: false
 	}))
 	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest('dist/styles'))
 	.pipe(rename('estilos.min.css'))
 	.pipe(gulp.dest('dist/styles'));
 });
@@ -122,12 +119,12 @@ gulp.task('libs-watch',function(){
 
 gulp.task('scripts',function(){
 	gulp.src('source/js/**/*.js')
-		.pipe(sourcemaps.write('./'))
 		.pipe(sourcemaps.init())
 		.pipe(concat('scripts.js'))
 		.pipe(babel({
 			presets: ['env']
 		}))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src('source/js/**/*.js')
@@ -151,7 +148,6 @@ gulp.task('scripts-watch',function(){
 		.pipe(uglify())
 		.pipe(rename('scripts.min.js'))
 		.pipe(gulp.dest('dist/js'))
-		.pipe(connect.reload());
 });
 
 // JSON ---------------------------------------|
@@ -163,7 +159,6 @@ gulp.task('json',function(){
 gulp.task('json-wath',function(){
 	gulp.src('source/json/*.json')
 		.pipe(gulp.dest('dist/json'))
-		.pipe(connect.reload());
 });
 
 // WATCH ------------------------------------|
@@ -176,7 +171,6 @@ gulp.task('sass-watch', function () {
 			browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
 			cascade: false
 		}))
-    	.pipe(gulp.dest('dist/styles'))
     	.pipe(rename('estilos.min.css'))
     	.pipe(gulp.dest('dist/styles'))
     	.pipe(connect.reload());
@@ -191,7 +185,6 @@ gulp.task('tipografia',function(){
 gulp.task('tipografia-watch',function(){
 	gulp.src(tipografia)
 		.pipe(gulp.dest('dist/fonts'))
-		.pipe(connect.reload());
 });
 
 
@@ -207,14 +200,14 @@ let configSpritsmith = {
 gulp.task('sprites', function () {
 	let spriteData = gulp.src('source/sprites/*.png').pipe(spritesmith(configSpritsmith));
 
-	spriteData.img.pipe(gulp.dest('source/imagens/estrutural/'));
+	spriteData.img.pipe(gulp.dest('source/images/estrutural/'));
 	spriteData.css.pipe(gulp.dest('source/styles/components/elements/'));
 });
 
 gulp.task('sprites-watch', function () {
 	let spriteData = gulp.src('source/sprites/*.png').pipe(spritesmith(configSpritsmith));
 
-	spriteData.img.pipe(gulp.dest('source/imagens/estrutural/'));
+	spriteData.img.pipe(gulp.dest('source/images/estrutural/'));
 	spriteData.css.pipe(gulp.dest('source/styles/components/elements/'));
 	spriteData.pipe(connect.reload());
 });
@@ -234,7 +227,7 @@ gulp.task('svgstore', function () {
             }
         }))
         .pipe(svgstore())
-        .pipe(gulp.dest('dist/imagens/estrutural'));
+        .pipe(gulp.dest('dist/images/estrutural'));
 });
 
 gulp.task('svgstore-watch', function () {
@@ -252,7 +245,7 @@ gulp.task('svgstore-watch', function () {
             }
         }))
         .pipe(svgstore())
-        .pipe(gulp.dest('dist/imagens/estrutural'));
+        .pipe(gulp.dest('dist/images/estrutural'));
         connect.reload();
 });
 
@@ -260,7 +253,7 @@ gulp.task('svgstore-watch', function () {
 // IMGS -----------------------------------
 
 gulp.task('imagens', ['sprites'], function () {
-	gulp.src('source/imagens/**/*')
+	gulp.src('source/images/**/*')
 		.pipe(imagemin([
 			imagemin.gifsicle({interlaced: true}),
 			// imagemin.jpegtran({progressive: true}),
@@ -276,16 +269,14 @@ gulp.task('imagens', ['sprites'], function () {
 		        ]
 	      	})
 	    ]))
-	    .pipe(gulp.dest('dist/imagens/'))
+	    .pipe(gulp.dest('dist/images/'))
 });
 
 // WATCH -------------------------------
-gulp.task('watch',['dev','server'],function(){
+gulp.task('watch',['dev'],function(){
 	// pug =================================
 	gulp.watch(['source/pug/**/*.pug'],['pug-watch']);
 
-	// SASS =================================
-	gulp.watch(['source/styles/**/**/**/*.scss'],['sass-watch']);
 
 	// JAVASCRIPTS ============================
 	gulp.watch(['source/js/**/*.js'],['scripts-watch']);
@@ -327,21 +318,38 @@ gulp.task('watch',['dev','server'],function(){
 
 		gulp.src(file.path)
 		.pipe(gulp.dest('dist/json'))
-		.pipe(connect.reload());
 	});
 
 	gulp.watch(libsJs, ['libs-watch']);
-});
 
-// SERVER ------------------------------
-gulp.task('server', connect.server({
-	root: ['dist'],
-	port: 9000,
-	livereload: true,
-	open: {
-		browser: 'safari' // Para o Google chrome no linux - google-chrome-stable
-	}
-}));
+	// SERVER
+	browserSync({
+		notify: false,
+		logPrefix: 'Dev Server',
+		scrollElementMapping: ['main', '.wrapper','#app'],
+		server: ['dist'],
+		port: 9000,
+		open: false
+	});
+
+	// SASS =================================
+	gulp.watch(['source/styles/**/**/**/*.scss']).on('change', function(file){
+		gulp.src('source/styles/estilos.scss')
+			.pipe(sourcemaps.init())
+		    .pipe(sass({
+		    	styleOutput : 'compressed'
+		    }))
+			.pipe(autoprefixer({
+				browsers: ['last 4 versions', '> 1%', 'ie 8','ie 7'],
+				cascade: false
+			}))
+			.pipe(sourcemaps.write('./'))
+			.pipe(rename('estilos.min.css'))
+			.pipe(gulp.dest('dist/styles'));
+	});
+
+	gulp.watch(['dist/**/**/*'], reload);
+});
 
 // DEFAULT ----------------------------
 gulp.task('dev',['lightboxcss','imagens','svgstore','json', 'pug', 'sass', 'libs', 'scripts', 'tipografia']);
