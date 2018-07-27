@@ -6,7 +6,7 @@ module.exports = () =>{
 	let spriteData = gulp.src(config.sprites.png.src)
 		.pipe(spritesmith({
 			imgName: 'sprite.png',
-			imgPath: 'imagens/estrutural/sprite.png',
+			imgPath: 'images/estrutural/sprite.png',
 			cssName: '_sprites.scss',
 			cssTemplate: config.sprites.png.template,
 			padding: 10

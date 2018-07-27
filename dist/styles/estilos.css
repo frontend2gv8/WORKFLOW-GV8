@@ -12275,7 +12275,7 @@ a.text-dark:hover, a.text-dark:focus {
     color: #fff; }
 
 .icon {
-  background-image: url("../imagens/estrutural/sprite.png");
+  background-image: url("../images/estrutural/sprite.png");
   background-repeat: no-repeat;
   display: inline-block;
   vertical-align: middle; }
@@ -12838,16 +12838,16 @@ body {
     flex-grow: 1; }
 
 .lb-cancel {
-  background: url(../imagens/estrutural/loading.gif) no-repeat; }
+  background: url(../images/estrutural/loading.gif) no-repeat; }
 
 .lb-nav a.lb-prev {
-  background: url(../imagens/estrutural/prev.png) left 48% no-repeat; }
+  background: url(../images/estrutural/prev.png) left 48% no-repeat; }
 
 .lb-nav a.lb-next {
-  background: url(../imagens/estrutural/next.png) right 48% no-repeat; }
+  background: url(../images/estrutural/next.png) right 48% no-repeat; }
 
 .lb-data .lb-close {
-  background: url(../imagens/estrutural/close.png) top right no-repeat; }
+  background: url(../images/estrutural/close.png) top right no-repeat; }
 
 .noround {
   border-radius: 0; }

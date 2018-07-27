@@ -3,26 +3,32 @@
 	background-repeat:no-repeat;
 	display: inline-block;
 	vertical-align: middle;
-	
-	&.br{
-		width: 48px;
-		height: 33px;
-		background-position: -59px 0px;
-	}
-	&.en{
-		width: 48px;
-		height: 33px;
-		background-position: 0px -43px;
-	}
-	&.es{
-		width: 49px;
-		height: 33px;
-		background-position: 0px 0px;
-	}
-	&.shield{
-		width: 32px;
-		height: 32px;
-		background-position: -58px -43px;
-	}
+	background-size: 107px 76px;
 }
 
+.br{
+	width: 48px;
+	height: 33px;
+	background-position: -59px 0px;
+}
+.en{
+	width: 48px;
+	height: 33px;
+	background-position: 0px -43px;
+}
+.es{
+	width: 49px;
+	height: 33px;
+	background-position: 0px 0px;
+}
+.shield{
+	width: 32px;
+	height: 32px;
+	background-position: -58px -43px;
+}
+
+@media ( -webkit-min-device-pixel-ratio: 2 ), (min-resolution: 192dpi) {
+	.icon{
+		background-image: url(#{$imgs}/sprite@2x.png);
+	}
+}
